@@ -1,0 +1,571 @@
+\section{Ergodic theorems}\label{sec:ergodic-theorems}
+
+Let $(X,\B,\mu)$ be a probability space and $f\colon X\carr$ a measure preserving endomorphism. Let $E\in\B$ be a subset such that $\mu(E)>0$. Then by Poincare's recurrence theorem (Corollary~\ref{cor:return-infinitely-many-times-Poincare}) we know that the set $\{i\in\N_{0} : f^{i}(x)\in E\}$ is infinite for $\mu$-almost every point $x\in E$. This can be considered as a qualitative information. In this section we shall focus on the problem of finding quantitative estimates for the frequency of sojourn
+\begin{displaymath}
+  \frac{1}{n}\sharp\{i\in\N_{0} : i<n,\ f^{i}(x)\in E\} = \frac{1}{n}\sum_{i=0}^{n-1}\ds{1}_{E}\circ f^{i}(x),
+\end{displaymath}
+as $n\to\infty$, and where $\ds{1}_{E}\colon X\to\{0,1\}$ denotes the indicator function of the set $E$. To do that, we shall analyze the asymptotic behavior of so called \textbf{Birkhoff averages} as the following one:
+\begin{displaymath}
+  \Bs_{f}^{n}\phi:=\frac{1}{n}\sum_{j=0}^{n-1}\phi\circ f^{j},
+\end{displaymath}
+for an arbitrary integrable function $\phi\colon X\to\R$.
+
+The first result concerning the asymptotic behavior of Birkhoff averages is the celebrated
+
+\begin{theorem}[von Neumann Ergodic Theorem]\label{thm:von-Neumann-ergodic-thm}
+  Let $(x,\B,\mu)$ be a probability space and $f\colon X\carr$ be a measure preserving endomorphism. Then, for every $\phi\in L^{2}(X,\B,\mu)$, there is a $\tilde\phi\in L^{2}(X,\B,\mu)$ such that
+  \begin{displaymath}
+    \frac{1}{n}\sum_{j=0}^{n-1}\phi\circ f^{j}\to \tilde\phi, \quad\text{in } L^{2}(X,\B,\mu),
+  \end{displaymath}
+  as $n\to +\infty$. Moreover, it holds
+  \begin{displaymath}
+    \tilde\phi(x)=\tilde \phi\big(f(x)\big), \quad\text{for }\mu\text{-a.e. } x\in X.
+  \end{displaymath}
+\end{theorem}
+
+In order to prove Theorem~\ref{thm:von-Neumann-ergodic-thm}, we first need to revise some concepts on Lebesgue and Hilbert spaces.
+
+\subsection{Revision on Lebesgue spaces}\label{sec:revision-Lebesgue-spaces}
+
+Let $(X,\mc{B},\mu)$ be an arbitrary measure space. For each real number $p$ with $1\leq p<\infty$, let us consider the space $L^{p}(X,\mc{B},\mu)$ of (equivalence classes of) measurable functions $\phi\colon X\to\C$ such that $\abs{\phi}^{p}$ is integrable, and where two functions are equivalent if and only if they coincide $\mu$-almost everywhere on $X$. Then one can show that the $L^{p}(X,\B,\mu)$ is a Banach space when it is endowed with the norm
+\begin{displaymath}
+  \norm{\phi}_{p}:= {\left(\int_{X}\abs{\phi}^{p}\dd\mu\right)}^{1/p},\quad\forall \phi\in L^{p}(X,\B,\mu).
+\end{displaymath}
+
+On the other hand, we define the space $L^{\infty}(X,B,\mu)$ as the space of (equivalence classes of) measurable functions $\phi\colon X\to\C$ such that there exists $C>0$ satisfying $\abs{\phi(x)}\leq C$, for $\mu$-almost every $x\in X$, and where two functions are equivalent when they coincide $\mu$-almost everywhere. The space $L^{\infty}(X,\B,\mu)$ is a Banach space when it is endowed with the norm
+\begin{displaymath}
+  \norm{\phi}_{\infty}:=\inf\left\{C>0 : \abs{\phi(x)}\leq C,\ \text{for }\mu\text{-a.e. } x\in X\right\}, \quad\forall \phi\in L^{\infty}(X,\B,\mu).
+\end{displaymath}
+
+\begin{exercise}
+  If $(X,\B,\mu)$ is a probability space, $1\leq p<q\leq \infty$ and $\phi\in L^{q}(X,\B,\mu)$, then show that $\phi\in L^{p}(X,\B,\mu)$ and $\norm{\phi}_{p}\leq \norm{\phi}_{q}$. On the other hand, show that
+  \begin{displaymath}
+    \norm{\psi}_{\infty}=\lim_{p\to\infty}\norm{\psi}_{p}, \quad\forall \psi\in L^{\infty}(X,\B,\mu).
+  \end{displaymath}
+\end{exercise}
+
+\begin{exercise}
+  Consider the map $\langle\cdot,\cdot\rangle\colon L^{2}(X,\B,\mu)\times L^{2}(X,\B,\mu)\to\C$ given by
+  \begin{displaymath}
+    \langle\phi,\psi\rangle :=\int_{X}\phi\overline{\psi}\dd\mu,\quad\forall \phi,\psi\in L^{2}(X,\B,\mu).
+  \end{displaymath}
+  Show that $\langle\cdot,\cdot\rangle$ is well defined, is a scalar product and it turns $L^{2}(X,\B,\mu)$ into a Hilbert space.
+
+  A Banach space is said to be \emph{Hibertlizable} when one can define a scalar product on it that turns it into a Hilbert space and whose topology coincides with the original one given by the Banach structure.
+
+  Show that the Lebesgue space $L^{p}(X,\B,\mu)$ is Hilbertlizable if and only if $p=2$.
+\end{exercise}
+
+Given a probability space $(X,\B,\mu)$, a measure preserving map $f\colon X\carr$, and a measurable function $\phi\colon X\to\C$, consider the new measurable function $U_{f}\phi:=\phi\circ f$. The map $U_{f}$ is called the \textbf{Koopman operator}.
+\begin{exercise}\label{exer:Koopman-operators-are-isometries}
+  For every $p\in[1,\infty]$, show that $U_{f}\phi\in L^{p}(X,\B,\mu)$, whenever $\phi\in L^{p}(X,\B,\mu)$. Moreover, show that $U_{f}\colon L^{p}(X,\B,\mu)\carr$ is a linear isometry, \ie~$\norm{U_{f}\phi}_{p}=\norm{\phi}_{p}$, for every $\phi\in L ^{p}(X,\B,\mu)$ and every $p\in[1,\infty]$.
+\end{exercise}
+
+\subsection{Revision of Hilbert space theory}\label{sec:revis-Hilbert-space-theory}
+
+Let $(\ms{H},\langle\cdot,\cdot\rangle)$ be a Hilbert over the field $\bb{K}=\R,\C$. We will write $E<\ms{H}$ when $E$ is a closed linear subspace. Given any non-empty subset $F\subset\ms{H}$, we define its \textbf{orthogonal complement} $F^{\perp}$ by
+\begin{displaymath}
+  F^{\perp}:=\{x\in\ms{H} : \langle x,y\rangle = 0,\ \forall y\in F\}.
+\end{displaymath}
+Observe that $F^{\perp}<\ms{H}$ and $F\cap F^{\perp}$ is either empty or the singleton $\{0\}$.
+
+We will need the following
+\begin{theorem}[Projection on convex subsets]\label{thm:projection-convex-closed-subsets-Hilbert}
+  Let $K\subset\ms{H}$ be a non-empty convex closed set. Then there is a continuous map $P_{K}\colon\ms{H}\to K$ such that for every $x\in\ms{H}$ the vector $P_{K}(x)$ is the only one in $K$ such that
+  \begin{displaymath}
+    \norm{x-P_{k}(x)}=\inf\{\norm{x-y} : y\in K\}.
+  \end{displaymath}
+
+  Moreover, if $K$ is closed linear subspace, then $P_{K}$ is a linear continuous map such that
+  \begin{displaymath}
+    \langle x-P_{K}(x),x\rangle = 0, \quad\forall x\in\ms{H}.
+  \end{displaymath}
+  In particular, it holds $\ker P_{K}=K^{\perp}$ and $K\oplus K^{\perp}=\ms{H}$.
+\end{theorem}
+
+\begin{proof}
+  See for instance~\cite[Theorem 3.13 and Corollary 3.17]{EinsiedlerWardFunctionalAnalysisBook}.
+\end{proof}
+
+Let $\ms{H}^{\star}$ denote its dual space, \ie~the space of continuous linear functionals on $\ms{H}$. We have the following
+
+\begin{theorem}[Riesz representation theorem for Hilbert spaces]\label{thm:Riesz-representation-thm-Hilber-spaces}
+  For every $\eta\in\ms{H}^{\star}$, there exists a unique $v_{\eta}\in\ms{H}$ such that
+  \begin{displaymath}
+    \eta(x)=\langle x,v_{\eta}\rangle, \quad\forall x\in\ms{H}.
+  \end{displaymath}
+\end{theorem}
+
+\begin{proof}
+  See for instance~\cite[Corollary 3.19]{EinsiedlerWardFunctionalAnalysisBook}.
+\end{proof}
+
+Theorem~\ref{thm:Riesz-representation-thm-Hilber-spaces} lets us redefine the concept of adjoint operator on Hilbert spaces. Given two Hilbert spaces $(\ms{H},\langle\cdot,\cdot\rangle_{\ms{H}})$ and $(\ms{J},\langle\cdot,\cdot\rangle_{\ms{J}})$ over $\{\}bb{K}=\R,\C$, and a continuous linear operator $A\in\mc{L}(\ms{H},\ms{J})$, we define its \textbf{adjoint operator} $A^{\star}\colon\ms{J}\to\ms{H}$ by the following property:
+\begin{displaymath}
+  \langle Ax,y\rangle = \langle x, A^{\star}y\rangle, \quad\forall x\in\ms{H},\ \forall y\in\ms{J}.
+\end{displaymath}
+
+\begin{exercise}
+  Show that $A^{\star}\in\mc{L}(\ms{J},\ms{H})$, for every $A\in\mc{L}(\ms{H},\ms{J})$.
+\end{exercise}
+
+A linear operator $U\in\mc{L}(\ms{H},\ms{J})$ is said to be an \textbf{isometry} when
+\begin{displaymath}
+  \norm{Ux}_{\ms{J}}=\norm{x}_{\ms{H}}, \quad\forall x\in\ms{H}.
+\end{displaymath}
+
+\begin{exercise}\label{exer:isometries-Hilber-spaces}
+  Let $U\colon\ms{H}\to\ms{J}$ be a continuous linear operator. Show that the following statements are equivalent:
+  \begin{enumerate}
+    \item $U$ is an isometry;
+    \item $\langle Ux,Uy\rangle_{\ms{J}}=\langle x,y\rangle_{\ms{H}}$, for every $x,y\in\ms{H}$;
+    \item $U^{\star}U=I$, where $I\in\mc{L}(\ms{H})$ denotes the identity map.
+  \end{enumerate}
+\end{exercise}
+
+A surjective isometry $U\in\mc{L}(\ms{H})$ is called a \textbf{unitary operator}. One can easily check that $U$ is a unitary operator if and only if $U^{\star} U = UU^{\star}=I$.
+
+Now we can prove the so called von Neumann's ergodic theorem for isometries on Hilbert spaces:
+
+\begin{theorem}\label{thm:von-Neumann-ergodic-isometries-Hilbert-spaces}
+  Let $\ms{H}$ be a Hilbert space over $\bb{K}=\R,\C$ and $U\colon\ms{H}\to\ms{H}$ be a linear isometry. Let $\ms{I}:=\ker(U-I)<\ms{H}$ and $P_{\ms{I}}\colon\ms{H}\to\ms{I}$ the projection map given by Theorem~\ref{thm:projection-convex-closed-subsets-Hilbert}. Then, it holds
+  \begin{displaymath}
+    \frac{1}{n}\sum_{i=0}^{n-1} U^{i}x\to P_{\ms{I}}(x), \quad\forall x\in\ms{H},
+  \end{displaymath}
+  as $n\to+\infty$.
+\end{theorem}
+
+\begin{proof}
+  Let us start considering the closed linear space
+  \begin{displaymath}
+    E=\overline{(U-I)\ms{H}}.
+  \end{displaymath}
+  Let us show that $\ms{I}=E^{\perp}$. In fact, first observe that for every $x\in\ms{H}$ and any $y\in\ms{I}$ we have
+  \begin{displaymath}
+    \langle Ux-x,y\rangle = \langle Ux,y\rangle - \langle x,y\rangle = \langle Ux, Uy\rangle - \langle x,y\rangle =0,
+  \end{displaymath}
+  where the last equality follows from the fact that $U$ is an isometry and Exercise~\ref{exer:isometries-Hilber-spaces}. So, $\ms{I}\subset E^{\perp}$.
+
+  On the other hand, if $y\in E^{\perp}$, then we have
+  \begin{displaymath}
+    0=\langle Ux-x,y\rangle = \langle Ux,y\rangle - \langle x,y\rangle = \langle x, U^{\star} y\rangle - \langle x,y\rangle = \langle x, U^{\star}y-y\rangle,
+  \end{displaymath}
+  for every $x\in\ms{H}$. So, by Theorem~\ref{thm:Riesz-representation-thm-Hilber-spaces} we have that $U^{\star}y-y=0$. Then we have
+  \begin{displaymath}
+    \begin{split}
+      \norm{Uy-y}^{2} &= \langle Uy-y,Uy-y\rangle = \norm{Uy}^{2} - \langle Uy,y\rangle - \langle y,Uy\rangle + \norm{y}^{2} \\
+                      &= \norm{y}^{2} - \langle y,U^{\star}y\rangle - \langle U^{\star} y,y\rangle - \norm{y}^{2} \\
+      & = \norm{y}^{2} - \norm{y}^{2} - \norm{y}^{2} +\norm{y}^{2} = 0.
+    \end{split}
+  \end{displaymath}
+  So, $y\in\ms{I}$ and we have proved that $\ms{I}=E^{\perp}$. Hence, it holds $\ms{H}=\ms{I}\oplus E$ and in order to conclude the proof it is enough to show that
+  \begin{equation}
+    \label{eq:zero-Birkhoff-averages-limit-for-almost-coboundaries}
+    \frac{1}{n}\sum_{i=0}^{n-1} U^{i}x\to 0, \quad\text{as } n\to+\infty,
+  \end{equation}
+  for every $x\in E$. To do that, let $x$ denote an arbitrary point of $E$ and $\eps>0$ be any positive real number. So, there exists a $y\in\ms{H}$ such that
+  \begin{displaymath}
+    \norm{x- (Uy-y)}<\frac{\eps}{2},
+  \end{displaymath}
+  and we get
+  \begin{displaymath}
+    \begin{split}
+      \norm{\frac{1}{n}\sum_{i=0}^{n-1} U^{i}x} & = \frac{1}{n} \norm{\sum_{i=0}^{n-1} U^{i}\Big(\big(Uy-y\big) + x - (Uy-y)\Big)} \\
+                                                &\leq \frac{1}{n} \norm{\sum_{i=0}^{n-1} U^{i+1}y-U^{i}y} + \frac{1}{n} \sum_{i=0}^{n-1} \norm{U^{i}\big(x - (Uy-y)\big)} \\
+                                                &= \frac{\norm{U^{n}y-y}}{n} +  \frac{1}{n} \sum_{i=0}^{n-1} \norm{x - (Uy-y)} \leq \frac{2}{n}\norm{y} + \frac{\eps}{2}\leq \eps,
+    \end{split}
+  \end{displaymath}
+  for every $n\geq \dfrac{4\norm{y}}{\eps}$. Since $\eps>0$ is arbitrary, we conclude that~\eqref{eq:zero-Birkhoff-averages-limit-for-almost-coboundaries} holds.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:von-Neumann-ergodic-thm}]
+  It is a straightforward consequence of Theorem~\ref{thm:von-Neumann-ergodic-isometries-Hilbert-spaces} and the fact that the Koopman operator $U_{f}\colon L^{2}(X,\B,\mu)\carr$ is an isometry (Exercise~\ref{exer:Koopman-operators-are-isometries}).
+\end{proof}
+
+Here we review some interesting consequences of von Neumann's ergodic theorem (Theorem~\ref{thm:von-Neumann-ergodic-thm}):
+
+\begin{corollary}\label{cor:von-Neumann-for-automorphisms-back-eq-for}
+  Let $(X,\B,\mu)$ be a probability space and $f\colon X\carr$ be a measure preserving automorphism. Then, for every $\phi\in L^{2}(X,\B,\mu)$, there exists $\tilde\phi\in L^{2}(X,\B,\mu)$ such that
+  \begin{displaymath}
+    \lim_{n\to+\infty}\frac{1}{n}\sum_{j=0}^{n-1}\phi\circ f^{i} = \lim_{n\to-\infty}\frac{1}{n}\sum_{i=0}^{n-1}\phi\circ f^{-i} =\tilde\phi,
+  \end{displaymath}
+  where both limits are taken in $L^{2}$.
+\end{corollary}
+
+\begin{proof}
+  This is a straightforward consequence of Theorem~\ref{thm:von-Neumann-ergodic-isometries-Hilbert-spaces} and the simple fact that $U_{f}$ and $U_{f^{-1}}={U_{f}}^{-1}$ are isometries, and $\ker(U_{f}-I)=\ker(U_{f^{-1}}-I)$
+\end{proof}
+
+\begin{corollary}\label{cor:von-Neumann-convergence-in-L1}
+  Let $(X,\B,\mu)$ be a probability space, $f\colon X\carr$ be measure preserving map and $\phi\in L^{1}(X,\B,\mu)$. Then, there is $\tilde\phi\in L^{1}(X,\B,\mu)$ such that
+  \begin{displaymath}
+    \frac{1}{n}\sum_{i=0}^{n-1}\phi\circ f^{i}\to \tilde\phi, \quad\text{in }L^{1},
+  \end{displaymath}
+  as $n\to+\infty$.
+\end{corollary}
+
+\begin{proof}
+  For the sake of simplicity of notation, given any $\psi\colon X\to\R$ and any $n\in\N$, let us write $\Bs_{f}^{n}\psi$ for the Birkhoff average of order $n$ of $\psi$ over $f$, \ie~we have
+   \begin{displaymath}
+    \Bs_{f}^{n}\psi = \frac{1}{n}\sum_{j=0}^{n-1}\psi\circ f^{j}.
+  \end{displaymath}
+
+  Let us fix a real number $\eps>0$. Since $L^2(X,\B,\mu)$ is dense in $L^1(X,\B,\mu)$, there is $\xi\in L^2(X,\B,\mu)$ such that
+  \begin{displaymath}
+    \norm{\phi-\xi}_1<\frac{\eps}{4},
+  \end{displaymath}
+  and then,
+  \begin{displaymath}
+    \norm{\Bs_f^n\phi-\Bs_f^n\xi}_1<\frac{\eps}{4}, \quad\forall n\geq 1.
+  \end{displaymath}
+
+  On the other hand, by Theorem~\ref{thm:von-Neumann-ergodic-thm} we know that there is $\tilde\xi\in L^{2}(X,\B,\mu)$ such that
+  \begin{displaymath}
+    \norm{\Bs_f^n\xi-\tilde\xi}_2\to 0, \quad\text{as } n\to+\infty,
+  \end{displaymath}
+  and thus, there is $N\in\N$ such that
+  \begin{displaymath}
+    \norm{\Bs_f^n\xi-\tilde\xi}_1\leq \norm{\Bs_f^n\xi-\tilde\xi}_2<\eps/4, \quad\forall n\geq N.
+  \end{displaymath}
+  Putting together all these estimates we get
+  \begin{displaymath}
+    \norm{\Bs_f^m\phi-\Bs_f^n\phi}_1\leq \norm{\Bs_f^m\phi-\Bs_f^m\xi}_1 + \norm{\Bs_f^m\xi-\tilde\xi}_1 + \norm{\tilde\xi - \Bs_f^n\xi}_1 + \norm{\Bs_f^n\xi-\Bs_f^n\phi}_1< \eps,
+  \end{displaymath}
+ for every $m,n\geq N$. So, ${\big(\Bs_f^n\phi\big)}_{n\geq 1}$ is a Cauchy sequence in $L^1(X,\B,\mu)$ and hence, there exists its limit $\tilde\phi\in L^1(X,\B,\mu)$.
+\end{proof}
+
+\subsection{Some important exercises from~\cite[\S3.1.4]{VianaOliveiraFoundErgTh}}
+\label{sec:some-import-exerc-3.1.4}
+
+3.1.1, 3.1.2, 3.1.3.
+
+
+\subsection{Birkhoff ergodic theorem}
+\label{sec:birkh-ergod-thm}
+
+Now we are going to prove that indeed pointwise convergence holds on Corollary~\ref{cor:von-Neumann-convergence-in-L1}:
+
+\begin{theorem}[Birkhoff ergodic theorem]\label{thm:Birkhoff-ergodic-thm}
+  Let $(X,\B,\mu)$ be a probability space, $f\colon X\carr$ a measure preserving map and $\phi\colon X\to\R$ any integrable function. Then there is $\tilde\phi\in L^{1}(X,\B,\mu)$ such that
+  \begin{displaymath}
+    \Bs_{f}^{n}\phi(x)=\frac{1}{n}\sum_{j=0}^{n-1}\phi\big(f^{j}(x)\big)\to\tilde\phi(x), \quad\text{as } n\to\infty,
+  \end{displaymath}
+  for $\mu$-almost every $x\in X$.
+
+  Moreover, it holds
+  \begin{displaymath}
+    \int_{X}\phi\dd\mu = \int_{X}\tilde\phi\dd\mu,
+  \end{displaymath}
+  and
+  \begin{displaymath}
+    \tilde\phi(x)=\tilde\phi\big(f(x)\big), \quad\text{for }\mu\text{-a.e. } x\in X.
+  \end{displaymath}
+\end{theorem}
+
+In order to prove Theorem~\ref{thm:Birkhoff-ergodic-thm} we first need some preliminary results:
+
+\begin{lemma}[Borel-Cantelli]\label{lem:Borel-Cantelli}
+  Let $(X,\B,\mu)$ be a probability space and $A_{1},A_{2},\ldots\in\B$ be a sequence of measurable sets. If
+  \begin{displaymath}
+    \sum_{n\geq 1}\mu(A_{n})<\infty,
+  \end{displaymath}
+  then it holds
+  \begin{displaymath}
+    \mu\Big(\limsup_{n}A_{n}\Big)=0,
+  \end{displaymath}
+  where the \emph{limit superior} of the sequence $(A_{n})$ is defined by
+  \begin{displaymath}
+    \limsup_{n} A_{n} := \bigcap_{m\geq 1}\bigcup_{n\geq m} A_{n}.
+  \end{displaymath}
+\end{lemma}
+
+\begin{proof}
+  For each $m\in\N$, let us consider the set
+  \begin{displaymath}
+    B_{m}:=\bigcup_{n\geq m} A_{n}.
+  \end{displaymath}
+  Observe that $B_{1}\supset B_{2}\supset\cdots$ and since $\sum_{n\geq 1}\mu(A_{n})<\infty$, it holds $\mu(B_{m})\leq \sum_{n\geq m}\mu(A_{n})\to 0$, as $m\to\infty$. Finally, notice that
+  \begin{displaymath}
+    \mu\Big(\limsup_{n}A_{n}\Big) = \mu\bigg(\bigcap_{m\geq 1} B_{m}\bigg) = \lim_{m\to\infty} \mu(B_{m})=0.
+  \end{displaymath}
+\end{proof}
+
+\begin{lemma}\label{lem:phi-fn-div-n-to-zero}
+  Let $(X,\B,\mu)$ be a probability space and $\phi\in L^{1}(X,\B,\mu)$. Then it holds
+  \begin{displaymath}
+    \lim_{n\to+\infty}\frac{\phi\big(f^{n}(x)\big)}{n}=0, \quad\text{for }\mu\text{-a.e. }x\in X.
+  \end{displaymath}
+\end{lemma}
+
+\begin{proof}
+  For the sake of simplicity of notation, given any $\psi\colon X\to \R$ and any $A\subset\R$ and any $r\in\R$ let us write
+  \begin{displaymath}
+    [\psi \in A]:=\psi^{-1}(A), \quad\text{and}\quad [\psi>r]:=[\psi\in (r,\infty)].
+  \end{displaymath}
+
+  Then, first observe that given an arbitrary point $x\in X$, the sequence $\phi(f^{n}(x))/n$ does not converge to $0$ if and only if the limit superior of $\abs{\phi(f^{n}(x))}/n$ is positive. So, we have
+  \begin{displaymath}
+    \left\{x\in X : \frac{\phi\big(f^{n}(x)\big)}{n}\not\to 0,\ \text{as } n\to+\infty\right\} = \bigcup_{p\geq 1} \bigcap_{m\geq 1} \bigcup_{n\geq m} \left[\frac{\abs{\phi\circ f^{n}}}{n} > \frac{1}{p}\right].
+  \end{displaymath}
+
+  Thus in order to prove this lemma, it is enough to show that given any $\eps>0$,
+  \begin{displaymath}
+    \mu\left(\limsup_{n} \left[\frac{\abs{\phi\circ f^{n}}}{n} > \eps\right]\right) = 0,
+  \end{displaymath}
+  and by Lemma~\ref{lem:Borel-Cantelli}, to prove this last equality it is enough to show that
+  \begin{displaymath}
+    \sum_{n\geq 1} \mu\left[\frac{\abs{\phi\circ f^{n}}}{n} > \eps\right]<\infty.
+  \end{displaymath}
+  Finally, to prove the convergence of this series, observe that
+  \begin{displaymath}
+    \begin{split}
+     \sum_{n\geq 1} \mu\left[\frac{\abs{\phi\circ f^{n}}}{n} > \eps\right] &= \sum_{n\geq 1} \mu\left(f^{-n}\left[\frac{\abs{\phi}}{n} >\eps\right]\right) = \sum_{n\geq 1} \mu\left[\frac{\abs{\phi}}{n}>\eps\right] \\
+                                                                           & \sum_{n\geq 1} \mu\left[\frac{\abs{\phi}}{\eps}> n\right] = \sum_{n\geq 1} \sum_{j\geq n} \mu\left[j<\frac{\abs{\phi}}{\eps}\leq j+1\right] \\
+                                                                           & = \sum_{j\geq 1} j\mu\left[j<\frac{\abs{\phi}}{\eps}\leq j+1\right] \leq \int_{X}\frac{\abs{\phi}}{\eps}\dd\mu<\infty.
+    \end{split}
+  \end{displaymath}
+\end{proof}
+
+\begin{theorem}[Maximal ergodic theorem]\label{thm:maximal-ergodic-thm}
+  Let $(X,\B,\mu)$, $f$ and $\phi$ as in Theorem~\ref{thm:Birkhoff-ergodic-thm}. For any $\alpha>0$, let us consider the set
+  \begin{displaymath}
+    E^{\alpha}(\phi) := \left[\sup_{n\geq 1} \Bs_{f}^{n}\phi >\alpha\right] = \left\{x\in X : \sup_{n\geq 1} \frac{1}{n}\sum_{j=0}^{n-1}\phi\big(f^{j}(x)\big)>\alpha\right\}.
+  \end{displaymath}
+  Then it holds
+  \begin{displaymath}
+    \int_{E^{\alpha}(\phi)}\phi\dd\mu \geq \alpha\mu\big(E^{\alpha}(\phi)\big).
+  \end{displaymath}
+\end{theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:maximal-ergodic-thm}]
+  Let us start noticing that given any $\alpha\in\R$ and any $\phi\in L^{1}(X,\B,\mu)$, it holds
+  \begin{displaymath}
+    E^{\alpha}(\phi) = E^{0}(\phi-\alpha),
+  \end{displaymath}
+  and therefore,
+  \begin{displaymath}
+    \int_{E^{0}(\phi-\alpha)}\phi-\alpha\dd\mu \geq 0\quad \iff\quad \int_{E^{\alpha}(\phi)}\phi\dd\mu\geq \alpha\mu(E^{\alpha}(\phi)).
+  \end{displaymath}
+
+  So, it is enough to prove this theorem for $\alpha=0$.
+
+  For each $n\geq 1$, let us consider the function
+  \begin{displaymath}
+    \phi_n(x):=\sup\left\{\sum_{j=0}^{k-1}\phi\big(f^j(x)\big) : 1\leq k\leq n\right\}, \quad\forall x\in X.
+  \end{displaymath}
+
+  If we write $[\phi_n>0]:=\{x\in X : \phi_n(x)>0\}$, so it holds $[\phi_n>0]\subset[\phi_{n+1}>0]$, for every $n\geq 1$ and
+  \begin{displaymath}
+    E^0(\phi):=\bigcup_{n\geq 1}[\phi_n>0].
+  \end{displaymath}
+
+  Thus, to prove that $\int_{E^{0}(\phi)}\phi\dd\mu\geq 0$, by the dominated convergence theorem it is enough to show that
+  \begin{displaymath}
+    \int_{[\phi_n>0]}\phi\dd\mu \geq 0, \quad\forall n\geq 1.
+  \end{displaymath}
+
+  Then, given any $n\geq 1$ and any $m\in\{1,2,\ldots,n\}$, we know that
+  \begin{displaymath}
+    \phi_n(x)\geq \sum_{j=0}^{m-1}\phi\big(f^j(x)\big), \quad\forall x\in X,
+  \end{displaymath}
+  and hence,
+  \begin{equation}
+    \label{eq:phi-n-f-phi-geq-phi-n+1}
+    \phi_n\big(f(x)\big) + \phi(x) \geq \sum_{j=0}^m\phi\big(f^j(x)\big), \quad\forall x\in X,\ \forall m\in\{1,\ldots,n\}.
+  \end{equation}
+
+  Fixing a point $x\in X$, let us consider the two possible cases: either $\phi_n\big(f(x)\big)\geq 0$ or $\phi_n\big(f(x)\big)< 0$.
+
+  In the first case, when $\phi_n\big(f(x)\big)\geq 0$, we have $\phi_n\big(f(x)\big)+\phi(x)\geq \phi(x)$. Then, by estimate~\eqref{eq:phi-n-f-phi-geq-phi-n+1} it follows that
+  \begin{displaymath}
+    \phi_n\big(f(x)\big)+ \phi(x)\geq \phi_n(x), \quad\forall x\in [\phi_n\circ f\geq 0].
+  \end{displaymath}
+
+  In the second case, when $\phi_n\big(f(x)\big)<0$, by~\eqref{eq:phi-n-f-phi-geq-phi-n+1} we get
+  \begin{displaymath}
+    \phi(x)\geq \sum_{j=0}^m\phi\big(f^j(x)\big) - \phi_n\big(f(x)\big) > \sum_{j=0}^m\phi\big(f^j(x)\big), \quad\forall m\in\{1,\ldots,n\},
+  \end{displaymath}
+  and then, $\phi_n(x)=\phi(x)$, whenever $x\in [\phi_n\circ f<0]$.
+
+  Putting together these estimates we get
+  \begin{displaymath}
+    \begin{split}
+      \int_{[\phi_n>0]}\phi\dd\mu &= \int_{[\phi_n>0]\cap [\phi_n\circ f<0]}\phi\dd\mu + \int_{[\phi_n>0]\cap [\phi_n\circ f\geq 0]}\phi\dd\mu \\
+      &\geq \int_{[\phi_n>0]\cap [\phi_n\circ f<0]}\phi\dd\mu + \int_{[\phi_n>0]\cap [\phi_n\circ f\geq 0]}\phi_n-\phi_n\circ f\dd\mu \\
+      &= \int_{[\phi_n>0]\cap [\phi_n\circ f<0]}\phi_n\dd\mu + \int_{[\phi_n>0]\cap [\phi_n\circ f\geq 0]}\phi_n-\phi_n\circ f\dd\mu \\
+      &= \int_{[\phi_n>0]}\phi_n\dd\mu - \int_{[\phi_n>0]\cap [\phi_n\circ f\geq 0]}\phi_n\circ f\dd\mu \\
+      &\geq \int_{[\phi_n>0]}\phi_n\dd\mu - \int_{[\phi_n\circ f\geq 0]}\phi_n\circ f\dd\mu \\
+      &= \int_{[\phi_n>0]}\phi_n\dd\mu - \int_{[\phi_n\geq 0]}\phi_n\dd(f_\star\mu) = 0.
+    \end{split}
+  \end{displaymath}
+\end{proof}
+
+\begin{corollary}\label{cor:maxima-ergodic-thm-on-invariant-set}
+  If $(X,\B,\mu)$, $f$, $\alpha$ and $\phi$ are as in Theorem~\ref{thm:maximal-ergodic-thm} and $A\in\B$ satisfies $A\subset E^{\alpha}(\phi)$ and $f^{-1}(A)=A$, then it holds
+  \begin{displaymath}
+    \int_{A}\phi\dd\mu \geq \alpha\mu(A).
+  \end{displaymath}
+\end{corollary}
+
+\begin{exercise}
+  Prove Corollary~\ref{cor:maxima-ergodic-thm-on-invariant-set}.
+\end{exercise}
+
+Now we are ready for
+\begin{proof}[Proof of Theorem~\ref{thm:Birkhoff-ergodic-thm}]
+  Let us start considering the functions $\overline{\phi},\underline{\phi}\colon X\to[-\infty,+\infty]$ given by
+  \begin{displaymath}
+    \overline{\phi}(x):=\limsup_{n\to+\infty}\Bs_f^n\phi(x) \quad\text{and}\quad \underline{\phi}(x):=\liminf_{n\to+\infty} \Bs_f^n\phi(x),
+  \end{displaymath}
+  for every $x\in X$.
+
+  \begin{exercise}
+    Using Lemma~\ref{lem:phi-fn-div-n-to-zero}, show that the functions $\overline\phi$ and $\underline{\phi}$ are (essentially) $f$-invariant.
+  \end{exercise}
+
+  Our purpose now consists in showing that the functions $\overline{\phi}$ and $\underline{\phi}$ coincide $\mu$-a.e. In order to prove that, given real numbers $\alpha<\beta$, consider the set
+  \begin{displaymath}
+    E_\alpha^\beta:=\left\{x\in X : \underline{\phi}(x)<\alpha<\beta<\overline{\phi}(x)\right\},
+  \end{displaymath}
+  and observe that
+  \begin{displaymath}
+    [\underline{\phi}\neq \overline{\phi}] = [\underline{\phi}<\overline{\phi}] = \bigcup_{\alpha,\beta\in\Q,\ \alpha<\beta} E_{\alpha}^{\beta}
+  \end{displaymath}
+  So, to prove that $\underline{\phi}$ and $\overline{\phi}$ coincide $\mu$-a.e.~it is enough to show that $\mu\big(E_\alpha^\beta\big)=0$, for every pair of real numbers $\alpha<\beta$.
+
+  Since $\underline{\phi}$ and $\overline{\phi}$ are $f$-invariant, it is easy to show that $f^{-1}\Big(E_\alpha^\beta\Big)=E_\alpha^\beta$ up to sets of $\mu$-measure zero. Then, observing that $E_\alpha^\beta\subset E^\beta(\phi)$, where the last set is defined as in Theorem~\ref{thm:maximal-ergodic-thm}, applying Corollary~\ref{cor:maxima-ergodic-thm-on-invariant-set} we can conclude
+  \begin{displaymath}
+    \int_{E_\alpha^\beta}\phi\dd\mu\geq\beta\mu\Big(E_\alpha^\beta\Big).
+  \end{displaymath}
+
+
+  On the other hand, notice that $E_{\alpha}^{\beta}\subset E^{-\alpha}(-\phi)$. So, we can again apply Corollary~\ref{cor:maxima-ergodic-thm-on-invariant-set} to the function $-\phi$ to get
+  \begin{displaymath}
+    \int_{E_\alpha^\beta}-\phi\dd\mu\geq-\alpha\mu\Big(E_\alpha^\beta\Big).
+  \end{displaymath}
+  Putting together these estimates we conclude
+  \begin{displaymath}
+    \beta\mu\Big(E_\alpha^\beta\Big) \leq \alpha\mu\Big(E_\alpha^\beta\Big),
+  \end{displaymath}
+  and since $\alpha<\beta$, this can only happend when $\mu\Big(E_\alpha^\beta\Big)=0$.
+
+  The fact that $\tilde\phi:=\underline{\phi}=\overline{\phi}$ belongs to $L^{1}(X,\B,\mu)$ and
+  \begin{displaymath}
+    \int_{X}\phi\dd\mu=\int_{X}\tilde\phi\dd\mu,
+  \end{displaymath}
+  will be proved in Corollary~\ref{cor:Birkhoff-Lp-convergence}
+\end{proof}
+
+There are some important consequences of Birkhoff ergodic theorem:
+
+\begin{corollary}\label{cor:Birkhoff-tilde-phi-in-Lp-when-phi-in-Lp}
+  If $(X,\B,\mu)$ and $f$ are as in Theorem~\ref{thm:Birkhoff-ergodic-thm} and $\phi\in L^{p}(X,\B,\mu)$ with $1\leq p<\infty$, then the limit function $\tilde\phi$ given by Theorem~\ref{thm:Birkhoff-ergodic-thm} belongs to $L^{p}(X,\B,\mu)$ and it holds
+  \begin{displaymath}
+    \norm{\tilde\phi}_{p}\leq \norm{\phi}_{p}.
+  \end{displaymath}
+\end{corollary}
+
+
+\begin{proof}
+  Notice that
+  \begin{displaymath}
+    \abs{\tilde\phi(x)}\leq \lim_{n\to+\infty}\frac{1}{n}\sum_{j=0}^{n-1}\abs{\phi\circ f^{j}(x)}, \quad\text{for }\mu\text{-a.e. } x\in X,
+  \end{displaymath}
+  and hence,
+  \begin{displaymath}
+    \abs{\tilde\phi(x)}^{p}\leq \lim_{n\to+\infty}{\left(\frac{1}{n}\sum_{j=0}^{n-1}\abs{\phi\circ f^{j}(x)}\right)}^{p}.
+  \end{displaymath}
+  Then, as a consequence of Fatou lemma and Minkowski inequality we get
+  \begin{displaymath}
+    \begin{split}
+      \norm{\tilde\phi}_{p}={\left[\int_{X}\abs{\tilde\phi(x)}^{p}\dd\mu\right]}^{\frac{1}{p}} &\leq \liminf_{n} {\left[\int_{X}{\left(\frac{1}{n}\sum_{j=0}^{n-1}\abs{\phi\big(f^{j}(x)\big)}\right)}^{p}\dd\mu\right]}^{\frac{1}{p}}\\
+      & \leq \liminf_{n} \frac{1}{n}\sum_{j=0}^{n-1} {\left(\int_{X}\abs{\phi\big(f^{j}(x)\big)}^{p}\dd\mu\right)}^{\frac{1}{p}} =\norm{\phi}_{p}.
+    \end{split}
+  \end{displaymath}
+\end{proof}
+
+\begin{corollary}[$L^{p}$-convergence of ergodic averages]\label{cor:Birkhoff-Lp-convergence}
+  If $(X,\B,\mu)$,  $f$, $\phi$ and $\tilde\phi$ are as in Corollary~\ref{cor:Birkhoff-tilde-phi-in-Lp-when-phi-in-Lp}, then
+  \begin{displaymath}
+    \norm{\Bs_{f}^{n}\phi-\tilde\phi}_{p}\to 0,
+  \end{displaymath}
+  as $n\to+\infty$,and where  $\Bs_{f}^{n}\phi=\dfrac{1}{n}\sum_{j=0}^{n-1}\phi\circ f^{j}$. Therefore, it holds
+  \begin{displaymath}
+    \int_{X}\phi\dd\mu=\int_{X}\tilde\phi\dd\mu.
+  \end{displaymath}
+\end{corollary}
+
+\begin{proof}
+  By Corollary~\ref{cor:Birkhoff-Lp-convergence} we know that $\tilde\phi\in L^{p}(X,\B,\mu)$.
+  Then to prove the converges in $L^{p}$, let us start assuming $\phi\in L^{\infty}(x,\B,\mu)$. So, $\norm{\Bs_{f}^{n}\phi}_{\infty}\leq\norm{\phi}_{\infty}$, for every $n\geq 1$, and hence, $\tilde\phi\in L^{\infty}(X,\B,\mu)$, as well. So,
+  \begin{displaymath}
+    \norm{\Bs_{f}^{n}\phi-\tilde\phi}_{p}\leq \norm{\Bs_{f}^{n}\phi-\tilde\phi}_{\infty} \leq\norm{\phi}_{\infty}+\norm{\tilde\phi}_{\infty},
+  \end{displaymath}
+  and $\Bs_{f}^{n}\phi\to\tilde\phi$, $\mu$-a.e.~as $n\to\infty$. So, by dominated convergence theorem, it holds $\norm{\Bs_{f}^{n}\phi-\tilde\phi}_{p}\to 0$, as $n\to\infty$.
+
+  Now, to prove the convergence in $L^{p}$ without the additional assumption that $\phi$ is bounded, let us consider a sequence of truncations of $\phi$, \ie~for each $k\in\N$ let us consider the function $\phi^{(k)}(x):=\phi(x)\ds{1}_{\phi^{-1}[-k,k]}(x)$. Observe that $\phi^{(k)}\in L^{\infty}(X,\B,\mu)$ for every $k$ and $\phi^{(k)}\to\phi$ as $k\to\infty$, $\mu$-almost everywhere and in $L^{p}$.
+
+  So, given any $\eps>0$ there exists $k\in\N$ such that $\norm{\phi^{(k)}-\phi}_{p}<\eps/3$, and hence,  $\norm{\Bs_{f}^{n}(\phi^{(k)}-\phi)}_{p}<\eps/3$, for every $n\geq 1$, and by Corollary~\ref{cor:Birkhoff-Lp-convergence}, it holds
+  \begin{displaymath}
+    \norm{\tilde\phi^{(k)}-\tilde\phi}_{p}\leq \norm{\phi^{(k)}-\phi}_{p}<\frac{\eps}{3}.
+  \end{displaymath}
+  Then, by the previous argument, we have $\norm{\Bs_{f}^{n}\phi^{(k)}-\tilde\phi^{(k)}}_{p}<\eps/3$, whenever $n$ is sufficiently large, and so we get
+  \begin{displaymath}
+    \begin{split}
+      \norm{\Bs_{f}^{n}\phi-\tilde\phi}_{p} &\leq \norm{\Bs_{f}^{n}\phi - \Bs_{f}^{n}\phi^{(k)}}_{p}+\norm{\Bs_{f}^{n}\phi^{(k)}-\tilde\phi^{(k)}}_{p}  + \norm{\tilde\phi^{(k)}-\tilde\phi}_{p}\\
+      &\leq \frac{\eps}{3} + \frac{\eps}{3} + \frac{\eps}{3} = \eps,
+    \end{split}
+  \end{displaymath}
+  for $n$ large enough.
+
+  Finally, in order to prove that $\int_{x}\phi\dd\mu=\int_{X}\tilde\phi\dd\mu$, it is enough to notice that if $\phi\in L^{p}(X,\B,\mu)$, then $\phi\in L^{1}(X,\B,\mu)$ and it holds
+  \begin{displaymath}
+    \begin{split}
+      \abs{\int_{X}\phi\dd\mu - \int_{X}\tilde\phi\dd\mu} &= \abs{\int_{X}\Bs_{f}^{n}\phi\dd\mu - \int_{X}\phi\dd\mu} \\
+      &\leq \int_{X}\abs{\Bs_{f}^{n}\phi-\tilde\phi}\dd\mu=\norm{\Bs_{f}^{n}\phi-\tilde\phi}_{1}\to 0,
+    \end{split}
+  \end{displaymath}
+  as $n\to+\infty$.
+\end{proof}
+
+
+\begin{exercise}
+  Show that Corollary~\ref{cor:Birkhoff-Lp-convergence} is false for $p=\infty$.
+\end{exercise}
+
+
+\begin{corollary}[Birkhoff theorem for continuous functions]\label{cor:Birkhoff-thm-continuous-setting}
+  Let $X$ be compact metric space and $f\colon X\carr$ be a continuous map. Then there exists a Borel subset $X'\subset X$ such that $\mu(X')=1$, for every $\mu\in\M(f)$ and the following limit exists for every $x\in X'$ and every $\phi\in C^{0}(X,\R)$:
+  \begin{displaymath}
+    \tilde\phi(x):=\lim_{n\to+\infty} \frac{1}{n}\sum_{j=0}^{n-1}\phi\big(f^{j}(x)\big).
+  \end{displaymath}
+\end{corollary}
+
+\begin{proof}
+  Since $X$ is compact, the Banach space $C^{0}(X,\R)$ is separable, \ie~there exists a sequence ${(\phi_{k})}_{k\geq 1}$ which is dense in $C^{0}(X,\R)$. For each $k\in\N$ we define
+  \begin{displaymath}
+    X_{k}:=\left\{x\in X : \lim_{n\to+\infty}\frac{1}{n}\sum_{j=0}^{n-1}\phi_{k}\big(f^{j}(x)\big) \text{ exists}\right\}.
+  \end{displaymath}
+  The set $X_{k}$ is clearly a Borel set and, by Birkhoff theorem (Theorem~\ref{thm:Birkhoff-ergodic-thm}) we know that $\mu(X_{k})=1$, for every $k\in\N$ and all $\mu\in\M(f)$. So, if we define
+  \begin{displaymath}
+    X':=\bigcap_{k\in\N} X_{k},
+  \end{displaymath}
+  it clearly holds $\mu(X')=1$, for every $\mu\in\M(X)$.
+
+  Then, let us consider an arbitrary point $x\in X'$ and a positive real number $\eps>0$. Given any $\phi\in C^{0}(X,\R)$, by denseness of the sequence $(\phi_{k})$ we know there exists $k\in\N$ such that $\norm{\phi-\phi_{k}}_{0}<\eps/2$. So we have
+  \begin{displaymath}
+    \begin{split}
+      0&\leq \limsup_{n}\frac{1}{n}\sum_{j=0}^{n-1}\phi\big(f^{j}(x)\big) - \liminf_{n}\frac{1}{n}\sum_{j=0}^{n-1}\phi\big(f^{j}(x)\big) \\
+       & \leq \abs{\limsup_{n}\frac{1}{n}\sum_{j=0}^{n-1}\phi\big(f^{j}(x)\big) - \limsup_{n}\frac{1}{n}\sum_{j=0}^{n-1}\phi_{k}\big(f^{j}(x)\big)} \\
+       &\qquad+ \abs{\liminf_{n}\frac{1}{n}\sum_{j=0}^{n-1}\phi_{k}\big(f^{j}(x)\big)-\liminf_{n}\frac{1}{n}\sum_{j=0}^{n-1}\phi\big(f^{j}(x)\big)} \\
+      &<\frac{\eps}{2}+\frac{\eps}{2} = \eps.
+    \end{split}
+  \end{displaymath}
+  Therefore, the  $lim_{n}\dfrac{1}{n}\sum_{j=0}^{n-1}\phi(f^{j}(x))$ exists and the result is proved.
+\end{proof}
+
+
+\subsection{Some important exercises from~\cite[\S3.2.4]{VianaOliveiraFoundErgTh}}
+\label{sec:some-import-exerc-3.2.4}
+
+3.2.3, 3.2.4, 3.2.5.

@@ -1,0 +1,181 @@
+\section{Ergodicity}\label{sec:ergodicity}
+
+Let $(X,\B,\mu)$ be a probability space and $f\colon X\carr$ be a measure preserving map. We say that $(f,\mu)$ is \textbf{ergodic} when given any $A\in\B$ such that $f^{-1}(A)=A$, either $\mu(A)=0$ or $\mu(A)=1$.
+
+Ergodic systems satisfy the following properties:
+
+\begin{theorem}\label{thm:ergodicty-equivalent-definitions}
+  Let $(X,\B,\mu)$ be a probability space and $f\colon X\carr$ be a measure preserving map. Then the following statements are equivalent:
+  \begin{enumerate}
+    \item $(f,\mu)$ is ergodic;
+    \item given any $B\in\B$ such that $\mu\big(B\triangle f^{-1}(B)\big)=0$, then $\mu(B)\in\{0,1\}$;
+    \item if $\phi\in X\to\R$ is a measurable function such that
+          \begin{displaymath}
+            \phi\big(f(x)\big)=\phi(x), \quad\text{for }\mu\text{-a.e. }x\in X,
+          \end{displaymath}
+          then there exists $c\in\R$ such that $\phi(x)=c$, for $\mu$-a.e. $x\in X$;
+    \item for every $A,B\in\B$ it holds
+          \begin{displaymath}
+            \frac{1}{n}\sum_{j=0}^{n-1}\mu\big(f^{-j}(A)\cap B) \to\mu(A)\mu(B),
+          \end{displaymath}
+          as $n\to+\infty$;
+    \item given $p,q\in (1,\infty)$ such that $\dfrac{1}{p}+\dfrac{1}{q}=1$, and $\phi\in L^{p}(X,\B,\mu)$ and $\psi\in L^{q}(X,\B,\mu)$, it holds
+          \begin{displaymath}
+            \frac{1}{n}\sum_{j=0}^{n-1}\int_{X}(\phi\circ f^{j})\psi\dd\mu \to\int_{X}\phi\dd\mu \int_{X}\psi\dd\mu,
+          \end{displaymath}
+          as $n\to+\infty$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{exercise}\label{exer:essentially-invariant-set-implies-invariant}
+  Let $(X,\B,\mu)$ be a probability space and $f\colon X\carr$ be measure preserving map. Let $B\in\B$ be a measurable set such that $\mu\big(B\triangle f^{-1}(B)\big)=0$. Show that there exists $A\in\B$ satisfying $f^{-1}(A)=A$ and $\mu(A\triangle B)=0$.
+\end{exercise}
+
+\begin{proof}[Proof of Theorem~\ref{thm:ergodicty-equivalent-definitions}]
+  Clearly \emph{(2)} implies \emph{(1)}. On the other hand, by Exercise~\ref{exer:essentially-invariant-set-implies-invariant} we know that \emph{(1)} implies \emph{(2)}.
+
+  If $(f,\mu)$ is not ergodic, then there exists $A\in\B$ with $f^{-1}(A)=A$ and $0<\mu(A)<1$. Then, $\ds{1}_{A}\circ f= \ds{1}_{f^{-1}(A)} = \ds{1}_{A}$ and $\ds{1}_{A}$ is not constant $\mu$-a.e. So, \emph{(3)} implies \emph{(1)}. On the other hand, if $\phi\big(f(x)\big)=\phi(x)$ for $\mu$-a.e. point $x\in X$ and $\phi$ is not constant $\mu$-almost everywhere, then there exists $r\in\R$ such that $B:=\phi^{-1}[-\infty,r]$ satisfies $0<\mu(B)<1$, with $\mu\big(B\triangle f^{-1}(B)\big)=0$. Thus, \emph{(2)} implies \emph{(3)}.
+
+  Then, if \emph{(4)} holds and $A\in\B$ is $f$-invariant, then we have
+  \begin{displaymath}
+    \mu(A)=\frac{1}{n}\sum_{j=0}^{n-1}\mu\big(A\cap f^{-1}(A)\big) \to {\mu(A)}^{2},\quad\text{as }n\to+\infty.
+  \end{displaymath}
+  So $\mu(A)\in\{0,1\}$ and \emph{(1)} holds.
+
+  On the other hand, assuming \emph{(5)} we can easily prove \emph{(4)} taking $\phi:=\bb{1}_{A}$ and $\psi:=\bb{1}_{B}$.
+
+  Finally, let us prove that \emph{(1)} implies \emph{(5)}. To do that, let us star assuming $\phi\in L^{\infty}(X,\B,\mu)$ and $\psi\in L^{q}(X,\B,\mu)$. Then, by Birkhoff ergodic theorem (Theorem~\ref{thm:Birkhoff-ergodic-thm}), and since \emph{(1)} implies \emph{(3)}, we know that
+  \begin{displaymath}
+    \frac{1}{n}\sum_{i=0}^{n-1}\phi\big(f^{i}(x)\big)\to\int_{X}\phi\dd\mu, \quad\text{as }n\to+\infty,
+  \end{displaymath}
+  and for $\mu$-a.e. $x\in X$, and we have
+  \begin{displaymath}
+    \abs{\frac{1}{n}\sum_{i=0}^{n-1}\phi\big(f^{i}(x)\big)\psi(x)} \leq \norm{\phi}_{\infty}\abs{\psi(x)}, \quad\forall n\in\N,
+  \end{displaymath}
+  where $\abs{\psi}$ is an integrable function. So, by dominated converge theorem we conclude that
+  \begin{displaymath}
+    \lim_{n\to+\infty}\frac{1}{n}\sum_{i=0}^{n-1}\int_{x}(\phi\circ f^{i})\psi\dd\mu = \left(\int_{x}\phi\dd\mu\right)\left(\int_{X}\psi\dd\mu\right),
+  \end{displaymath}
+  we wanted to prove. The general case, where $\phi\in L^{p}(X,\B,\mu)$ can be proved taking the sequence of truncations of $\phi$ given by $\phi_{k}:=\bb{1}_{[\abs{\phi}\leq k]}\phi\in L^{\infty}(X,\B,\mu)$, for every $k\in\N$. Then we have $\phi_{k}\to\phi$ in $L^{p}$ and $\mu$-almost everywhere. Then, given any $\eps>0$ there is $k\in\N$ such that $\norm{\phi-\phi_{k}}_{p}<\eps$ and, by the previous argument, there is $N\in\N$ such that
+  \begin{displaymath}
+    \abs{\frac{1}{n}\sum_{i=0}^{n-1}\int_{X}(\phi\circ f^{i})\psi\dd\mu - \int_{X}\psi\dd\mu\int_{X}\psi\dd\mu} < \eps, \quad\forall n\geq N.
+  \end{displaymath}
+  Hence we have
+  \begin{displaymath}
+    \begin{split}
+      &\abs{\frac{1}{n}\sum_{i=0}^{n-1}\int_{X}(\phi\circ f^{i})\psi\dd\mu - \int_{X}\phi\dd\mu\int_{X}\psi\dd\mu} \\
+      & \leq \abs{\frac{1}{n}\sum_{i=0}^{n-1}\int_{X}\big((\phi-\phi_{k})\circ f^{i}\big)\psi\dd\mu} + \abs{\frac{1}{n}\sum_{i=0}^{n-1}\int_{X}(\phi_{k}\circ f^{i})\psi\dd\mu - \int_{X}\phi_{k}\dd\mu\int_{X}\psi\dd\mu} \\
+      &\qquad + \abs{\int_{X}(\phi_{k}-\phi)\dd\mu\int_{X}\psi\dd\mu} \leq \norm{\phi-\phi_{k}}_{p}\norm{\psi}_{q} + \eps + \norm{\phi_{k}-\phi}_{1}\norm{\psi}_{1} \\
+      &\leq \eps\norm{\psi}_{q} +\eps + \norm{\phi_{k}-\phi}_{p}\norm{\psi}_{q} \leq \eps \big(2\norm{\psi}_{q} + 1\big),
+    \end{split}
+  \end{displaymath}
+  for every $n\geq N$.
+\end{proof}
+
+We shall need a little improvement of condition \emph{(3)} of Theorem~\ref{thm:ergodicty-equivalent-definitions}:
+
+\begin{exercise}
+  Let $(X,\B,\mu)$ be a probability space and $f\colon X\carr$ be a measure preserving map, and let $\mc{A}\subset 2^{X}$ be an algebra such that $\B$ is the $\sigma$-algebra generated by $\mc{A}$ and suppose that
+  \begin{displaymath}
+    \frac{1}{n}\sum_{i=0}^{n-1}\mu\big(f^{-i}(A)\cap B\big) \to\mu(A)\mu(B), \quad\text{as } n\to+\infty,
+  \end{displaymath}
+  for every $A,B\in\mc{A}$. Then, show that $(f,\mu)$ is ergodic.
+\end{exercise}
+
+
+
+\subsection{Examples of ergodic systems}\label{sec:examples-ergodic-systems}
+
+\subsubsection{Circle rotations}\label{sec:circle-rotations-ergodicity}
+
+Given any $\alpha\in\R$, we define the rotation $T_{\alpha}\colon \R/\Z\to\R/\Z$ by
+\begin{displaymath}
+  T_{\alpha}(x+\Z) := x+\alpha +\Z, \quad\forall x\in\R.
+\end{displaymath}
+
+Since $\R/\Z$ is a compact group, its Haar measure $\lambda$ is $T_{\alpha}$-invariant for every $\alpha\in\R$.
+
+\begin{exercise}
+  Let $\pi\colon\R\to\R/\Z$ be a the natural quotient map, \ie~$\pi(x):=x+\Z$, for every $x\in\R$. Show that $\lambda=\pi_{\star}\Big(\mathrm{Leb}\big|_{[0,1]}\Big)$.
+\end{exercise}
+
+\begin{exercise}
+  Given $\alpha\in\Q$, show that $(T_{\alpha},\lambda)$ is not ergodic.
+\end{exercise}
+
+\begin{theorem}\label{thm:ergodicity-irrational-circle-rotations}\
+  The system $(T_{\alpha},\lambda)$ is ergodic for every $\alpha\in\R\setminus\Q$.
+\end{theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:ergodicity-irrational-circle-rotations}]
+  Let $\phi\in L^2(\T,\lambda)$ be a $T_\alpha$-invariant function, \ie~$\phi(T_\alpha(x))=\phi(x)$, for $\lambda$-a.e. $x\in\T$. Considering the Fourier series of $\phi$ and $\phi\circ T_\alpha$, we get
+  \begin{displaymath}
+    \phi(T_\alpha(x))=\sum_{k\in\Z}\hat\phi_k e^{2\pi ik(x+\alpha)} = \sum_{k\in\Z} \hat\phi_ke^{2\pi ikx} = \phi(x),
+  \end{displaymath}
+  for $\lambda$-a.e. $x\in\T$.
+
+  That means that
+  \begin{displaymath}
+    \hat\phi_ke^{2\pi ik\alpha}=\hat\phi_k, \quad\forall k\in\Z,
+  \end{displaymath}
+  and since $\alpha\in\R\setminus\Q$, we get that $k\alpha\in\Z$ if and only if $k=0$. So, $\hat\phi_k=0$ for every $k\in\Z\setminus\{0\}$ and we conclude, $\phi$ is a constant function.
+\end{proof}
+
+\subsubsection{Expanding maps on the interval}\label{sec:expanding-maps-interval-ergodicity}
+
+Given any $k\in\N$ with $k\geq 2$, consider the map $f\colon [0,1]\carr$ given by
+\begin{displaymath}
+  f(x):=kx-\floor{kx},  \quad\forall x\in [0,1].
+\end{displaymath}
+
+We have shown in \S\ref{sec:expand-maps-interval} that the measure $\lambda:=\mathrm{Leb}\big|_{[0,1]}$ is $f$-invariant. Moreover, we have
+\begin{theorem}\label{thm:expanding-maps-interval-ergodicity}
+  The system $(f,\lambda)$ is ergodic.
+\end{theorem}
+
+\subsubsection{Bernoulli shifts}\label{sec:Bernoulli-shifts}
+
+
+\subsection{Some properties of ergodic measures}\label{sec:ergodic-measures-extreme-points}
+
+Let $(X,\B)$ be a measurable space and $f\colon X\carr$ be a measurable map. We first observe that ergodic measures are ``minimal elements'' with respect to the preorder given by absolute continuity among invariant measures:
+
+\begin{proposition}\label{pro:ergodic-measures-minimal-elements-absolute-continuity}
+  If $\mu$ and $\nu$ are two $f$-invariant probability measures such that $\mu$ is ergodic and $\nu\ll\mu$ (\ie~$\nu(A)=0$, for every $A\in\B$ such that $\mu(A)=0$), then $\nu=\mu$.
+\end{proposition}
+
+\begin{proof}
+  Given an arbitrary set $A\in\B$, by Birkhoff ergodic theorem and since $\mu$ is ergodic, we get that there exists a measure $R_{A}\in\B$ with $\mu(R_{A})=1$ such that
+  \begin{displaymath}
+    \frac{1}{n}\sum_{i=0}^{n-1}\ds{1}_{A}\circ f^{j}(x) \to \mu(A), \quad\text{as }n\to+\infty,\ \forall x\in R_{A}.
+  \end{displaymath}
+  Since $\nu\ll\mu$ and $\mu(X\setminus R_{A})=0$, we get $\nu(X\setminus R_{A})=0$. So the above Birkhoff averages converge to $\mu(A)$ for $\nu$-a.e. $x\in\R$ and consequently, $\mu(A)=\nu(A)$. Since $A$ was arbitrary, we get $\mu=\nu$.
+\end{proof}
+
+We get the following
+\begin{corollary}\label{cor:ergodic-measures-as-extreme-points}
+  Let $(X,\B)$ be a measurable space and $f\colon X\carr$ be a measurable map. If $\mu$ denotes an $f$-invariant probability measure, then $\mu$ is not ergodic if and only there exist two $f$-invariant measures $\nu_{1}$ and $\nu_{2}$ with $\nu_{1}\neq\nu_{2}$ and $t\in (0,1)$ such that
+  \begin{displaymath}
+    \mu = t\nu_{1} + (1-t)\nu_{2}.
+  \end{displaymath}
+\end{corollary}
+
+\begin{proof}
+  Let us start assuming $\mu$ is not ergodic. Then there is $A\in\B$ with $0<\mu(A)<1$. So, let us define $\nu_{!}(E):=\dfrac{1}{\mu(A)}\mu(A\cap E)$ and $\nu_{2}:=\dfrac{1}{\mu(X\setminus A)}\mu(E\setminus A)$, for every $E\in\B$, and it clearly holds
+  \begin{displaymath}
+    \mu = \mu(A)\nu_{1} + \mu(X\setminus A)\nu_{2} = \mu(A)\nu_{1}+\big(1-\mu(A)\big)\nu_{2}.
+  \end{displaymath}
+
+  Reciprocally, let us suppose that $\mu$ is ergodic and there are $f$-invariant measures $\nu_{1}$ and $\nu_{2}$ and $t\in(0,1)$ such that $\mu=t\nu_{1}+(1-t)\nu_{2}$. Then it clearly holds $\nu_{1}\ll\mu$ and $\nu_{2}\ll\mu$. By Proposition~\ref{pro:ergodic-measures-minimal-elements-absolute-continuity}, we know that $\mu=\nu_{1}=\nu_{2}$.
+\end{proof}
+
+
+\subsection{Some important exercises from~\cite[\S4.1.3]{VianaOliveiraFoundErgTh}}
+\label{sec:some-import-exerc-4.1.3}
+
+4.1.1, 4.1.2, 4.1.3, 4.1.4, 4.1.5, 4.1.7.
+
+\subsection{Some important exercises from~\cite[\S4.2.7]{VianaOliveiraFoundErgTh}}
+\label{sec:some-import-exerc-4.2.7}
+
+4.2.4, 4.2.5, 4.2.6 (be careful!), 4.2.8, 4.2.11, 4.2.12.

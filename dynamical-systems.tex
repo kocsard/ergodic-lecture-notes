@@ -1,0 +1,133 @@
+\section{Dynamical Systems}
+\label{sec:dynamical-systems}
+
+In this course we shall deal with \emph{autonomous deterministic dynamical systems.} They can be used to represent or modelize any phenomenon that changes along the time in such a way that the current state of the system completely determines the future evolution and the law that drives this evolution does not change along the time. Mathematically, an \textbf{autonomous deterministic dynamical system} (a \textbf{dynamical system}, for short) is given by a set $M$, usually called the \textbf{phase space,} which represents the set of possible states of the system, a subsemigroup $\T\subset\R$ that represents the \textbf{time set,} and \emph{``a law''} $\Phi\colon\T\times M\to M$ that determines the evolution of the system in such a way that given the current state of our system $x_{0}\in M$, at time $t\in\T$ the corresponding state will be $x_{t}=\Phi(x_{0},t)$. The autonomy of the system is reflected in the so called \textbf{flow} (or \textbf{semi-flow}) condition function $\Phi$ satisfies:
+\begin{equation}\label{eq:flow-condition}
+  \Phi(t+s,x)=\Phi\big(t,\Phi(s,x)\big) = \Phi\big(t,\Phi(s,x)\big), \quad\forall t,s\in\T,\ \forall x\in M.
+\end{equation}
+
+We will consider two different kinds of dynamical systems: \textbf{discrete time} and \textbf{continuous time} ones, \ie~where $\T=\N_{0}$ and $\T=\R_{\geq 0}$, respectively. Moreover, we will also consider \textbf{invertible systems} where the current state of the systems does not just determine the future but the past as well. When dealing with invertible discrete dynamical systems, the time set will be $\T=\Z$, and in the case of invertible continuous time ones, we will have $\T=\R$.
+
+The main goal of Dynamical Systems consists in describing the \textbf{asymptotic behavior of the orbits of the systems,} \ie~the sets
+\begin{displaymath}
+  \mc{O}_{\Phi}(x):=\left\{\Phi(t,x) : t\in\T\right\}, \quad\forall x\in M.
+\end{displaymath}
+
+
+\begin{exercise}[Discrete time generator]
+  Given a discrete time dynamical system $\Phi\colon\T\times M\to M$, show that $\Phi$ satisfies the flow condition~\eqref{eq:flow-condition} if and only if there is $f\colon M\carr$ such that
+  \begin{displaymath}
+    \Phi(n,x)=f^{n}(x), \quad\forall x\in M,\ \forall n\in\N_{0},
+  \end{displaymath}
+  where the iteration of $f$ is inductively defined by $f^{0}:=id_{M}$ and $f^{n+1}=f\circ f^{n}$, for every $n\geq 0$. Show that $\Phi$ is invertible if and only if $f$ is bijective and, in such a case, one can define $f^{-n}:={\big(f^{-1}\big)}^{n}$, for all $n\geq 0$.
+\end{exercise}
+
+On the other hand, one can find \emph{infinitesimal generators} for continuous time smooth dynamical systems:
+
+\begin{exercise}[Continuous time generator]
+  Let $M$ be a differentiable closed manifold (\ie~compact and boundaryless) and $\Phi\colon\R\times M\to M$ a continuous time dynamical system (that satisfies the flow condition~\ref{eq:flow-condition}). If  we assume $\Phi$ is a $C^{2}$ map and we define $X(p):=\partial_{t}\Phi(t,p)\big|_{t=0}\in T_{p}M$, for every $p\in M$, then the function $\Phi(\cdot,x_{0})\colon\R\to M$ is the unique solution of the \emph{initial value problem}
+  \begin{displaymath}
+    \dot x(t)=X\big(x(t)\big), \quad x(0)=x_{0},
+  \end{displaymath}
+  for every $x_{0}\in M$. In other words, the vector field $X$ is the infinitesimal generator of the flow $\Phi$.
+\end{exercise}
+
+To give meaning to the expression \emph{``asymptotic behavior''} it is necessary to endow dynamical systems with an additional structure that makes it possible to analyze the behavior of their orbits as time tends to infinity.
+
+When the phase space $M$ is a topological space and the semi-flow $\Phi$ is continuous, one can study the accumulation points of the orbits as time goes to infinity and this is the basic scenario of \textbf{topological dynamics.}
+
+On the other hand, when $\Phi\colon\T\times M\to M$ is an arbitrary dynamical system, one can study the \textbf{statistical properties} the frequency of visits of the orbit of a certain point $x\in M$ to a subset $A\subset M$. This problem naturally lead us to consider \textbf{invariant measures} on $M$ and this is one of the fundamental problems in \textbf{ergodic theory.}
+
+\subsection{The setup of Ergodic Theory}\label{sec:setup-ergodic-theory}
+
+Ergodic theory can be roughly described as the study of \textbf{measure preserving dynamical systems.}
+
+More precisely, by a \textbf{(discrete time) dynamical system} we mean a map $T\colon X\to X$, where $X$ is its \textbf{phase space} and the dynamics is given by the iteration of $T$: $T^{0}=id_{X}$ and $T^{n+1}:= T\circ T^{n}$, for every $n\geq 0$. When $T$ is bijective, one can consider the ``past trajectories'' taking negative iterates that are defined by $T^{-n}:={(T^{-1})}^{n}$, for every $n\geq 0$.
+
+We say that $T\colon X\carr$ is a \textbf{measurable} system when $X$ is a endowed with a $\sigma$-algebra $\B\subset 2^{X}$ and $T$ is a $\B$-measurable map.
+
+When $\mu$ is a measure on the measurable space $(X,\B)$ and $T\colon X\carr$ is a measurable map, we say that $T$ \textbf{preserves} $\mu$, or that $\mu$ is a \textbf{$T$-invariant measure}, when it holds
+\begin{displaymath}
+  \mu(A)=\mu\big(T^{-1}(A)\big),\quad\forall A\in\B.
+\end{displaymath}
+
+So, a \textbf{measure preserving system} is the quadruple $T\colon (X,\B,\mu)\carr$ where $T\colon X\carr$ is a $\B$-measurable map and $\mu$ is a $T$-invariant \textbf{probability} measure, \ie~where $\mu(X)=1$.
+
+Analogous concepts can be defined for continuous time dynamical systems, also called \textbf{semi-flows} and \textbf{flows}, and more generally, for (measurable) actions of semi-groups and groups.
+
+Our main references for the course are the books of Viana and Oliveira~\cite{VianaOliveiraFoundErgTh} and Mañé~\cite{ManeBook}.
+
+\subsection{Motivations}\label{sec:motivations} Let us see some fundamental problems in Dynamical Systems that motivate the study of invariant measures and their properties.
+
+\subsubsection{Dynamical systems with a natural invariant measure}\label{sec:dynam-syst-natur-inv-meas}
+
+There are many classical dynamical systems, which are used to model natural phenomena, that already arise with a ``natural'' invariant (finite) measure. From the historical point of view, one of the most important examples are Hamiltonian systems that are used to described the evolution of conservative systems in Classical Mechanics.
+
+So, the first main question in ergodic theory could be briefly and roughly summarized as follows:
+\begin{quote}
+  \emph{What dynamical information can be extracted from the fact that a dynamical system leaves invariant a certain measure?}
+\end{quote}
+
+\subsubsection{Statistical study of dynamical systems}\label{sec:statical-study-dyn-sys}
+
+A second motivation to study measure preserving systems comes from the analysis of \emph{statistical aspects} of dynamical systems. In its simplest form, let us suppose a dynamical system $T\colon X\carr$ is given and there is a point $x\in X$ such that \emph{asymptotic visiting frequency function of $x$} is well defined for every $A\in 2^x:=\{B\subset X\}$. More precisely, let us suppose that defining $\tau_{x}^{(n)}\colon 2^X\to [0,1]$ by
+\begin{displaymath}
+  \tau_{x}^{(n)}(A):=\frac{\sharp\left\{0\leq i\leq n-1 : T^{i}(x)\in A\right\}}{n}, \quad\forall A\subset X,\ \forall n\in\N,
+\end{displaymath}
+the following limit exists:
+\begin{displaymath}
+  \tau_x(A):=\lim_{n\to+\infty}\tau_x^{(n)}(A), \quad\forall A\subset X.
+\end{displaymath}
+
+\begin{exercise}
+  Show that $\tau_x\colon 2^X\to[0,1]$ is a probability finitely additive measure and it holds
+  \begin{displaymath}
+    \tau_x\big(T^{-1}(A)\big)=\tau_x(A), \quad\forall A\subset X.
+  \end{displaymath}
+
+  Is $\tau_x$ $\sigma$-additive?
+\end{exercise}
+
+As we shall see along the course, in general it is not true that the asymptotic visiting frequency is well defined for every set $A$ and different points $x$c an have different asymptotic visiting frequencies on the same set $A$. So, in order to study the statistical properties of a certain system it will be necessary to analyze the whole set of invariant measures.
+
+
+\subsubsection{Applications to combinatorics and number theory}\label{sec:appl-combinatorics-number-theory}
+
+As third motivation, we will see that ideas and techniques of ergodic theory can be applied to get some nice results on combinatorics and number theory. The main reference for this part of the course in the book of Einsiedler and Ward~\cite{EinsiedlerWardErgThViewNumbTh}.
+
+
+\subsubsection{Normal numbers}\label{sec:normal-numbers}
+
+A real number $x\in [0,1]$ is said to be \emph{$b$-normal}, for $b\in\N$ and $b\geq 2$, when its digit in base $b$ are uniformly distributed, \ie~given a sequence of integer numbers $(a_n)_{n\geq 1}$, with $0\leq a_n\leq b-1$ such that
+\begin{displaymath}
+  x=\sum_{n\geq 1} \frac{a_n}{b^n},
+\end{displaymath}
+it holds
+\begin{displaymath}
+  \lim_{n\to+\infty}\frac{\sharp\{i\in\N : i\leq n-1,\ a_i=a\}}{n}=\frac{1}{b},
+\end{displaymath}
+for every $a\in\{0,1,\ldots,b-1\}$.
+
+Then we say that $x\in[0,1]$ is just \emph{normal} when it is $b$-normal, for every $b\in\N$ with $b\geq 2$.
+
+Using ergodic techniques one can prove that Lebesgue almost every point of $[0,1]$ is normal indeed.
+
+
+\subsubsection{Distribution of the first digit of $2^n$}\label{sec:distr-firs-dig-2n}
+
+For each $n\in\N$, let us writ $a_n$ for the first digit of the decimal representation of $2^n$. We want to study the asymptotic distribution of the sequence $(a_n)$ in the set $\{1,\ldots,9\}$.
+
+In this case, using ergodic tools again, one can show that
+\begin{displaymath}
+  \frac{\sharp\left\{1\leq j\leq n : a_j=k\right\}}{n} \to\log_{10}\left(\frac{k+1}{k}\right), \quad\text{as } n\to+\infty,
+\end{displaymath}
+for each $k\in\{1,\ldots,9\}$.
+
+\subsubsection{Existence of arithmetic progressions}\label{sec:exist-arit-progr}
+
+One says the set $A\subset\Z$ has \emph{positive upper density} when there are sequences of integer numbers $(m_j)$ and $(n_j)$ such that $m_j-n_j\to+\infty$, as $j\to+\infty$ and
+\begin{displaymath}
+  \lim_{j\to+\infty} \frac{\sharp(A\cap [m_j,n_j])}{m_j-n_j} >0.
+\end{displaymath}
+
+Erd\H{o}s and Turán proposed the following conjecture in~\cite{ErdosTuranSeqIntegers}: Every subset of integer numbers with positive upper density contains arbitrarily long arithmetic progressions. This conjecture remained open for almost 40 years and it was finally proved by Szeméredi~\cite{SzemerediSetsIntContNoKElemArithProg} using rather complicated combinatorial arguments. Two years later, Furstenberg proposed in~\cite{FurstenbergErgBehavDiagMeasSzemeredi} a purely ergodic proof of this result, opening the door to a long standing and fruitful interaction of Combinatorics and Ergodic Theory.

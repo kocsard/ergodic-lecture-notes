@@ -1,0 +1,188 @@
+\section{Ergodic decomposition}\label{sec:ergod-decomposition}
+
+
+\subsection{Partitions of measure spaces}\label{sec:partitions-measure-spaces}
+
+Let $(X,\B,\mu)$ be an arbitrary probability space. A \textbf{partition} of $X$ is a family $\xi\subset\B$ such that $C\cap D=\emptyset$, for every $C,D\in\xi$ with $C\neq D$ and
+\begin{displaymath}
+  \mu\bigg(\bigsqcup_{C\in\xi} C\bigg) = 1.
+\end{displaymath}
+The elements of $\xi$ are called \textbf{atoms} of $\xi$. Given a point $x\in\bigsqcup_{C\in\xi} C$, we define $\xi(x)\in\xi$ as the only atom of $\xi$ that contains the point $x$. So, we can define the natural \emph{projection map} $\pi^{\xi}\colon X\to\xi$ by $\pi^{\xi}(x):=\xi(x)$ and notice that $\pi^{\xi}$ is well defined $\mu$-almost everywhere.
+
+We can use the natural projection map $\pi^{\xi}$ to endow the set $\xi$ with a measure space structure. Indeed, we shall always assume the partition $\xi$ as the supporting set of the measure space $(\xi,\B_{\xi},\hat\mu^{\xi})$ where $\B_{\xi}:=\pi^{\xi}_{\star}\B$ and $\hat\mu^{\xi}:=\pi^{\xi}_{\star}\mu$ denote the push-forward $\sigma$-algebra of $\B$ and the measure $\mu$ by $\pi^{\xi}$, respectively.
+
+We can define a partial order relation among partitions of a measure space. Given two partitions $\xi,\eta$ of the measure space $(X,\B,\mu)$, we say that $\xi$ is \textbf{finer} than $\eta$, or that $\eta$ is \textbf{coarser} that $\xi$, and we write $\eta\leq\xi$, when there is a measurable subset $X'\subset X$ with $\mu(X')=1$ and such that
+\begin{displaymath}
+  \xi(x)\cap X'\subset \eta(x)\cap X', \quad\forall x\in \bigg(\bigsqcup_{C\in\xi} C\bigg)\cap \bigg(\bigsqcup_{D\in\eta} D\bigg).
+\end{displaymath}
+We say that $\xi$ and $\eta$ coincide or are \textbf{equal} when $\eta\leq \xi$ and $\xi\leq\eta$.
+
+If we write $\mc{P}_{X}$ to denote the set of all partitions of the measure space $(X,\B,\mu)$, we know that $(\mc{P}_{X},\leq)$ is a partially order set.
+
+\begin{exercise}\label{exer:inf-sup-well-defined-on-partitions}
+  Show that the notions of \emph{infimum} and \emph{supremum} are well defined for countable subsets on the partially order set $(\mc{P}_{X},\leq)$. More precisely, show that given any countable family of partitions $\Xi\subset\mc{P}_{X}$, there exists two partitions $\inf\Xi,\sup\Xi\in\mc{P}_{X}$ such that
+  \begin{displaymath}
+    \eta\leq\inf\Xi\leq \xi\leq \sup\Xi\leq\eta', \quad\forall \xi\in\Xi,
+  \end{displaymath}
+  and every $\eta,\eta'\in\mc{P}_{X}$ such that $\eta\leq \xi'\leq \eta'$, for every $\xi'\in\mc{P}_{X}$.
+\end{exercise}
+
+We can use the notions of infimum and supremum on $\mc{P}_{X}$ to define the operators $\wedge$ and $\vee$: given any countable (or finite) family $\Xi\subset\mc{P}_{X}$, we define
+\begin{displaymath}
+  \bigwedge_{\xi\in\Xi} \xi :=\sup\left\{\eta\in\mc{P}_{X} : \eta\leq\xi,\ \forall \xi\in\Xi\right\},
+\end{displaymath}
+and
+\begin{equation}\label{eq:partitions-upper-limit-def}
+  \bigvee_{\xi\in\Xi} \xi :=\inf\left\{\eta\in\mc{P}_{X} : \xi\leq\eta,\ \forall\xi\in\Xi\right\}.
+\end{equation}
+
+
+\subsection{Disintegration of measures}\label{sec:disintegrations-measures}
+
+Given a probability space $(X,\B,\mu)$ and a partition $\xi\in\mc{P}_{X}$, a \textbf{disintegration} of $\mu$ with respect to $\xi$ is family $\{\mu_{C} : C\in\xi\}$ satisfying the following properties:
+\begin{enumerate}[(i)]
+  \item $\mu_{C}$ is a probability measure on the measurable space $(X,\B)$, for every $C\in\xi$;
+  \item $\mu_{C}(C)=1$, for $\hat\mu^{\xi}$-almost every atom $C\in\xi$;
+  \item for every $E\in\B$, the map $\xi\ni C\mapsto \mu_{C}(E)\in[0,1]$ is $(\B^{\xi},\B_{\R})$-measurable;
+  \item it holds
+        \begin{displaymath}
+          \mu(E)=\int_{\xi} \mu_{C}(E)\dd\hat\mu^{\xi}(C), \quad\forall E\in\B.
+        \end{displaymath}
+\end{enumerate}
+
+Let us observe that one can pull back the partition and push forward the disintegration:
+
+\begin{exercise}\label{exer:push-forward-disint-pull-back-partitions}
+  Let $(X,\B,\mu)$ be a probability space, $\xi\in\mc{P}_{X}$ be a partion and $f\colon X\carr$ be a measure preserving map. Then, show that $f^{\star}\xi:=\{f^{-1}(C) : C\in\xi\}$ is a partition of $(X,\B,\mu)$. On the other hand, if $\{\mu_{D} : D\in f^{\star}\xi\}$ is a disintegration of $\mu$ with respect to the partition $f^{\star}\xi$, show that $\{\mu_{C}:=f_{\star}\mu_{f^{-1}(C)} :  C\in\xi\}$ is a disintegration of $\mu$ with respect to $\xi$.
+\end{exercise}
+
+
+
+First we shall prove that every partition admits at most one disintegration:
+
+\begin{theorem}[Uniqueness of disintegrations]\label{thm:unique-disintegration}
+  If $(X,\B,\mu)$ is a Borel space (see \S\ref{sec:measure-theory}), $\xi\in\mc{P}_{X}$ is a partition, and $\{\mu_{C} : C\in\xi\}$ and $\{\nu_{C} : C\in\xi\}$ are two disintegrations of $\mu$ with respect to $\xi$, then it holds
+  \begin{displaymath}
+    \mu_{C}=\nu_{C}, \quad\text{for } \hat\mu^{\xi}\text{-a.e. } C\in\xi.
+  \end{displaymath}
+\end{theorem}
+
+\begin{proof}
+  Since $(X,\B,\mu)$ is a Borel space, there exists a countable algebra $\ms{A}\subset\B$ that generates $\B$.
+  For each $A\in\ms{A}$, let us consider the sets
+  \begin{displaymath}
+    \ms{M}_{A}:=\{C\in\xi : \mu_{C}(A)<\nu_{C}(A)\},\quad\text{and } \ms{N}_{A}:=\{C\in\xi : \mu_{C}(A)>\nu_{C}(A)\}.
+  \end{displaymath}
+
+  Then, since $\{\mu_{C} : C\in\xi\}$ is a disintegration of $\mu$ with respect to $\xi$, we have
+  \begin{displaymath}
+    \begin{split}
+      \mu\big(A\cap{\pi^{\xi}}^{-1}(\ms{M}_{A})\big) &= \int_{\xi} \mu_{C}\big(A\cap{\pi^{\xi}}^{-1}(\ms{M}_{A})\big)\dd\hat\mu^{\xi}(C)\\
+      &=\int_{\ms{M}_{A}} \mu_{C}(A)\dd\hat\mu^{\xi}(C).
+    \end{split}
+  \end{displaymath}
+
+  Analogously, one can show that
+  \begin{displaymath}
+    \mu\big(A\cap{\pi^{\xi}}^{-1}(\ms{M}_{A})\big)=\int_{\ms{M}_{A}} \nu_{C}(A)\dd\hat\mu^{\xi}(C).
+  \end{displaymath}
+
+  Since $\mu_{C}(A)<\nu_{C}(A)$, for all $C\in\ms{M}_{A}$, we get $\hat\mu^{\xi}(\ms{M}_{A})=0$. Analogously, we can show that $\hat\mu^{\xi}(\ms{N}_{A})=0$ and hence, $\mu_{C}=\nu_{C}$, for $\hat\mu^{\xi}$-almost every $C\in\xi$.
+\end{proof}
+
+Theorem~\ref{thm:unique-disintegration} can be used to show that certain partitions do not admit any disintegration of the measure:
+
+\begin{example}\label{exam:disintegration-non-existence}
+  Let $\alpha$ be an arbitrary real irrational number and $f\colon\R/\Z\carr$ be the corresponding rotation $f(x+\Z):=x+\alpha+\Z$, for every $x\in\R$. Let $\lambda$ denote the Haar measure on the circle $\R/\Z$ and consider the partition $\xi$ of the probability space $(\R/\Z,\B_{\R/\Z},\lambda)$ given by the orbits of $f$, \ie~we have
+  \begin{displaymath}
+    \xi:=\left\{\{f^{n}(x)\in\R/\Z : n\in\Z\} : x\in\R/\Z\right\}.
+  \end{displaymath}
+
+  Then there is no disintegration of $\lambda$ with respect to the partion $\xi$.
+\end{example}
+
+Now we can state the main result of this section:
+
+\begin{theorem}[Ergodic decomposition theorem]\label{thm:ergodic-decomposition}
+  Let $(X,\B,\mu)$ be a Borel space and $f\colon X\carr$ be a measure preserving map. Then there exists a unique partition $\xi_{f}\in\mc{P}_{X}$, called the \textbf{ergodic partition of $f$}, such $\xi_{f}$ admits a disintegration $\{\mu_{C} : C\in\xi_{f}\}$ and the following conditions hold:
+  \begin{enumerate}
+    \item $f^{\star}\xi_{f}=\xi_{f}$, \ie~$f^{-1}(C)=C$, for $\hat\mu^{\xi_{f}}$-almost every atom $C\in\xi_{f}$;
+    \item $\mu_{C}$ is an ergodic $f$-invariant measure, for $\hat\mu^{\xi_{f}}$-almost every atom $C\in\xi_{f}$.
+  \end{enumerate}
+\end{theorem}
+
+The proof of Theorem~\ref{thm:ergodic-decomposition} will be postpone and get as a consequence of Rokhlin decomposition theorem.
+
+\subsection{Measurable partitions}\label{sec:measurable-partitions}
+
+By Example~\ref{exam:disintegration-non-existence} we know that some partitions do not admit disintegrations. In this section we shall characterize the family of partitions admitting disintegrations.
+
+Given a probability space $(X,\B,\mu)$ we say that a partition $\xi\in\mc{P}_{X}$ is a \textbf{measurable partition} when there exists a sequence ${(\xi_{n})}_{n\geq 1}\subset\mc{P}_{X}$ of finite partitions such that
+\begin{displaymath}
+  \xi=\bigvee_{n\geq 1}\xi_{n},
+\end{displaymath}
+where the equality among partitions is given in \S\ref{sec:partitions-measure-spaces} and the operator $\bigvee$ is given by~\eqref{eq:partitions-upper-limit-def}
+
+\begin{exercise}
+  Let $(X,\B,\mu)$ be a probability space, $M$ be separable metric space and $f\colon X\to M$ be a measurable map. Then the partition
+  \begin{displaymath}
+    \xi_{f}:=\left\{f^{-1}(y) : y \in M\right\}\in\mc{P}_{X}
+  \end{displaymath}
+  is a measurable partition.
+\end{exercise}
+
+Then we have the main result about measurable partitions:
+
+\begin{theorem}[Rokhlin theorem]\label{thm:rokhlin-disintegration}
+  Let $(X,\B,\mu)$ be a Borel space and $\xi\in\mc{P}_{X}$ be measurable partition. Then there exits a disintegration of $\mu$ with respect to $\xi$.
+\end{theorem}
+
+We postpone the proof of Theorem~\ref{thm:rokhlin-disintegration}. Now we shall prove the Ergodic decomposition theorem assuming Theorem~\ref{thm:rokhlin-disintegration}.
+
+\begin{proof}[Proof of Theorem~\ref{thm:ergodic-decomposition}]
+  Since $(X,\B,\mu)$ is a Borel space, there exists a countable algebra $\ms{A}\subset\B$ that generates the $\sigma$-algebra $\B$. For each $A\in\ms{A}$, let us consider the function $\tau_{A}\colon X\to [0,1]$ given by
+  \begin{displaymath}
+    \tau_{A}(x):=\lim_{n\to+\infty}\frac{1}{n}\sum_{i=0}^{n-1}\ds{1}_{A}\big(f^{i}(x)\big),
+  \end{displaymath}
+  whenever the limit exists. By Birkhoff ergodic theorem we know that $\tau_{A}$ is well defined $\mu$-almost everywhere.
+
+  Since $\ms{A}$ is countable, we get the set $X_{0}:=\{x\in X : \tau_{A}(x) \text{ is well defined, }\forall A\in\ms{A}\}$ is a measurable set with $\mu(X_{0})=1$.
+
+  Then we define the partition $\xi_{f}\in\mc{P}_{X}$ as the set of equivalence classes on $X_{0}$ such that $x\sim y$ if and only if $\tau_{A}(x)=\tau_{A}(y)$, for every $A\in\ms{A}$.
+
+  \begin{exercise}
+    Show that $\xi_{f}$ is a measurable partition.
+  \end{exercise}
+
+  Then, by Rokhlin theorem (Theorem~\ref{thm:rokhlin-disintegration}) we know that there is a disintegration of $\mu$ with respect to $\xi_{f}$ $\{\mu_{C} : C\in\xi_{f}\}$.
+
+  By the very same definition of functions $\tau_{A}$ we know that $f^{-1}(X_{0})=X_{0}$ and  $\tau_{A}(x)=\tau_{A}\circ f(x)$, for every $x\in X_{0}$. So, it clearly holds $f^{-1}(C)=C$, for every $C\in\xi_{f}$. Thus, by uniqueness of disintegration (Theorem~\ref{thm:unique-disintegration}), we conclude that $f_{\star}\mu_{C}=\mu_{C}$, for $\hat\mu^{\xi_{f}}$-almost every atom $C\in\xi_{f}$.
+
+  So, it just remains to prove that the measure $\mu_{C}$ is ergodic for $f$, for every atom $C\in\xi_{f}$. To do that, let us fix an atom $C\in\xi_{f}$ and observe that to prove the ergodicity of $\mu_{C}$ is enough to show that $\tau_{E}(x)=\mu_{C}(E)$, for every $E\in\B$ and $\mu_{C}$-a.e. $x\in C$. Then, let us define the family
+  \begin{displaymath}
+    \B_{C}:=\left\{E\in\B : \tau_{E}(x)=\mu_{C}(E),\ \text{for }\mu_{C}\text{-a.e. }x\in C\right\}.
+  \end{displaymath}
+  By our definition it clearly holds $\ms{A}\subset\B_{C}$. On the other hand, if $E_{1},E_{2}\in\B_{C}$, and $E_{1}\subset E_{2}$, then $E_{2}\setminus E_{1}\in\B_{C}$ because
+  \begin{displaymath}
+    \tau_{E_{2}\setminus E_{1}}(x)=\tau_{E_{2}}(x)-\tau_{E_{1}}(x) = \mu_{C}(E_{2}\setminus E_{1}),
+  \end{displaymath}
+  for $\mu_{C}$-almost every $x\in C$; and if $E_{1},E_{2},\ldots\in\B_{C}$ is a family of pairwise disjoint sets, the it clearly holds
+  \begin{displaymath}
+    \tau_{\bigsqcup_{j}E_{j}}(x) = \sum_{j}\tau_{E_{j}}(x)= \mu_{C}\bigg(\bigsqcup_{j} E_{j}\bigg).
+  \end{displaymath}
+
+  Then, the ergodicity of $\mu_{C}$ is consequence of the following
+  \begin{exercise}
+    A family $\mc{C}\subset 2^{X}$ is called a \textbf{monotone class} when given any sequence $A_{1}\subset A_{2}\subset\ldots$ and $B_{1}\supset B_{2}\supset \ldots$, with $A_{n},B_{n}\in\mc{C}$, for every $n\in\N$, it holds $\bigcup_{n} A_{n}, \bigcap_{n} B_{n}\in \mc{C}$.
+
+    Then, if $\mc{C}$ is a monotone class and contains an algebra $\ms{A}$, then $\mc{C}$ contains the $\sigma$-algebra $\sigma(\ms{A})$ generated by $\ms{A}$.
+  \end{exercise}
+\end{proof}
+
+
+\subsection{Some important exercises from~\cite[\S5.1.5 and \S5.2.4]{VianaOliveiraFoundErgTh}}
+\label{sec:some-import-exerc-5.1.5}
+
+5.1.1, 5.1.2, 5.1.3, 5.1.6, 5.1.7.
+
+5.2.1.

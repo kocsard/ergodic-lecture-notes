@@ -1,0 +1,276 @@
+\documentclass{article}
+
+%% AMS packages
+\usepackage{amsfonts,amsmath,amstext,amsbsy,amssymb}
+\usepackage{amsopn,amsthm,amscd,amsxtra}
+
+\usepackage{dsfont}
+
+%% Graphics
+\usepackage{graphicx}
+
+%% Figures
+% \usepackage{epsfig} \input{xy} \xyoption{all}
+
+ \usepackage{url}
+
+
+%% LATeX packages
+\usepackage{latexsym,mathrsfs}
+
+
+
+\usepackage{thmtools}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{framed}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tcolorbox}
+
+
+%% Special arrows
+\usepackage{mathabx} \newcommand{\carr}{\righttoleftarrow}
+\newcommand{\wto}{\rightharpoonup}
+
+%% Hyperlinks setup
+\usepackage{hyperref}
+\RequirePackage[dvipsnames]{xcolor} % [dvipsnames]
+\definecolor{halfgray}{gray}{0.55}
+% chapter numbers will be semi transparent .5 .55 .6 .0
+\definecolor{webgreen}{rgb}{0,0.5,0}
+\definecolor{webbrown}{rgb}{.6,0,0} \hypersetup{%
+  colorlinks=true, linktocpage=true, pdfstartpage=3,
+  pdfstartview=FitV,%
+  breaklinks=true, pdfpagemode=UseNone, pageanchor=true,
+  pdfpagemode=UseOutlines,%
+  plainpages=false, bookmarksnumbered, bookmarksopen=true,
+  bookmarksopenlevel=1,%
+  hypertexnames=true,
+  pdfhighlight=/O,%hyperfootnotes=true,%nesting=true,%frenchlinks,%
+  urlcolor=webbrown, linkcolor=RoyalBlue,
+  citecolor=webgreen, %pagecolor=RoyalBlue,%
+  % uncomment the following line if you want to have black links
+  % (e.g., for printing)
+  % urlcolor=Black, linkcolor=Black,
+  % citecolor=Black, %pagecolor=Black,%
+  pdftitle={},%
+  pdfauthor={},%
+  pdfsubject={2000 Mathematical Subject Classification: Primary:},%
+  pdfkeywords={},%
+  pdfcreator={pdfLaTeX},%
+  pdfproducer={LaTeX with hyperref}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Portuguese
+% \usepackage[brazilian]{babel}
+\usepackage{ae}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Bracket-like operations
+\newcommand{\floor}[1]{\left\lfloor{#1}\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil{#1}\right\rceil}
+\newcommand{\abs}[1]{\left\lvert{#1}\right\rvert}
+\newcommand{\norm}[1]{\left\|{#1}\right\|}
+\newcommand{\gen}[1]{\left\langle{#1}\right\rangle}
+\newcommand{\scprod}[2]{\left\langle{#1},{#2}\right\rangle}
+
+% Typefaces
+\newcommand{\bb}{\mathbb} \newcommand{\mbf}{\mathbf}
+\newcommand{\mc}{\mathcal} \newcommand{\ms}{\mathscr}
+\newcommand{\ds}{\mathds}
+
+% Usual spaces
+\newcommand{\R}{\mathbb{R}}\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\T}{\mathbb{T}}\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}\newcommand{\A}{\mathbb{A}}
+
+%% Abbreviations
+\newcommand{\cf}{c.f.\ } \newcommand{\ie}{i.e.\ }
+\newcommand{\eg}{e.g.\ } \newcommand{\etal}{\textit{et al\ }}
+
+
+%% Diff-like operators
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Diff}[2]{\mathrm{Diff}_{#1}^{#2}}
+\newcommand{\Homeo}[1]{\mathrm{Homeo}_{#1}}
+\newcommand{\Dis}[1]{\mathcal{D}^\prime_{#1}}
+
+
+%% Measures and differentials
+\newcommand{\Leb}{\mathrm{Leb}} \newcommand{\dd}{\:\mathrm{d}}
+
+%% Some operators
+\DeclareMathOperator{\M}{\mathfrak{M}} \DeclareMathOperator{\Lip}{Lip}
+\DeclareMathOperator{\Per}{Per} \DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\SL}{SL} \DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\rank}{rank} \DeclareMathOperator{\diver}{div}
+\DeclareMathOperator{\cl}{cl} \DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\diam}{diam}
+
+\newcommand{\cc}{\mathrm{cc}} % connected components
+
+\newcommand{\pr}[1]{\mathrm{pr}_{#1}} % projections
+
+
+%% For marginal notes
+\newcommand{\marginal}[1]{\marginpar{{\scriptsize {#1}}}}
+
+%% Topological dynamics on tori
+\newcommand{\Symp}[1]{\mathrm{Symp}_{#1} (\mathbb{T}^2)}
+\newcommand{\Ham}{\mathrm{Ham} (\mathbb{T}^2)}
+\newcommand{\Thomeo}{\widetilde{\mathrm{Homeo}_0}}
+\newcommand{\Tsymp}{\widetilde{\mathrm{Symp}_0} (\mathbb{T}^2)}
+\newcommand{\Tham}{\widetilde{\mathrm{Ham}} (\mathbb{T}^2)}
+\newcommand{\wh}{\widehat}
+
+
+%% Especial notation for this article
+
+\newcommand{\B}{\mathscr{B}}
+\newcommand{\Bs}{\mathcal{S}}
+\newcommand{\eps}{\varepsilon}
+
+%%% Settings of original template
+
+\colorlet{LightGray}{White!90!Periwinkle}
+\colorlet{LightOrange}{Orange!15}
+\colorlet{LightGreen}{Green!15}
+\colorlet{LightYellow}{Yellow!15}
+\colorlet{LightBlue}{Blue!15}
+
+\newcommand{\HRule}[1]{\rule{\linewidth}{#1}}
+
+\declaretheoremstyle[name=Theorem,]{thmsty}
+\declaretheorem[style=thmsty,numberwithin=section]{theorem}
+\tcolorboxenvironment{theorem}{colback=LightOrange}
+
+\declaretheoremstyle[name=Corollary,]{corsty}
+\declaretheorem[style=corsty,numberlike=theorem]{corollary}
+\tcolorboxenvironment{corollary}{colback=LightOrange}
+
+
+\declaretheoremstyle[name=Proposition,]{prosty}
+\declaretheorem[style=prosty,numberlike=theorem]{proposition}
+\tcolorboxenvironment{proposition}{colback=LightYellow}
+
+\declaretheoremstyle[name=Lemma,]{lemsty}
+\declaretheorem[style=lemsty,numberlike=theorem]{lemma}
+\tcolorboxenvironment{lemma}{colback=LightGreen}
+
+\declaretheoremstyle[name=Definition,]{defsty}
+\declaretheorem[style=defsty,numberwithin=section]{definition}
+\tcolorboxenvironment{definition}{colback=LightBlue}
+
+
+\declaretheoremstyle[name=Problem,]{probsty}
+\declaretheorem[style=probsty,numberwithin=section]{problem}
+\tcolorboxenvironment{problem}{colback=LightGray}
+
+\declaretheoremstyle[name=Example,]{examsty}
+\declaretheorem[style=exasty,numberwithin=section]{example}
+\tcolorboxenvironment{example}{colback=LightBlue}
+
+
+\declaretheoremstyle[name=Exercise,]{exesty}
+\declaretheorem[style=exesty,numberlike=problem]{exercise}
+\tcolorboxenvironment{exercise}{colback=LightGray}
+
+
+
+\setstretch{1.2}
+\geometry{
+    textheight=9in,
+    textwidth=5.5in,
+    top=1in,
+    headheight=12pt,
+    headsep=25pt,
+    footskip=30pt
+}
+
+
+ %% Fancy indexing in enumerations
+\usepackage{enumerate}
+
+%% Figures
+% \usepackage{epsfig} \input{xy} \xyoption{all}
+
+\usepackage{url}
+
+
+\setstretch{1.2}
+\geometry{
+    textheight=9in,
+    textwidth=5.5in,
+    top=1in,
+    headheight=12pt,
+    headsep=25pt,
+    footskip=30pt
+}
+
+% ------------------------------------------------------------------------------
+
+\begin{document}
+
+% ------------------------------------------------------------------------------
+% Cover Page and ToC
+% ------------------------------------------------------------------------------
+
+\title{ \normalsize \textsc{Doutorado em Matemática - IMPA}
+        \\ [2.0cm]
+        \HRule{1.5pt} \\
+        \LARGE \textbf{\uppercase{Lecture notes on Ergodic Theory}
+        \HRule{2.0pt} \\ [0.6cm] \LARGE{} \vspace*{10\baselineskip}}}
+\date{}
+\author{Alejandro Kocsard \\
+        IMPA\\
+        \today}
+
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+% ------------------------------------------------------------------------------
+% Chapters
+% ------------------------------------------------------------------------------
+
+\include{dynamical-systems}
+
+\include{measure-theory}
+
+\include{recurrence}
+
+\include{examples}
+
+\include{constructions}
+
+\include{existence-inv-meas}
+
+\include{ergodic-theorems}
+
+\include{ergodicity}
+
+\include{unique-ergodicity}
+
+\include{ergodic-decomposition}
+
+
+
+% --------- References ----------------------------------------------------------
+
+\bibliographystyle{amsalpha}
+\bibliography{references.bib}
+
+% ------------------------------------------------------------------------------
+
+\end{document}

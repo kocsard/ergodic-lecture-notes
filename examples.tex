@@ -1,0 +1,279 @@
+\section{Some examples of measure preserving transformations}\label{sec:examples-measure-pres-trans}
+
+\subsection{Periodic orbits}\label{sec:examples-inv-meas-periodic-orbits}
+
+Let $X$ be an arbitrary set and $z\in X$ an arbitrary point. Then we can define the $\delta_{z}$ on the measurable space $(X,2^{X})$ by
+\begin{displaymath}
+  \delta_{z}(A):=
+  \begin{cases}
+    1, &\text{if } z\in A;\\
+    0, &\text{otherwise.}
+  \end{cases}
+\end{displaymath}
+
+
+Now, if $f\colon X\carr$ is any map and there exists $p\in X$ which is \textbf{periodic} for $f$, \ie~there exists $k\in\N$ such that $f^{k}(z)=z$, then the \textbf{periodic measure}
+\begin{displaymath}
+  \nu_{p}:=\frac{1}{k}\sum_{j=0}^{k-1}\delta_{f^{j}(p)} = \frac{1}{k}\sum_{j=0}^{k-1} f_{\star}^{j}\delta_{p}
+\end{displaymath}
+is $f$-invariant.
+
+\subsubsection{Homeomorphisms of the interval}\label{sec:homeos-interval}
+
+Using periodic measures and Poincare's recurrence theorem (Theorem~\ref{thm:Poincare-recurrence-thm-topological-version}) one can easily determine all invariant measures for homeomorphisms of a compact interval\ldots at least for homeomorphisms with finitely many periodic orbits.
+
+In fact, if $I\subset\R$ denotes a compact interval and $f\colon I\carr$ is an orientation-preserving homeomorphism (\ie~$f$ is an strictly increasing map), then one can easily show that $x\in I$ is a recurrent point for $f$ if and only if $f(x)=x$, and moreover, the set of fixed points $\Fix(f):=\{w\in I : f(w)=w\}$ is non-empty.
+
+On the other hand, if $f$ is orientation-reversing, \ie~$f$ is strictly decreasing, the $\Fix(f)$ has exactly one point and any other recurrent point is periodic of period $2$.
+
+In any case, if $f$ has finitely many periodic orbits, by Theorem~\ref{thm:Poincare-recurrence-thm-topological-version} one have that any $f$-invariant Borel probability measure is indeed a convex combination of periodic ones. What can we say about the characterization of $f$-invariant measures when $f$ has infinitely many periodic orbits?
+
+\subsection{Expanding maps of the interval}\label{sec:expand-maps-interval}
+
+Let $k\in\N$ be an arbitrary number and consider the map $f\colon [0,1]\carr$ given by
+\begin{displaymath}
+  f(x):=kx - \floor{kx}, \quad\forall x\in [0,1]
+\end{displaymath}
+where $\floor{x}:=\max\{\ell\in\Z : \ell\leq x\}$ denotes the \emph{integer part} of $x$.
+
+We claim that the Lebesgue measure $m$ on $[0,1]$ is $f$-invariant. If $J\subset [0,1]$ is a subinterval, then one can easily check that $f^{-1}_{k}(J)$ is the disjoint union of $k$ intervals $J_{1},\ldots, J_{k}\subset [0,1]$ with $m(J_{i})=\frac{1}{k}m(J)$, for each $i\in\{1,\ldots, k\}$. So, we conclude
+\begin{displaymath}
+  m\big(f^{-1}(J)\big) = m\bigg(\bigsqcup_{i=1}^{k}J_{i}\bigg) = \sum_{i=1}^{k} m(J_{i}) = \sum_{i=1}^{k} \frac{1}{k} m(J) = m(J).
+\end{displaymath}
+
+Thus, we have proved that the two probability measures $m$ and $f_{\star}m$ coincide on the subintervals of $[0,1]$. In order to conclude that they are indeed the same, we invoke the following general result:
+
+\begin{theorem}[Uniqueness of measures, Theorem 5.7 in~\cite{SchillingMeasuresIntegralsMart}]\label{thm:uniqueness-measures}
+Let $\mu$ and $\nu$ two measures on the measurable space $(X,\mc{B})$. Let $\ms{C}\subset 2^{X}$ be a family that generates $\mc{B}$, \ie~$\mc{B}=\sigma(\ms{C})$, and suppose that
+  \begin{itemize}
+    \item if $A,B\in\mc{C}\implies A\cap B\in\ms{C}$;
+    \item there exists ${(C_{n})}_{n\geq 1}\subset\ms{C}$ such that $C_{n}\uparrow X$ (\ie~$\bigcup_{n\geq 1} C_{n}=X$) with $\mu(C_{n})=\nu(C_{n})<\infty$, for every $n\geq 1$.
+  \end{itemize}
+
+  Then, $\mu=\nu$.
+\end{theorem}
+
+\subsection{Bernoulli shifts}
+\label{sec:bernoulli-shifts}
+
+Let $k$ be a natural number greater than $1$ and consider the space
+\begin{displaymath}
+  \Sigma_k^+:=\{1,\ldots,k\}^{\N_0}=\{(i_0i_1i_2\ldots) : i_n\in\{1,\ldots,k\},\ \forall n\geq 0\},
+\end{displaymath}
+endowed with the product topology considering the discrete topology on each factor.
+
+Then the so called \emph{full shift} is the map $f\colon\Sigma_k^+\carr$ given by
+\begin{displaymath}
+  f(i_0i_1i_2\ldots):=(i_1i_2i_3\ldots), \quad\forall (i_n)\in\Sigma_k^+.
+\end{displaymath}
+
+\begin{exercise}\label{exer:full-shift-top-properties}
+  Show that the full shift map $f$ is continuous and surjective and the set of periodic points
+  \begin{displaymath}
+    \Per(f):=\{x\in\Sigma_k^+ : \exists n\geq 1,\ f^n(x)=x\}
+  \end{displaymath}
+  is dense in $\Sigma_k^+$. On the other hand, there is $x_0\in\Sigma_k^+$ such that its orbit
+  \begin{displaymath}
+    \mc{O}_f^+(x_0):=\{f^n(x) : n\geq 0\}
+  \end{displaymath}
+  is dense in $\Sigma_k^+$.
+\end{exercise}
+
+As a consequence of Exercise~\ref{exer:full-shift-top-properties}, we see that there are infinitely many periodic orbits. However, there is another important family of invariant measures for full shifts, usually called \emph{Bernoulli measures.} In order to define them, let us considering an \textbf{stochastic vector} $\boldsymbol{p}=(p_1,p_2,\ldots,p_k)\in\R^k$, \ie~$p_i\geq 0$ and $\sum_i p_i=1$. Then, the \textbf{Bernoulli measure} induced by the stochastic vector $\boldsymbol{p}$ is the Borel probability measure $\mu$ on $\Sigma_k^+$ which is characterized by the following property:
+\begin{displaymath}
+  \mu[i_0,i_i,i_2,\ldots,i_m]:=p_{i_0}p_{i_1}\ldots p_{i_m}, \quad\forall (i_0,i_1,\ldots,i_m)\in\{1,\ldots,k\}^{m+1},
+\end{displaymath}
+and where $[i_0,i_1,\ldots,i_m]:=\big\{(j_0j_1j_2\ldots)\in\Sigma_k^+ : j_\ell=i_\ell,\ \forall \ell\{0,1,2,\ldots,m\}\big\}$.
+
+\begin{exercise}
+  Show that $\mu$ is $f$ invariant.
+\end{exercise}
+
+The space $\Sigma_k^+$ has interesting topological properties. A topological space $X$ is said to be \textbf{totally disconnected} when given any pair of different points $x,y\in X$, there is an open and closed subset $A\subset X$ such that $x\in A$ and $y\in X\setminus A$. On the other hand, a point $x\in X$ is said to be an \textbf{isolated point} when the set $\{x\}$ is a neighborhood of $x$.
+
+A \textbf{Cantor space} is a compact metric space which is totally disconnected and has no isolated points.
+
+\begin{exercise}[Construction of Cantor spaces]\label{exer:Cantor-space-construction}
+  Let $(X_n)_{n\geq 1}$ be a sequence of finite sets with $\sharp X_n\geq 2$, for every $n\geq 1$. Then, if we endow each set $X_n$ with the discrete topology, the product space $\prod_{n\geq 1} X_n$ is a Cantor space.
+\end{exercise}
+
+\begin{exercise}[Uniqueness of Cantor spaces]\label{exer:Cantor-spaces-uniqueness}
+  Show that, up to homeomorphisms, there is only one Cantor space.
+\end{exercise}
+
+
+
+\subsection{Circle rotations}\label{sec:circle-rotations}
+
+Given any $\alpha\in\R$, one can define the map $T_{\alpha}\colon [0,1]\carr$ by
+\begin{displaymath}
+  T_{\alpha}(x):=x+\alpha - \floor{x+\alpha}, \quad\forall x\in [0,1].
+\end{displaymath}
+
+We claim that the Lebesgue measure $m$ on $[0,1]$ is again $T_{\alpha}$-invariant, for every $\alpha\in\R$. In fact, it is enough to consider the case where $\alpha\in (0,1)$ and then, one can easily show that given $[a,b]\subset [0,1]$, it holds
+\begin{align*}
+  T_{\alpha}^{-1}[a,b]&=[a-\alpha, b-\alpha],\quad \text{when } \alpha\leq a\leq b\leq 1;\\
+  T_{\alpha}^{-1}[a,b]&=[a-\alpha+1,b-\alpha+1], \quad\text{when } 0\leq a\leq b<\alpha;\\
+ T_{\alpha}^{-1}[a,b]&=[a-\alpha+1,1)\cap [0,b-\alpha], \quad\text{when } 0\leq a<\alpha\leq b\leq 1.
+\end{align*}
+
+Circle rotations are particular examples of translations on compact groups.
+
+\subsection{Translations on locally compact groups}\label{sec:transl-locally-compact-groups}
+
+A \textbf{topological group} is a ternary $(G,\mathscr{T},\cdot)$ where $G$ is a non-empty set, $\mathscr{T}$ is a Hausdorff topology on $G$ and $(G,\cdot)$ is group such that the map $G\times G\ni (g,h)\mapsto g\cdot h^{-1}\in G$ is a continuous map.
+
+Analogously, a \textbf{Lie group} is a ternary $(G,\mathscr{C},\cdot)$ where $G$ is a non-empty set, $\mathscr{C}$ is a finite dimensional $C^{\infty}$ Hausdorff structure on $G$, $(G,\cdot)$ is a group and the map $G\times G\ni (g,h)\mapsto g\cdot h^{-1}\in G$ is $C^{\infty}$. Observe that any Lie group is a locally compact topological group.
+
+Given topological group $G$ and any element $g\in G$, one can define the \textbf{left and right translations} by $L_{g}\colon G\ni h\mapsto gh\in G$ and $R_{g}\colon G\ni h\mapsto hg^{-1}\in G$, respectively. Notice that $L_{g}$ and $R_{g}$ are homeomorphism on $G$; and when $G$ is a Lie group, they are $C^{\infty}$ diffeomorphisms.
+
+\begin{definition}[Haar measure]
+  Given a locally compact group $G$, a \textbf{(left) Haar measure} is a Radon measure $\mu$ on $G$ (\ie~$\mu$ is Borel and $\mu(K)<\infty$, for every compact $K\subset G$) such that $\mu$ is $L_{g}$-invariant, for every $g\in G$, and there is a Borel set $E\subset G$ such that $\mu(E)>0$.
+\end{definition}
+
+\begin{theorem}[Existence and characterization of Haar measures]\label{thm:Haar-measures}
+  If $G$ is locally compact group, then there exists a left Haar measure $\mu_{G}$. The support of $\mu_{G}$ is $G$ (\ie~$\mu_{G}(U)>0$, for every non-empty open subset $U\subset G$) and $\mu_{G}(G)<\infty$ if and only if $G$ is compact.
+
+  On the other hand, if $\nu$ is another left Haar measure, then there exists $c>0$ such that
+  \begin{displaymath}
+    \mu(E)=c\nu(E), \quad\forall E\in\mc{B}(G).
+  \end{displaymath}
+\end{theorem}
+
+\begin{proof}
+  See for instance Halmos~\cite[\S58]{HalmosMeasureTheory}
+\end{proof}
+
+\begin{exercise}
+  If $G$ is a Lie group, then show that any left Haar measure is a smooth measures (as defined in \S\ref{sec:smooth-measures}).
+\end{exercise}
+
+\begin{example}
+  The space $\R^{d}$ is an abelian Lie group and $\Z^{d}<\R^{d}$ is a (normal) subgroup. Hence, $\T^{d}:=\R^{d}/\Z^{d}$ is a compact abelian Lie group, and there exists a unique left Haar measure $\lambda^{d}$ which is a probability measure. The measure $\lambda^{d}$ is left and right invariant is usually called the Haar or the Lebesgue measure on $\T^{d}$.
+\end{example}
+
+Given a topological group $G$, we say that a map $f\colon G\carr$ is a \textbf{topological group endomorphism} (or just an \textbf{endomorphism} for short) when $f$ is continuous and $f(xy)=f(x)f(y)$, for every $x,y\in G$. An endomorphism $f\colon G\carr$ is said to be a \textbf{topological group automorphism} (or just an \textbf{automorphism}) when $f$ is bijective and the map $f^{-1}$ is an endomorphism as well.
+
+\begin{exercise}\label{exer:Haar-compact-groups}
+  Let $G$ be a compact topological group, $\mu$ be a the left Haar probability measure and $f\colon G\carr$ be an automorphism.
+  \begin{enumerate}[(a)]
+    \item Show that $\mu$ is a right Haar measure too, \ie~it is invariant by every right translation.
+    \item Show that $\mu$ is an $f$-invariant measure.
+
+    \item What happens when $f$ is just an endomorphism?
+
+    \item And what happens when $G$ is non-compact and just locally compact?
+  \end{enumerate}
+\end{exercise}
+
+
+\subsubsection{Compact abelian groups}
+\label{sec:compact-abelian-groups}
+
+Let $(G,+)$ be a compact abelian topological group. By Theorem~\ref{thm:Haar-measures}, we know that every Haar measure on $G$ is finite, by Exercise~\ref{exer:Haar-compact-groups}, every left Haar measure is a right one. So, there exists a unique Haar probability measure $\mu$ on $G$.
+
+One can show that $G$ is metrizable. So, let $d'\colon G\times G\to \R_{0}^+$ be a distance function on $G$ which is compatible with the topology of $G$.  Then, we have
+
+\begin{exercise}[Existence of invariant distance]\label{exer:abelian-groups-existence-invariant-distance}
+  Show that the function $d\colon G\times G\to\R_0^+$ given by
+  \begin{displaymath}
+    d(g_1,g_2):=\int_G d'(g_1+h,g_2+h)\dd\mu(h), \quad\forall g_1,g_2\in G,
+  \end{displaymath}
+  is a distance function which is compatible with the topology of $G$ and $L_h$ is an isometry for $d$ for every $h\in G$ , \ie~it holds
+  \begin{displaymath}
+    d(g_1+h,g_2+h)=d(g_1,g_2), \quad\forall g_1,g_2,h\in G.
+  \end{displaymath}
+\end{exercise}
+
+\begin{exercise}[Dynamics of translations]\label{exer:abelian-groups-dynamics-translations}
+  For every $h\in G$, the following statements are equivalent:
+  \begin{enumerate}[(i)]
+    \item $L_h$ is \textbf{topologically transitive,} \ie~there is $g\in G$ such that its orbit $\mc{O}_{L_h}(g):=\{L_h^n(g) : n\in\Z\}$ is dense in $G$;
+    \item $L_h$ is \textbf{minimal,} \ie~for every $g\in G$, the positive semi-orbit $\mc{O}_{L_h}^+(g):=\{L_h^n(g) : n\in\N_0\}$ is dense in $G$.
+  \end{enumerate}
+\end{exercise}
+
+
+\subsubsection{Adding machines}
+\label{sec:adding-machines}
+
+There is a particularly interesting family of compact abelian groups with minimal translations, which are usually called \emph{adding machines.} To construct some of these spaces, let us start considering a number $p\in\N$, with $p\geq 2$, and the set
+\begin{displaymath}
+  \hat{\Z}_p:=\{0,1,\ldots,p-1\}^{\N_0},
+\end{displaymath}
+endowed with the product topology given by the discrete topology on each factor. By Exercise~\ref{exer:Cantor-space-construction}, we know that $\hat\Z_p$ is a Cantor space.
+Then, consider the function $\phi\colon\N_0\to\hat\Z_p$ given by $\phi(n)=(a_0,a_1,a_2\ldots)\in\hat\Z_p$ if and only if there is $m\in\N_0$ such that $a_n=0$, for every $n\geq m$ and $n=\sum_{i=0}^\infty a_ip^i$. Writing $n$ in base $p$, one can easily check that function $\phi$ is indeed well defined, injective and its image is dense in $\hat\Z_p$. We can use this function $\phi$ to endow $\hat\Z_p$ with an abelian group structure, turning $\hat\Z_p$ into a compact abelian topological group:
+
+\begin{exercise}\label{exer:p-adic-integer-group-structure-def}
+  Show that there is a unique continuous function $+\colon\hat\Z_p\times\hat\Z_p\to\hat\Z_p$ such that
+  \begin{displaymath}
+    \phi(m)+\phi(n)=\phi(m+n), \quad\forall m,n\in\N_0.
+  \end{displaymath}
+
+  Then, show that $(\hat\Z_p,+)$ is indeed an abelian compact topological group, where $+$ is the function we defined above.
+\end{exercise}
+
+As a straight forward consequence of the denseness of the image of $\phi$ and Exercise~\ref{exer:p-adic-integer-group-structure-def}, we get that the translation $L_{\phi(1)}\colon\hat\Z_p\carr$ is transitive (because the semi-orbit $\mc{O}_{L_{\phi(1)}}^+\big(\phi(0)\big)=\phi(\N_0)$ is dense in $\hat\Z_p$), and hence, by Exercise~\ref{exer:abelian-groups-dynamics-translations}, we conclude that the translation $L_{\phi(1)}$ is minimal.
+
+\subsection{The Gauss map}\label{sec:gauss-map}
+
+Let us consider the map $G\colon (0,1)\to [0,1)$ given by
+\begin{displaymath}
+  G(x):=\frac{1}{x}-\floor{\frac{1}{x}}, \quad\forall x\in (0,1).
+\end{displaymath}
+
+\begin{exercise}
+  Show that given $x\in (0,1)$ there exists $n\in\N$ such that $G^{n}(x)= 0$, if and only if $x\in\Q$.
+\end{exercise}
+
+So, if we define $X=(0,1)\setminus\Q$, then the map $G\big|_{X}\colon X\carr$ is surjective.
+
+A remarkable fact is that there exists a smooth probability measure $\mu$ on $(0,1)$ (or on $X$) which is $G$-invariant. In fact we have
+
+\begin{theorem}
+  The measure $\mu$ given by
+  \begin{displaymath}
+    \mu(E):=\frac{1}{\log 2}\int_{E} \frac{\dd x}{1+x}, \quad\forall E\in\mc{B}(0,1),
+  \end{displaymath}
+  is a $G$-invariant Borel probability measure.
+\end{theorem}
+
+\begin{proof}
+  It clearly holds $\mu(0,1)=1$. Let us prove that $\mu$ is $G$-invariant. For each $n\in\N$, consider the interval
+  \begin{displaymath}
+    I_{n}:=\bigg(\frac{1}{n+1},\frac{1}{n}\bigg), \quad\forall n\in\N.
+  \end{displaymath}
+
+  Observe that $G_{n}:=G\big|_{I_{n}}\colon I_{n}\to (0,1)$ is a $C^{\infty}$ diffeomorphism, for each $n\in\N$, and $m\Big(\bigsqcup_{n} I_{n})=m(0,1)=1$, where $m$ denotes the Lebesgue measure on $(0,1)$. Given any $\rho\in L^{1}((0,1),m)$, with $\rho\geq 0$ $m$-almost everywhere, let us consider the measure $\mu_{\rho}$ given by
+  \begin{displaymath}
+    \mu_{\rho}(E):=\int_{E} \rho\dd m, \quad\forall E\in \B(0,1).
+  \end{displaymath}
+
+  If we define the so called \emph{Perron-Frobenious operator} $\mathcal{L}$ by
+  \begin{displaymath}
+    \mathcal{L}\rho(y) :=\sum_{k=1}^{\infty}\frac{\rho(G_{k}^{-1}(y))}{G_{k}^{\prime}\big(G_{k}^{-1}(y)\big)}, \quad\forall y\in \bigsqcup_{k\geq 1} I_{k},
+  \end{displaymath}
+  we claim that
+  \begin{displaymath}
+    G_{\star}\mu_{\rho}(E) = \mu_{\mathcal{L}\rho}(E) = \int_{E} \mathcal{L}\rho\dd m, \quad\forall E\in\B(0,1).
+  \end{displaymath}
+
+  In order to prove this, let $E$ be an arbitrary Borel subset of $(0,1)$ and let us write $\ds{1}_{E}$ to denote its indicator function. By the classical change of variable formula we have~
+  \begin{displaymath}
+    \begin{split}
+      \mu_{\rho}\big(G^{-1}(E)\big) &=\int_{0}^{1}\ds{1}_{G^{-1}(E)}(x)\rho(x)\dd m(x) = \int_{0}^{1}\ds{1}_{E}\big(G(x)\big)\rho(x)\dd m(x) \\
+                                    &=\sum_{k=1}^{\infty}\int_{I_{n}} \ds{1}_{E}\big(G(x)\big)\rho(x)\dd m(x) \\
+                                    &= \sum_{k=1}^{\infty}\int_{0}^{1}\ds{1}_{E}(y)\rho\big(G_{k}^{-1}(y)\big) {\big(G_{k}^{-1}\big)}^{\prime}(y) \dd m(y) \\
+                                    &= \sum_{k=1}^{\infty}\int_{0}^{1} \ds{1}_{E}(y) \frac{\rho\big(G_{k}^{-1}(y)\big)}{G_{k}^{\prime}\big(G_{k}^{-1}(y)\big)}\dd m(y) \\
+                                    &= \int_{0}^{1}\ds{1}_{E}(y) \mathcal{L}(\rho)(y)\dd m(y) = \mu_{\mathcal{L}\rho}(E),
+    \end{split}
+  \end{displaymath}
+  where the last line of the chain of equalities follows by classical Levi's monotone convergence theorem.
+
+  So, if we consider $\rho(x):=\frac{1}{1+x}$, the fact that $\mu_{\rho}$ is a $G$-invariant (finite) Borel measure follows from the fact that $\mathcal{L}\rho=\rho$ and this easily follows from a straightforward computation.
+\end{proof}
+
+\subsection{Some important exercises from~\cite[\S1.3.7]{VianaOliveiraFoundErgTh}}
+\label{sec:some-import-exerc-1.3.7}
+
+1.3.2, 1.3.4, 1.3.5, 1.3.6, 1.3.7, 1.3.9, 1.3.10, 1.3.11, 1.3.12.
