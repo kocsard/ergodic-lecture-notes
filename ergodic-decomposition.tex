@@ -124,11 +124,14 @@ Given a probability space $(X,\B,\mu)$ we say that a partition $\xi\in\mc{P}_{X}
 where the equality among partitions is given in \S\ref{sec:partitions-measure-spaces} and the operator $\bigvee$ is given by~\eqref{eq:partitions-upper-limit-def}
 
 \begin{exercise}
+  \label{exer:measurable-partitions-characterization-measurable-maps}
   Let $(X,\B,\mu)$ be a probability space, $M$ be separable metric space and $f\colon X\to M$ be a measurable map. Then the partition
   \begin{displaymath}
     \xi_{f}:=\left\{f^{-1}(y) : y \in M\right\}\in\mc{P}_{X}
   \end{displaymath}
   is a measurable partition.
+
+  Reciprocally, if $\xi\in\mc{P}_{X}$ is a partition, then $\xi$ is a measurable partition if and only if there exists a compact metric space $M$, a Borel probability measure $\nu$ on $M$ and a measure preserving map $f\colon (X,\B,\mu)\to (M,\B_{M},\nu)$ such that $\xi=\xi_{f}$.
 \end{exercise}
 
 Then we have the main result about measurable partitions:
@@ -179,6 +182,45 @@ We postpone the proof of Theorem~\ref{thm:rokhlin-disintegration}. Now we shall 
   \end{exercise}
 \end{proof}
 
+\begin{proof}[Proof of Theorem~\ref{thm:rokhlin-disintegration}]
+  This elegant proof of is due to Terence Tao and was presented in his blog.
+
+  By Exercise~\ref{exer:measurable-partitions-characterization-measurable-maps}, there exists a compact metric space $M$, a Borel probability measure $\nu$ on $M$ and a measure preserving map $\pi\colon (X,\B,\mu)\to (M,\B_{M},\nu)$ such that $\xi=\xi_{\pi}$. On the other hand, since we are assuming that $(X,\B,\mu)$ is a Borel space, there is no loss of generality in assuming that $X$ is a compact metric space and $\B$ is its Borel $\sigma$-algebra.
+
+  Then, we consider the pull-back operator $\pi^*\colon L^2(M,\B_M,\nu)\to L^2(X,\B,\mu)$ given by $\pi^*\phi:=\phi\circ\pi$, for every $\phi\in L^2(M,\B_M,\nu)$. So, its (Hilbert) adjoint operator $\pi_*\colon L^2(X,\B,\mu)\to L^2(M,\B_M,\nu)$, by the Riesz representation theorem, is characterized by the following property:
+  \begin{equation}
+    \label{eq:pull-back-push-forward-adjoint-characterization}
+    \int_{M} \phi\cdot \pi_*\psi\dd\nu = \int_{X} \pi^*\phi\cdot \psi\dd\mu,
+  \end{equation}
+  for every $\phi\in L^2(M,\B_M,\nu)$ and $\psi\in L^2(X,\B,\mu)$. Since $\mu$ and $\nu$ are probability measures, we know that $L^\infty(X,\B,\mu)\subset L^2(X,\B,\mu)$ and $L^\infty(M,\B_M,\nu)\subset L^2(M,\B_M,\nu)$. Moreover, as a consequence of~\eqref{eq:pull-back-push-forward-adjoint-characterization} and recalling that $\norm{\pi^*\phi}_{L^{\infty}(x,\B,\mu)}\leq \norm{\phi}_{L^\infty(M,\B_M,\nu)}$, for all $\phi\in L^\infty(M,\B_M,\nu)$, one easily get that
+  \begin{displaymath}
+    \norm{\pi_*\psi}_{L^\infty(M,\B_M,\nu)}\leq \norm{\psi}_{L^\infty(X,\B,\mu)},\quad\forall \psi\in L^\infty(X,\B,\mu).
+  \end{displaymath}
+
+  Then, since we are assuming that $X$ is a compact metric space, we know that the space of continuous functions $C^0(X)$ is contained and is dense in $L^\infty(X,\B,\mu)$. However, $L^\infty(X,\B,\mu)$ is a space of equivalence classes of functions, and not just functions. So, we need the following
+
+  \begin{lemma}
+    \label{lem:choosing-pi-adjoint-images-of-continuous-functions}
+    We write $B(M,\B_M):=\{\phi\colon M\to\R : \phi \text{ is bounded and measurable}\}$. Given any $\phi\in B(M,\B_M)$, we shall temporally write $[\phi]\in L^\infty(M,\B_M,\nu)$ for the equivalence class of $\phi$ in $L^\infty(M,\B_M,\nu)$. Then, there is a linear operator $\tilde \pi_*\colon C^0(X)\to B(M,\B_M)$ and a set $M'\in\B_M$ with $\nu(M')=1$ such that $[\tilde \pi_*\psi]=\pi_*\psi\in L^\infty(M,\B_M,\nu)\subset L^2(M,\B_M,\nu)$, for every $\psi\in C^0(X)$, and
+    \begin{displaymath}
+      \abs{\tilde \pi_*\psi(y)}\leq \norm{\psi}_{C^0(X)},\quad\forall y\in M',\ \forall \psi\in C^0(X).
+    \end{displaymath}
+  \end{lemma}
+
+  \begin{exercise}
+    Prove Lemma~\ref{lem:choosing-pi-adjoint-images-of-continuous-functions}.
+  \end{exercise}
+
+  Then, for each $y\in M'$, we define the linear functional $\Lambda_{y}\colon C^0(X)\to\R$ given by $\Lambda_{y}(\psi):=\tilde \pi_*\psi(y)$, for every $\psi\in C^0(X)$. Observe that $\Lambda_y$ is a positive bounded linear functional on $C^0(X)$, satisfying $\norm{\Lambda_y}\leq 1$, for every $y\in M'$. So, by Riesz representation theorem, there exists a unique Borel probability measure $\mu_y$ on $X$ such that
+  \begin{displaymath}
+    \Lambda_y(\psi)=\tilde\pi_*\psi(y)=\int_X \psi\dd\mu_y,\quad\forall \psi\in C^0(X).
+  \end{displaymath}
+
+
+
+
+
+\end{proof}
 
 \subsection{Some important exercises from~\cite[\S5.1.5 and \S5.2.4]{VianaOliveiraFoundErgTh}}
 \label{sec:some-import-exerc-5.1.5}
