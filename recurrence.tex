@@ -1,0 +1,114 @@
+\section{Recurrence on finite measure spaces}\label{sec:recurrence-Poincare}
+
+In this section we shall analyze the fact that finiteness of invariant measures imposes recurrence of the dynamical system.
+
+Our first result is the celebrated
+
+\begin{theorem}[Poincaré recurrence theorem]\label{thm:poincare-recurrence-v-return-sets-for-1-time}
+  Let $(X,\mc{B},\mu)$ be a probability space and $f\colon (X,\mc{B},\mu)\carr$ be a measure preserving map. Let $A\in\B$ be a measurable set such that $\mu(A)>0$. Then, there exists $n\geq 1$ such that
+  \begin{displaymath}
+    \mu\big(A\cap f^{-n}(A)\big)>0.
+  \end{displaymath}
+\end{theorem}
+
+\begin{proof}
+  Let us suppose that $A,f^{-1}(A),f^{-2}(A),\ldots$ are essentially disjoint, \ie~suppose that
+  \begin{equation}
+    \label{eq:fiA-fjA-disjoint-in-Poincare}
+    \mu\big(f^{-i}(A)\cap f^{-j}(A)\big)=0, \quad\forall i,j\in\N_{0},\ i\neq j.
+  \end{equation}
+
+  Let us define the sets $A_{0}:=A$, and $A_{n}:=f^{-n}(A)\setminus \Big(\bigcup_{i=0}^{n-1} f^{-i}(A)\Big)$, for every $n\geq 1$. Then, the sets $A_{0},A_{1},A_{2},\ldots$ are pairwise disjoint, and by~\eqref{eq:fiA-fjA-disjoint-in-Poincare}, we have
+  \begin{displaymath}
+    \mu\big(f^{-n}(A)\big)\geq \mu(A_{n})\geq \mu(f^{-n}(A)) - \sum_{i=0}^{n-1} \mu\big(f^{-n}(A)\cap f^{-i}(A)\big) = \mu\big(f^{-n}(A)\big),
+  \end{displaymath}
+  for every $n\geq 1$, and hence it holds $\mu\big(f^{-n}(A)\big)=\mu(A_{n})$, for any $n\geq 0$. Since $\mu$ is $f$-invariant, this implies $\mu(A_{n})=\mu(A)>0$, for every $n\geq 0$, getting a contradiction because
+  \begin{displaymath}
+    1=\mu(X)\geq\mu\bigg(\bigsqcup_{i=0}^{\infty} A_{n}\bigg) = \sum_{i=0}^{\infty} \mu(A_{n}) = \sum_{i=0}^{\infty} \mu(A) = \infty.
+  \end{displaymath}
+
+  So, assumption~\eqref{eq:fiA-fjA-disjoint-in-Poincare} does not hold and hence, there exist $i,j\in\N$, with $i<j$ such that
+  \begin{displaymath}
+    0<\mu\big(f^{-i}(A)\cap f^{-j}(A)\big) = \mu\Big(f^{-i}\big(A\cap f^{i-j}(A)\big)\Big) = \mu(A\cap f^{-(j-i)}(A)).
+  \end{displaymath}
+\end{proof}
+
+There are a lot of important results that can be proven as a consequence of Theorem~\ref{thm:poincare-recurrence-v-return-sets-for-1-time}. The firs one is indeed a very simple improvement of Theorem~\ref{thm:poincare-recurrence-v-return-sets-for-1-time}:
+
+\begin{corollary}\label{cor:return-bounded-time-Poincare-thm}
+  Let $f\colon(X,\mc{B},\mu)\carr$ and $A\in\mc{B}$ be as in Theorem~\ref{thm:poincare-recurrence-v-return-sets-for-1-time}. Then, there is a natural number $n\leq \frac{1}{\mu(A)}$ such that
+  \begin{displaymath}
+    \mu\big(A\cap f^{-n}(A)\big)>0.
+  \end{displaymath}
+\end{corollary}
+
+\begin{exercise}
+  Prove Corollary~\ref{cor:return-bounded-time-Poincare-thm}.
+\end{exercise}
+
+
+\begin{corollary}\label{cor:return-one-time-Poincare}
+  Let $f\colon (X,\mc{B},\mu)\carr$ and $A\in\mc{B}$ as in Theorem~\ref{thm:poincare-recurrence-v-return-sets-for-1-time}. Then the set
+  \begin{displaymath}
+    A_{f}:=\left\{x\in A : \exists n\geq 1,\ f^{n}(x)\in A\right\}
+  \end{displaymath}
+  belongs to $\mc{B}$ and $\mu(A\setminus A_{f})=0$.
+\end{corollary}
+
+\begin{proof}
+  First notice that
+  \begin{displaymath}
+    A_{f}=\bigcup_{n\geq 1} \big(A\cap f^{-n}(A)\big).
+  \end{displaymath}
+  So, $A_{f}\in\mc{B}$.
+
+  Then, let us define $A':=A\setminus A_{f}$. Observe that $A'\cap f^{-n}(A')=\emptyset$, for every $n\geq 1$. Hence, we have that $f^{-m}(A')\cap f^{-n}(A')=\emptyset$, whenever $0\leq m<n$. By Theorem~\ref{thm:poincare-recurrence-v-return-sets-for-1-time}, we conclude that $\mu(A')=0$.
+\end{proof}
+
+Then notice that Corollary~\ref{cor:return-one-time-Poincare} can be considerably improved:
+
+\begin{corollary}\label{cor:return-infinitely-many-times-Poincare}
+  Let $f\colon (X,\mc{B},\mu)\carr$ and $A\in\mc{B}$ as in Theorem~\ref{thm:poincare-recurrence-v-return-sets-for-1-time}. Then the set
+  \begin{displaymath}
+    A_{\infty}:=\left\{x\in A : \exists n_{j}\uparrow\infty,\ f^{n_{j}}(x)\in A, \forall j\geq 1\right\}
+  \end{displaymath}
+  belongs to $\mc{B}$ and $\mu(A\setminus A_{\infty})=0$.
+\end{corollary}
+
+\begin{exercise}
+  Prove Corollary~\ref{cor:return-infinitely-many-times-Poincare}.
+\end{exercise}
+
+\subsection{Topological recurrence}\label{sec:topological-recurrence-Poincare}
+
+Let $X$ be a topological space and $f\colon X\carr$ be an arbitrary map. We say that a point $x_{0}\in X$ is \textbf{recurrent} for $f$ when given any neighborhood $V$ of $x_{0}$, there is a natural number $n\geq 1$ such that $f^{n}(x_{0})\in V$.
+
+Recall that a \textbf{base} for the topology of $X$ is a family of open subsets $\mathcal{V}$ such that every open subset of $X$ can be writte as the union of elements of $\mc{V}$.
+
+Then we have the following topological version of Poincaré recurrence theorem:
+
+\begin{theorem}\label{thm:Poincare-recurrence-thm-topological-version}
+  Let $X$ be a topological space admitting a countable base for its topology and let $\mc{B}(X)$ denote its Borel $\sigma$-algebra. Let $\mu$ be a Borel probability measure on $X$ (\ie~a probability measure on $\big(X,\mc{B}(X)\big)$ and $f\colon (X,\mc{B}(X),\mu)\carr$ a measure preserving transformation. Then, $\mu$-almost every point is recurrent for $f$.
+\end{theorem}
+
+
+\begin{proof}
+  Let $\mathcal{U}:=\{U_{n} : n\in\N\}$ be a base for the topology of $X$. For each $n\in\N$ let us consider the set $W_{n}:=\{x\in U_{n}  : f^{k}(x)\not\in U_{n},\ \forall k\geq 1\}$. By Corollary~\ref{cor:return-one-time-Poincare} we know that $\mu(W_{n})=0$, for every $n\geq 1$. Hence, if we write $W:=\bigcup_{n\geq 1} W_{n}$, we have $\mu(W)=0$. Then we claim that every point in $X\setminus W$ is recurrent for $f$. In fact, let $x$ an arbitrary point of $X\setminus W$ and $V$ any neighborhood of $x$. Since $\mathcal{U}$ is a base for the topology of $X$, there is a natural number $n$ such that $x\in U_{n}\subset V$. Since $x\not\in W$, we have $x\not\in W_{n}$ and then, there is $k\geq 1$ such that $f^{k}(x)\in U_{n}\subset V$. Since $V$ was an arbitrary neighborhood, we conclude $x$ is recurrent for $f$, as desired.
+\end{proof}
+
+It is worth to recall at this point the following result due to Brikhoff:
+
+\begin{theorem}[Birkhoff recurrence theorem]
+  Let $(X,d)$ be a compact metric space and $f\colon X\carr$ be a continuous map. Then, there exists a recurrent point for $f$.
+\end{theorem}
+
+\begin{proof}
+  Let us write $\mc{K}_f:=\{K\subset X : K \text{ is compact,}\ K\neq\emptyset,\ f(K)\subset K\}$. Then, $\mc{K}_f$ is clearly non-empty because $X\in\mc{K}_f$. On the other hand, if we consider the partial order relation $\subset$ given by inclusion, any totally ordered family of elements in $\mc{K}_f$ admits a lower bound in $\mc{K}_f$ which is given by the intersection of all the elements of the totally ordered family.
+
+  So, as a consequence of Zorn's lemma, there is a minimal element $M$ in $\mc{K}_f$ with respect to the partial order $\subset$. One can easily check that given any $x\in M$, by minimality, its positive semi-orbit $\mc{O}_f^+(x):=\{f^n(x) : n\geq 0\}$ is dense in $M$, and consequently, $x$ is recurrent.
+\end{proof}
+
+\subsection{Some important exercises from~\cite[\S1.2.4]{VianaOliveiraFoundErgTh}}
+\label{sec:some-import-exerc-1.2.4}
+
+1.2.2, 1.2.3, 1.2.5, 1.2.6.

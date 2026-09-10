@@ -1,0 +1,149 @@
+\section{Existence of invariant measures for continuous maps}\label{sec:exist-invar-meas-cont-maps}
+
+The main purpose of this section consists in proving the following
+
+\begin{theorem}\label{thm:existence-inv-measures-cont-maps}
+  Let $X$ be compact metric space and $f\colon X\carr$ be a continuous map. Then, there exists an $f$-invariant Borel probability measure.
+\end{theorem}
+
+In order to prove Theorem~\ref{thm:existence-inv-measures-cont-maps} we first need to introduce some concepts in Functional Analysis.
+
+\subsection{Linear operators and dual spaces}\label{sec:line-oper-dual-spaces}
+
+Let $(E,\norm{\cdot}_{E})$ and $(F,\norm{\cdot}_{F})$ be two Banach spaces over the field $\bb{K}=\R,\C$. A linear map $A\colon E\to F$ is continuous if and only its \textbf{norm}
+\begin{equation}
+  \label{eq:norm-operator}
+  \norm{A}:=\sup_{x\in X\setminus\{0\}} \frac{\norm{Ax}_{F}}{\norm{x}_{E}} <\infty.
+\end{equation}
+
+The space of linear continuous maps from $E$ to $F$ is a denoted by $\mathcal{L}(E,F)$ and it turns to be a Banach space when its endowed with the norm given by~\eqref{eq:norm-operator}.
+
+When $F$ is the field itself $\bb{K}$, a continuous linear operator $\eta\colon E\to\bb{K}$ is called a continuous linear functional. The \textbf{dual space} $E^{\star}$ is defined as the linear space $\mathcal{L}(E,\bb{K})$. Then we can define the norm $\norm{\cdot}_{E^{\star}}$ on $E^{\star}$ by
+\begin{displaymath}
+  \norm{\eta}_{E^{\star}}:=\sup\left\{\abs{\eta(x)} : x\in E,\ \norm{x}_{E}=1\right\}, \quad\forall \eta\in E^{\star}.
+\end{displaymath}
+
+The linear space $E^{\star}$ turns into a Banach space when it is endowed with the norm $\norm{\cdot}_{E^{\star}}$. The topology on $E^{\star}$ induced by the norm $\norm{\cdot}_{E^{\star}}$ is usually called the \textbf{strong topology}.
+
+On the other hand, any continuous linear operator $A\colon E\to F$ naturally induces the so callled \textbf{adjoint operator} $A\colon F^{\star}\to E^{\star}$ given by
+\begin{displaymath}
+  A^{\star}\eta(x):=\eta\big(A(x)\big),\quad\forall x\in E,\ \forall\eta\in F^{\star}.
+\end{displaymath}
+
+\begin{exercise}
+  Show that the adjoint operator is indeed a linear continuous operator and $\norm{A}\geq\norm{A^{\star}}$.
+\end{exercise}
+
+
+
+\subsection{Weak topologies}\label{sec:weak-topologies}
+
+Given a topological space $(Y,\tau_{Y})$, a non-empty set $X$ and an arbitrary family of maps $\ms{F}={\{f_{i}\colon X\to Y\}}_{i\in I}$, we define the \textbf{weak topology} on $X$ induced by $\tau_{Y}$ and $\ms{F}$ as the weakest (\ie~the coarsest) topology $\tau$ on $X$ such that $f_{i}\colon (X,\tau)\to (Y,\tau_{Y})$ is continuous, for every $i\in I$.
+
+Now, if $(E,\norm{\cdot}_{E})$ denotes a Banach space over $\mathbb{K}=\R,\C$, and $E^{\star}$ is its dual space, we can define the so called \textbf{weak topology} on $E$ as the weak topology induced by the family $E^{\star}$, \ie~it is the weakest topology on $E$ such that every $\eta\in E^{\star}$ is continuous on $E$. In general, the weak topology is weaker than the Banach topology induced by the norm $\norm{\cdot}_{E}$.
+
+\begin{exercise}
+  Show that if $E$ is a Banach space, then norm and the weak topologies coincide if and only if $E$ has finite dimension.
+\end{exercise}
+
+Now, we can consider the space $E^{\star\star}:={(E^{\star})}^{\star}$ which is the dual space of the Banach space $(E^{\star},\norm{\cdot}_{E^{\star}})$. Analogously, we can endow the space $E^{\star}$ with the \textbf{weak topology} which is the weakest topology such that every element of $E^{\star\star}$ is continuous.
+
+However, there shall need to endow the space $E^{\star}$ with a weaker topology which is defined as follows. One can show that there is a natural injection of $E$ into $E^{\star\star}$, \ie~a linear continuous injective map $j\colon E\to E^{\star\star}$ which is given by
+\begin{displaymath}
+  j(x)(\eta):=\eta(x), \quad\forall x\in E,\ \forall\eta\in E^{\star}.
+\end{displaymath}
+Then, the so called \textbf{weak-$\star$ topology} is the weakest topology on $E^{\star}$ such that every linear functional in $j(E)$ is continuous. Given a sequence ${(\phi_{n})}_{n\geq 1}\subset E^{\star}$, we shall write
+\begin{displaymath}
+  \eta_{n}\rightharpoonup \eta\in E^{\star}, \quad\text{as } n\to \infty,
+\end{displaymath}
+when the sequence ${(\eta_{n})}_{n\geq 1}$ converges to $\eta$ in the weak-$\star$ topology.
+
+\begin{exercise}
+  Show that the weak and weak-$\star$ topologies coincide on $E^{\star}$ if and only if $E$ is reflexive space, \ie~ $j(E)=E^{\star\star}$. On the other hand, show that that the \emph{closed unit ball} on a Banach space $E$, which is given by $\{x\in E : \norm{x}_{E}\leq 1\}$ is compact if and only if $E$ has finite dimension.
+\end{exercise}
+
+
+We shall need the following
+\begin{theorem}[Banach-Alaoglu theorem]\label{thm:Banach-Alaoglu}
+  The closed unit ball $\{\eta\in E^{\star} : \norm{\eta}_{E^{\star}}\leq 1\}$ is a compact set when $E^{\star}$ is with its weak-$\star$ topology.
+\end{theorem}
+
+\begin{proof}
+  See for instance~\cite[Theorem 8.10]{EinsiedlerWardFunctionalAnalysisBook}.
+\end{proof}
+
+\subsection{The space of continuous functions}\label{sec:space-cont-functions}
+
+Let $(X,d)$ be a compact metric space and write $C^{0}(X)$ to denote the space of continuous real functions on $X$. Since $X$ is compact, any continuous function is bounded and hence, we can define the norm
+\begin{displaymath}
+  \norm{\phi}_{0}:=\sup_{x\in X} \abs{\phi(x)}, \quad\forall \phi\in C^{0}(X).
+\end{displaymath}
+
+\begin{exercise}
+  Show that $C^{0}(X)$ is a Banach space when it is endowed with the norm $\norm{\cdot}$.
+\end{exercise}
+
+Given an arbitrary continuous map $f\colon X\carr$, we can consider the \textbf{induced pull-back linear map,} also called the \textbf{Koopman operator} $U_{f}\colon C^{0}(X)\carr$  given by
+\begin{displaymath}
+  U_{f}(\phi):=\phi\circ f, \quad\forall \phi\in C^{0}(X).
+\end{displaymath}
+
+\begin{exercise}
+  Show that $U_{f}$ is a continuous linear operator and its norm
+  \begin{displaymath}
+    \norm{U_{f}}:=\sup\left\{\norm{U_{f}(\phi)}_{0} : \phi\in C^{0}(X), \norm{\phi}_{0}=1\right\}= 1.
+  \end{displaymath}
+  Moreover, $\norm{U_{f}\phi}=\norm{\phi}$, for every $\phi\in C^{0}(X)$ if and only if $f$ is surjective.
+\end{exercise}
+
+On the other hand, we have the following
+\begin{theorem}[Riesz representation theorem]\label{thm:Riesz-representation-theorem-measures}
+  If $\eta\colon C^{0}(X)\to\R$ is a continuous linear functional on the Banach space $(C^{0}(X),\norm{\cdot})$, then there exist two finite Borel measures $\mu^{-}$ and $\mu^{+}$ on $X$ such that
+  \begin{displaymath}
+    \eta(\phi)=\int_{X}\phi\dd\mu^{+} - \int_{X}\phi\dd\mu^{-}, \quad\forall\phi\in C^{0}(X).
+  \end{displaymath}
+\end{theorem}
+
+\begin{proof}
+  See for instance Einsiedler and Ward~\cite[Theorem 7.44]{EinsiedlerWardFunctionalAnalysisBook}.
+\end{proof}
+
+Then, let us write $\M(X)$ for the space of Borel probability measures on $X$. By Theorem~\ref{thm:Riesz-representation-theorem-measures} we can consider $\M(X)$ as a subset of unit ball of the dual space ${C^{0}(X)}^{\star}$. On the other hand, by Exercise~\ref{exer:pull-back-function-push-forward-measures} we know that the restriction of the adjoint operator of $U_{f}$ to the space $\M(X)$ coincide with the push-forward operator $f_{star}\colon\M(X)\carr$. In particular, we conclude $f_{\star}\colon\M(X)\carr$ is continuous when $\M(X)$ is endowed with the weak-$\star$ topology that inherits from the inclusion $\M(X)\subset {C^{0}(X)}^{\star}$.
+
+\begin{exercise}\label{exer:compactness-MX}
+  Show that the space of Borel probability measures $\M(X)$ is a closed subset of the closed unit ball $\bar B:=\left\{\xi\in {C^{0}(X)}^{\star} : \norm{\xi}\leq 1\right\}$ when it is endowed with the weak-$\star$ topology. Then, invoking Theorem~\ref{thm:Banach-Alaoglu}, conclude that $\M(X)$ is compact with the weak-$\star$ topology.
+\end{exercise}
+
+Now we can complete the
+\begin{proof}[Proof of Theorem~\ref{thm:existence-inv-measures-cont-maps}]
+  Let $\nu$ be any Borel probability measure on $X$. For each $n\in\N$, let us consider the measure $\mu_{n}\in\M(X)$ given by
+  \begin{displaymath}
+    \mu_{n}:=\frac{1}{n}\sum_{j=0}^{n-1}f_{\star}^{j}\nu.
+  \end{displaymath}
+
+  By Exercise~\ref{exer:compactness-MX} we know that $\M(X)$ is compact for the weak-$\star$ topology. So, there exists a subsequent ${(\mu_{n_{j}})}_{j\geq 1}$ and $\mu\in\M(X)$ such that $\mu_{n_{j}}\rightharpoonup\mu$, as $n_{j}\to\infty$. The, since $f_{\star}\colon\M(X)\carr$ is continuous, we get $f_{\star}\mu_{n_{j}}\rightharpoonup f_{\star}\mu$, as $n_{j}\to\infty$. So, in order to show that $\mu$ is $f$-invariant, it is enough to show that $f_{\star}\mu_{n}-\mu_{n}\rightharpoonup 0$, as $n\to\infty$. In order to do that, let $\phi\in C^{0}(X)$ be arbitrary and notice that
+  \begin{displaymath}
+    \int_{x}\phi\dd(f_{\star}\mu_{n}-\mu_{n}) = \frac{1}{n}\sum_{j=0}^{n-1}\left(\int_{X}\phi\dd f_{\star}^{j+1}\nu -\int_{X}\phi\dd f^{j}_{\star}\nu\right) = \frac{1}{n}\int_{X}\phi\circ f^{n}-\phi\dd\nu\to 0,
+  \end{displaymath}
+  as $n\to+\infty$.
+\end{proof}
+
+\begin{exercise}
+  Let $X$ and $Y$ be two compact metric spaces, and $f\colon X\carr$ and $g\colon X\times Y\to Y$ two continuous functions. Let us consider the so called \emph{skew-product map} $H\colon X\times Y\carr$ given by
+  \begin{displaymath}
+    H(x,y):=\big(f(x),g(x,y)\big), \quad\forall (x,y)\in X\times Y.
+  \end{displaymath}
+
+  Given any invariant measure $\mu\in\M(f)$, let us show that there exists an invariant measure $\hat\mu\in\M(H)$ such that $\pi_{\star}\hat\mu=\mu$, where $\pi\colon X\times Y\to X$ denotes the projection on the first coordinate.
+\end{exercise}
+
+
+\subsection{Some important exercises from~\cite[\S2.1.6]{VianaOliveiraFoundErgTh}}
+\label{sec:some-import-exerc-2.1.6}
+
+2.1.2, 2.1.3, 2.1.4, 2.1.6.
+
+\subsection{Some important exercises from~\cite[\S2.2.1]{VianaOliveiraFoundErgTh}}
+\label{sec:some-import-exerc-2.2.1}
+
+2.2.1, 2.2.2, 2.2.3, 2.2.4, 2.2.5.
