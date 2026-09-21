@@ -42,7 +42,7 @@ Ergodic systems satisfy the following properties:
   \end{displaymath}
   So $\mu(A)\in\{0,1\}$ and \emph{(1)} holds.
 
-  On the other hand, assuming \emph{(5)} we can easily prove \emph{(4)} taking $\phi:=\bb{1}_{A}$ and $\psi:=\bb{1}_{B}$.
+  On the other hand, assuming \emph{(5)} we can easily prove \emph{(4)} taking $\phi:=\ds{1}_{A}$ and $\psi:=\ds{1}_{B}$.
 
   Finally, let us prove that \emph{(1)} implies \emph{(5)}. To do that, let us star assuming $\phi\in L^{\infty}(X,\B,\mu)$ and $\psi\in L^{q}(X,\B,\mu)$. Then, by Birkhoff ergodic theorem (Theorem~\ref{thm:Birkhoff-ergodic-thm}), and since \emph{(1)} implies \emph{(3)}, we know that
   \begin{displaymath}
@@ -56,7 +56,7 @@ Ergodic systems satisfy the following properties:
   \begin{displaymath}
     \lim_{n\to+\infty}\frac{1}{n}\sum_{i=0}^{n-1}\int_{x}(\phi\circ f^{i})\psi\dd\mu = \left(\int_{x}\phi\dd\mu\right)\left(\int_{X}\psi\dd\mu\right),
   \end{displaymath}
-  we wanted to prove. The general case, where $\phi\in L^{p}(X,\B,\mu)$ can be proved taking the sequence of truncations of $\phi$ given by $\phi_{k}:=\bb{1}_{[\abs{\phi}\leq k]}\phi\in L^{\infty}(X,\B,\mu)$, for every $k\in\N$. Then we have $\phi_{k}\to\phi$ in $L^{p}$ and $\mu$-almost everywhere. Then, given any $\eps>0$ there is $k\in\N$ such that $\norm{\phi-\phi_{k}}_{p}<\eps$ and, by the previous argument, there is $N\in\N$ such that
+  we wanted to prove. The general case, where $\phi\in L^{p}(X,\B,\mu)$ can be proved taking the sequence of truncations of $\phi$ given by $\phi_{k}:=\ds{1}_{[\abs{\phi}\leq k]}\phi\in L^{\infty}(X,\B,\mu)$, for every $k\in\N$. Then we have $\phi_{k}\to\phi$ in $L^{p}$ and $\mu$-almost everywhere. Then, given any $\eps>0$ there is $k\in\N$ such that $\norm{\phi-\phi_{k}}_{p}<\eps$ and, by the previous argument, there is $N\in\N$ such that
   \begin{displaymath}
     \abs{\frac{1}{n}\sum_{i=0}^{n-1}\int_{X}(\phi\circ f^{i})\psi\dd\mu - \int_{X}\psi\dd\mu\int_{X}\psi\dd\mu} < \eps, \quad\forall n\geq N.
   \end{displaymath}
