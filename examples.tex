@@ -79,14 +79,20 @@ Then the so called \emph{full shift} is the map $f\colon\Sigma_k^+\carr$ given b
   is dense in $\Sigma_k^+$.
 \end{exercise}
 
-As a consequence of Exercise~\ref{exer:full-shift-top-properties}, we see that there are infinitely many periodic orbits. However, there is another important family of invariant measures for full shifts, usually called \emph{Bernoulli measures.} In order to define them, let us considering an \textbf{stochastic vector} $\boldsymbol{p}=(p_1,p_2,\ldots,p_k)\in\R^k$, \ie~$p_i\geq 0$ and $\sum_i p_i=1$. Then, the \textbf{Bernoulli measure} induced by the stochastic vector $\boldsymbol{p}$ is the Borel probability measure $\mu$ on $\Sigma_k^+$ which is characterized by the following property:
+As a consequence of Exercise~\ref{exer:full-shift-top-properties}, we see that there are infinitely many periodic orbits. However, there is another important family of invariant measures for full shifts, usually called \emph{Bernoulli measures.} In order to define them, let us considering an \textbf{stochastic vector} $\boldsymbol{p}=(p_1,p_2,\ldots,p_k)\in\R^k$, \ie~$p_i\geq 0$ and $\sum_i p_i=1$. Then, the \textbf{Bernoulli measure} induced by the stochastic vector $\boldsymbol{p}$ is the Borel probability measure $\mu$ on $\Sigma_k^+$ which is characterized by its values on \emph{cylinders}: given a non-empty finite set $A\subset\N_0$ and a function $I\colon A\to\{1,\ldots,k\}$, the \emph{cylinder} $[A;I]\subset\Sigma_k^+$ is given by
+\begin{equation}
+  \label{eq:cylinder-definition}
+  [A;I]:=\left\{(j_0j_1\ldots)\in\Sigma_k^+ : j_n=I(n),\ \forall n\in A\right\}.
+\end{equation}
+
+Then, the \emph{Bernoulli measure $\mu$} induced by $\boldsymbol{p}$ is characterized by its values on cylinders:
 \begin{displaymath}
-  \mu[i_0,i_i,i_2,\ldots,i_m]:=p_{i_0}p_{i_1}\ldots p_{i_m}, \quad\forall (i_0,i_1,\ldots,i_m)\in\{1,\ldots,k\}^{m+1},
+  \mu[A;I]:=\prod_{n\in A} p_{I(n)},
 \end{displaymath}
-and where $[i_0,i_1,\ldots,i_m]:=\big\{(j_0j_1j_2\ldots)\in\Sigma_k^+ : j_\ell=i_\ell,\ \forall \ell\{0,1,2,\ldots,m\}\big\}$.
+for every finite set $A\subset\N_0$ and every $I\in \{1,\ldots,k\}^A$.
 
 \begin{exercise}
-  Show that $\mu$ is $f$-invariant.
+  Show that $\mu$ is a well-defined Borel probability measure and is $f$-invariant.
 \end{exercise}
 
 The space $\Sigma_k^+$ has interesting topological properties. A topological space $X$ is said to be \textbf{totally disconnected} when given any pair of different points $x,y\in X$, there is an open and closed subset $A\subset X$ such that $x\in A$ and $y\in X\setminus A$. On the other hand, a point $x\in X$ is said to be an \textbf{isolated point} when the set $\{x\}$ is a neighborhood of $x$.
