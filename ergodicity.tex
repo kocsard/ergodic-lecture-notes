@@ -147,7 +147,7 @@ In order to prove Theorem~\ref{thm:expanding-maps-interval-ergodicity}, we shall
   If $\lambda(A)>0$, then it holds
   \begin{equation}
     \label{eq:Lebesgue-density-point-condition}
-    \liminf_{r\downarrow 0} D_A(x,r)=1, \quad\text{for }\mu\text{-a.e. } x\in A.
+    \lim_{r\downarrow 0} D_A(x,r)=1, \quad\text{for }\mu\text{-a.e. } x\in A.
   \end{equation}
 
   A point $x\in A$ where condition~\eqref{eq:Lebesgue-density-point-condition} holds, is called a \emph{Lebesgue density point of $A$.}
@@ -204,7 +204,17 @@ We shall prove the following result:
   \end{displaymath}
   and $i=1,2$.
 
+  From this, we get that given cylinder sets $C_1=[A_1;I_1]$ and $C_2=[A_2;I_2]$, for every $n\in\N_0$ satisfying $n>\max_{m\in A_2} m$, it holds
+  \begin{displaymath}
+    f^{-n}(C_1)\cap C_2 = [A_1+n \sqcup A_2; I_1^n\cup I_2],
+  \end{displaymath}
+  where given two functions $h_i\colon X_i\to Y$, for $i=1,2$ such that $X_1\cap X_2=\emptyset$, we are writing $h_1\cup h_2\colon X_1\sqcup X_2\to Y$ for the function defined by $(h_1\cup h_2)(x):=h_i(x)$, for every $x\in X_i$ and $i=1,2$.
 
+  So, we clearly have
+  \begin{displaymath}
+    \mu\big(f^{-n}(C_1)\cap C_2\big) = \mu\big([A_1+n \sqcup A_2; I_1^n\cup I_2]\big) = \mu\big([A_1;I_1]\big)\mu\big([A_2;I_2]\big) = \mu(C_1)\mu(C_2),
+  \end{displaymath}
+  for every $n\in\N_0$ satisfying $n>\max_{m\in A_2} m$. This proves the desired limit and concludes the proof of Theorem~\ref{thm:Bernoulli-shifts-ergodicity}.
 \end{proof}
 
 
