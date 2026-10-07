@@ -1,2 +1,26 @@
 
 \section{Unique ergodicity}\label{sec:unique-ergodicity}
+
+Given a measurable space $(X,\B)$ and a measurable map $f\colon (X,\B)\carr$, we say that $f$ is \textbf{uniquely ergodic} if there exists a unique $f$-invariant probability measure $\mu$ on $(X,\B)$. In general, when we study unique ergodicity, we restrict our attention to the case where $X$ is a compact metric space and $\B$ is its Borel $\sigma$-algebra. Observe that when $f$ is uniquely ergodic, the unique $f$-invariant probability measure $\mu$ is necessarily ergodic.
+
+In this case, we can use the following equivalent definition of unique ergodicity:
+
+\begin{theorem}
+  If $X$ denotes a compact metric space and $f\colon X\carr$ is a continuous map, then $f$ the following are equivalent:
+  \begin{enumerate}
+    \item $f$ is uniquely ergodic.
+    \item For every continuous function $\phi\colon X\to\R$, there is a constant $c_\phi\in\R$ such that
+          \begin{displaymath}
+            \lim_{n\to\infty}\frac{1}{n}\sum_{k=0}^{n-1}\phi(f^k(x))=c_\phi, \quad\forall x\in X.
+          \end{displaymath}
+    \item for every continuous function $\phi\colon X\to\R$, there is a constant $c_\phi\in\R$ such that
+          \begin{displaymath}
+            \frac{1}{n}\sum_{k=0}^{n-1}\phi\circ f^k\to c_\phi, \quad\text{uniformly on }X,
+          \end{displaymath}
+          as $n\to\infty$.
+    \item There is a Borel probability measure $\mu$ on $X$ such that
+          \begin{displaymath}
+            \frac{1}{n}\sum_{k=0}^{n-1}\delta_{f^k(x)}\to\mu, \quad\text{weakly as }n\to\infty,\quad\forall x\in X.
+          \end{displaymath}
+\end{enumerate}
+\end{theorem}
