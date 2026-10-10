@@ -13,14 +13,117 @@ In this case, we can use the following equivalent definition of unique ergodicit
           \begin{displaymath}
             \lim_{n\to\infty}\frac{1}{n}\sum_{k=0}^{n-1}\phi(f^k(x))=c_\phi, \quad\forall x\in X.
           \end{displaymath}
-    \item for every continuous function $\phi\colon X\to\R$, there is a constant $c_\phi\in\R$ such that
+    \item For every continuous function $\phi\colon X\to\R$, there is a constant $c_\phi\in\R$ such that
           \begin{displaymath}
             \frac{1}{n}\sum_{k=0}^{n-1}\phi\circ f^k\to c_\phi, \quad\text{uniformly on }X,
           \end{displaymath}
           as $n\to\infty$.
     \item There is a Borel probability measure $\mu$ on $X$ such that
           \begin{displaymath}
-            \frac{1}{n}\sum_{k=0}^{n-1}\delta_{f^k(x)}\to\mu, \quad\text{weakly as }n\to\infty,\quad\forall x\in X.
+            \frac{1}{n}\sum_{k=0}^{n-1}\delta_{f^k(x)}\rightharpoonup\mu, \quad\text{weak-}\star \text{as }n\to\infty,\quad\forall x\in X.
           \end{displaymath}
 \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+  Let us start showing that (1) implies (2). Let $\mu$ denote the unique $f$-invariant probability measure on $X$. For every continuous function $\phi\colon X\to\R$, we define the constant $c_\phi=\int_X\phi\dd\mu$. Suppose there is $x\in X$ such that
+  \begin{displaymath}
+    \lim_{n\to\infty}\frac{1}{n}\sum_{i=0}^{n-1}\phi(f^i(x))\neq c_\phi.
+  \end{displaymath}
+  Then, there exist $\eps>0$ and a subsequence $(n_k)_{k\in\N}$ with $n_k\to+\infty$, as $k\to\infty$, such that
+  \begin{equation}
+    \label{eq:point-x-far-from-mu}
+    \left|\frac{1}{n_k}\sum_{i=0}^{n_k}\phi(f^i(x))-\int_X\phi\dd\mu\right|>\eps,\quad\forall k\in\N.
+  \end{equation}
+
+  Since $X$ is compact, the space of Borel probability measures on $X$ is compact in the weak-$\star$ topology. Therefore, there exists a subsequence $(n_{k_j})_{j\in\N}$ such that
+  \begin{displaymath}
+    \frac{1}{n_{k_j}}\sum_{i=0}^{n_{k_j}}\delta_{f^i(x)}\rightharpoonup\nu,\quad\text{weak-}\star\text{ as }j\to\infty.
+  \end{displaymath}
+  By~\eqref{eq:point-x-far-from-mu}, we have that $\nu\neq\mu$, which contradicts the unique ergodicity of $f$.
+
+  Clearly, (2) implies (3), and (3) implies (4).
+
+  Finally, let us show that (4) implies (1). Let $\mu$ denote the Borel probability measure on $X$ such that
+  \begin{displaymath}
+    \frac{1}{n}\sum_{k=0}^{n-1}\delta_{f^k(x)}\rightharpoonup\mu, \quad\text{weak-}\star \text{as }n\to\infty,\quad\forall x\in X.
+  \end{displaymath}
+  Let $\nu$ be an $f$-invariant probability measure on $X$. By Birkhoff's ergodic theorem, for $\nu$-almost every $x\in X$, we have that
+  \begin{displaymath}
+    \frac{1}{n}\sum_{k=0}^{n-1}\delta_{f^k(x)}\rightharpoonup\nu, \quad\text{weak-}\star \text{as }n\to\infty.
+  \end{displaymath}
+  So, $\nu$ must coincide with $\mu$, which proves that $f$ is uniquely ergodic.
+\end{proof}
+
+\subsection{Examples of uniquely ergodic systems}
+\label{sec:exampl-uniq-ergodicity}
+
+\begin{theorem}
+  \label{thm:minimal-translations-on-groups}
+  Let $(G,+)$ be a compact abelian group and, for each $a\in G$, let $T_a\colon G\carr$ be the translation map defined by $T_a(x)=x+a$, for every $x\in G$. Let $\lambda$ denote the Haar measure on $G$.
+
+  Then, the following statements are equivalent:
+  \begin{enumerate}
+    \item $T_a$ is topologically transitive, \ie~there exists $x\in G$ such that the orbit $\{T_a^n(x)\colon n\in\Z\}$ is dense in $G$.
+    \item $T_a$ is minimal, i.e., for every $x\in G$, the orbit $\{T_a^n(x)\colon n\in\Z\}$ is dense in $G$.
+    \item $T_a$ is uniquely ergodic.
+    \item $\lambda$ is an ergodic measure for $T_a$.
+  \end{enumerate}
+\end{theorem}
+
+\begin{proof}[Proof of Theorem~\ref{thm:minimal-translations-on-groups}]
+  Let us start showing there exists a distance $d\colon G\to G\to [0,1]$ that is invariant under translations, \ie~$d(x+a,y+a)=d(x,y)$, for every $x,y,a\in G$. Let $d_0\colon G\to G\to [0,1]$ be any distance that induces the topology of $G$. Then, we define
+  \begin{displaymath}
+    d(x,y)=\int_G d_0(x+z,y+z)\dd\lambda(z),\quad\forall x,y\in G.
+  \end{displaymath}
+  It is easy to see that $d$ is a distance that induces the topology of $G$ and is invariant under translations.
+
+  Then, let us show that (1) implies (2). Let $x\in G$ be such that the orbit $\{T_a^n(x)\colon n\in\Z\}$ is dense in $G$. Given arbitrary points $y,z\in G$ and any $\eps>0$, we need to show that there is $n\in\Z$ such that $d(T_a^n(y),z)<\eps$. Since the orbit of $x$ is dense in $G$, there exists $n_1,n_2\in\Z$ such that $d(T_a^{n_1}(x),z)<\eps/2$ and $d(T_a^{n_2}(x),y)<\eps/2$. Since $d$ is invariant under translations, we have that
+  \begin{displaymath}
+    \begin{split}
+      d\big(T_a^{n_1-n_2}(y),z\big)&\leq d\Big(T_a^{n_1-n_2}(y),T_a^{n_1-n_2}\big(T_a^{n_2}(x)\big)\Big)+d\Big(T_a^{n_1-n_2}\big(T_a^{n_2}(x)\big),z\Big)\\
+      &=d\Big(y,T_a^{n_2}(x)\Big)+d\Big(T_a^{n_1}(x),z\Big)<\eps/2+\eps/2=\eps.
+    \end{split}
+  \end{displaymath}
+
+  Let us show that (2) implies (3). Let $\mu$ denote a $T_a$-invariant probability measure on $G$. Given an arbitrary point $b\in G$, since $T_a$ is minimal, there is sequence $(n_i)_{i\geq 1}$ of natural numbers, such that $T_a^{n_i}(0)=n_ia\to b$, as $i\to\infty$. So, given an arbitrary continuous function $\phi\colon G\to\R$, the function $\phi\circ T_{a}^{n_i}\to \phi\circ T_b$, as $i\to\infty$, uniformly on $G$. Therefore, sinc $\mu$ is $T_a$-invariant, it holds
+  \begin{displaymath}
+    \int_G\phi\dd\mu=\int_G\phi\circ T_{a}^{n_i}\dd\mu\to \int_G\phi\circ T_b\dd\mu,\quad\text{as }i\to\infty.
+  \end{displaymath}
+  Since $\phi$ is an arbitrary continuous function, we conclude that $\mu$ is $T_b$-invariant, and since $b\in G$ is an arbitrary point, we conclude that $\mu$ is invariant under all translations. Therefore, by the uniqueness of the Haar measure, we conclude that $\mu=\lambda$, which proves that $T_a$ is uniquely ergodic.
+
+  The fact that (3) implies (4) is a direct consequence of the fact that the unique $T_a$-invariant probability measure is necessarily ergodic.
+
+  Finally, to prove that (4) implies (1), since $\lambda$ is an ergodic measure for $T_a$, by Birkhoff's ergodic theorem for continuous functions (Corollary~\ref{cor:Birkhoff-thm-continuous-setting}), there exists a point $x\in G$ such that
+  \begin{displaymath}
+    \frac{1}{n}\sum_{k=0}^{n-1}\phi\big(T_a^k(x)\big)\to\int_G\phi\dd\lambda,\quad\text{as }n\to\infty,
+  \end{displaymath}
+  for every $\phi\in C^0(G,\R)$. On the other hand, since $\lambda$ has total support, \ie~$\lambda(U)>0$ for every non-empty open set $U\subset G$, we conclude that the orbit $\{T_a^n(x)\colon n\in\N\}$ is dense in $G$, which proves that $T_a$ is topologically transitive.
+\end{proof}
+
+
+\begin{corollary}
+  \label{cor:irrational-rotation-uniquely-ergodic}
+  Let $\alpha\in\R$ be an irrational number and let $R_\alpha\colon\T\carr$ be the rotation map defined by $R_\alpha(x)=x+\alpha$, for every $x\in\T$. Then, $R_\alpha$ is uniquely ergodic.
+\end{corollary}
+
+\begin{proof}[Proof of Corollary~\ref{cor:irrational-rotation-uniquely-ergodic}]
+  Of course, we can show that $R_\alpha$ is uniquely ergodic showing that it is minimal and, then, invoking Theorem~\ref{thm:minimal-translations-on-groups}. However, we are going to prove it with a different approach.
+
+  For each $n\in\Z$, consider the function $e_n\in C^\infty(\T,\C)$ given by $e_n(x)=\exp(2\pi i nx)$. Given an arbitrary Borel probability measure $\mu$ on $\T$, we can define its \textbf{Fourier coefficients} $(\hat\mu_n)\in\Z^\C$ by
+  \begin{displaymath}
+    \hat\mu_n=\int_\T e_{-n}\dd\mu,\quad\forall n\in\Z.
+  \end{displaymath}
+
+  This map $\M(\T)\ni\mu \to (\hat\mu_n)\in\Z^\C$ is indeed injective (see for instance~\cite[\S1.7]{KatznelsonHarmonicAnalysis})
+
+  Let $\mu$ be an $R_\alpha$-invariant probability measure on $\T$. Then, for every $n\in\Z$, we have that
+  \begin{displaymath}
+    \widehat{R_\alpha\mu}_n=\int_\T e_{-n}(x+\alpha)\dd\mu(x)=e^{-2\pi i n\alpha}\int_\T e_{-n}(x)\dd\mu(x) = e^{-2\pi i n\alpha}\hat\mu_n,
+  \end{displaymath}
+  for every $n\in\Z$. Since $\mu$ is $R_\alpha$-invariant, we have that $\widehat{R_\alpha\mu}_n=\hat\mu_n$, for every $n\in\Z$, which implies that
+  \begin{displaymath}
+    \hat\mu_n\big(e^{-2\pi i n\alpha}-1\big)=0,\quad\forall n\in\Z.
+  \end{displaymath}
+  Since $\alpha$ is irrational, we have that $e^{-2\pi i n\alpha}-1\neq 0$, for every $n\in\Z\setminus\{0\}$. Therefore, we conclude that $\hat\mu_n=0$, for every $n\in\Z\setminus\{0\}$; and since $\mu$ is a probability measure, we have that $\hat\mu_0=1$. One can easily check that the Haar measure $\lambda$ on $\T$ has the same Fourier coefficients, which implies that $\mu=\lambda$. Therefore, $R_\alpha$ is uniquely ergodic.
+\end{proof}
