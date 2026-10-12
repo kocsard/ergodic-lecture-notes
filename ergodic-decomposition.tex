@@ -1,30 +1,69 @@
 \section{Ergodic decomposition}\label{sec:ergod-decomposition}
 
+\subsection{Pushing forward and pulling back $\sigma$-algebras}
+\label{sec:push-forw-pul-back-sigma-alg}
+
+Let us start recalling some notations we introduced in \S\ref{sec:measure-spaces}.
+
+Given two measurable spaces $(X_i,\mathscr{B}_i)$, with $i=1,2$, consider a map $f\colon X_1\to X_2$. One can define the push-forward $\sigma$-algebra $f_\star\mathscr{B}_1$ on $Y$ by
+\begin{displaymath}
+  f_\star\mathscr{B}_1:=\{B\subset X_2\colon f^{-1}(B)\in\mathscr{B}_1\}.
+\end{displaymath}
+Analogously, we can define the pull-back $\sigma$-algebra $f^\star\mathscr{B}_2$ on $X$ by
+\begin{displaymath}
+  f^\star\mathscr{B}_2:=\{f^{-1}(B)\subset X \colon B\in\mathscr{B}_2\}.
+\end{displaymath}
+
+One says that the map $f\colon (X_1,\mathscr{B}_1)\to (X_2,\mathscr{B}_2)$ is \emph{measurable} when $\mathscr{B}_2\subset f_\star\mathscr{B}_1$, or equivalently, when $f^\star\mathscr{B}_2\subset \mathscr{B}_1$.
+
+When $\mu$ is a measure on $(X_1,\mathscr{B}_1)$, one can define the push-forward measure $f_\star\mu$ on $(X_2,\mathscr{B}_2)$ by
+\begin{displaymath}
+  f_\star\mu(B):=\mu(f^{-1}(B)),\quad \forall B\in\mathscr{B}_2.
+\end{displaymath}
+
 
 \subsection{Partitions of measure spaces}\label{sec:partitions-measure-spaces}
 
-Let $(X,\B,\mu)$ be an arbitrary probability space. A \textbf{partition} of $X$ is a family $\xi\subset\B$ such that $C\cap D=\emptyset$, for every $C,D\in\xi$ with $C\neq D$ and
+Given a probability space $(X,\mathscr{B},\mu)$, a \emph{partition} of $X$ is a family $\xi\subset\mathscr{B}$ such that any two different elements of $\xi$ are disjoint and there is $X'\in\mathscr{B}$ with $\mu(X')=1$ such that
 \begin{displaymath}
-  \mu\bigg(\bigsqcup_{C\in\xi} C\bigg) = 1.
+  X'=\bigsqcup_{C\in\xi} C.
 \end{displaymath}
-The elements of $\xi$ are called \textbf{atoms} of $\xi$. Given a point $x\in\bigsqcup_{C\in\xi} C$, we define $\xi(x)\in\xi$ as the only atom of $\xi$ that contains the point $x$. So, we can define the natural \emph{projection map} $\pi^{\xi}\colon X\to\xi$ by $\pi^{\xi}(x):=\xi(x)$ and notice that $\pi^{\xi}$ is well defined $\mu$-almost everywhere.
+Given any $x\in X'$, we shall write $\xi(x)$ to denote the unique element of $\xi$ containing $x$. The elements of $\xi$ are called \emph{atoms} of the partition. We can define the natural \emph{projection map} $\pi^{\xi}\colon X\to\xi$ by $\pi^{\xi}(x):=\xi(x)$ and notice that $\pi^{\xi}$ is well defined $\mu$-almost everywhere, \ie~it is just defined on the set $X'$.
 
-We can use the natural projection map $\pi^{\xi}$ to endow the set $\xi$ with a measure space structure. Indeed, we shall always assume the partition $\xi$ as the supporting set of the measure space $(\xi,\B_{\xi},\hat\mu^{\xi})$ where $\B_{\xi}:=\pi^{\xi}_{\star}\B$ and $\hat\mu^{\xi}:=\pi^{\xi}_{\star}\mu$ denote the push-forward $\sigma$-algebra of $\B$ and the measure $\mu$ by $\pi^{\xi}$, respectively.
+We can use the natural projection map $\pi^{\xi}$ to endow the set $\xi$ with a measure space structure. Indeed, we shall always assume the partition $\xi$ as the supporting set of the measure space $(\xi,\mathscr{B}_{\xi},\hat\mu^{\xi})$ where $\mathscr{B}_{\xi}:=\pi^{\xi}_{\star}\mathscr{B}$ and $\hat\mu^{\xi}:=\pi^{\xi}_{\star}\mu$ denote the push-forward $\sigma$-algebra of $\mathscr{B}$ and the measure $\mu$ by $\pi^{\xi}$, respectively.
 
-We can define a partial order relation among partitions of a measure space. Given two partitions $\xi,\eta$ of the measure space $(X,\B,\mu)$, we say that $\xi$ is \textbf{finer} than $\eta$, or that $\eta$ is \textbf{coarser} that $\xi$, and we write $\eta\leq\xi$, when there is a measurable subset $X'\subset X$ with $\mu(X')=1$ and such that
+The elements of $\xi$ are called \textbf{atoms} of $\xi$.
+
+\subsubsection{Order among partitions}
+\label{sec:order-among-partitons}
+
+Two partitions $\xi$ and $\eta$ of $X$ are said to be \emph{equivalent} if there is $X''\in\mathscr{B}$ with $\mu(X'')=1$ satisfying
 \begin{displaymath}
-  \xi(x)\cap X'\subset \eta(x)\cap X', \quad\forall x\in \bigg(\bigsqcup_{C\in\xi} C\bigg)\cap \bigg(\bigsqcup_{D\in\eta} D\bigg).
+  X''\subset \bigsqcup_{C\in\xi} C \cap \bigsqcup_{D\in\eta} D,
 \end{displaymath}
-We say that $\xi$ and $\eta$ coincide or are \textbf{equal} when $\eta\leq \xi$ and $\xi\leq\eta$.
+and such that
+\begin{equation}
+  \label{eq:X''-coincidence-of-partitions}
+  \xi(x)\cap X''=\eta(x)\cap X'', \quad\forall x\in X''.
+\end{equation}
 
-If we write $\mc{P}_{X}$ to denote the set of all partitions of the measure space $(X,\B,\mu)$, we know that $(\mc{P}_{X},\leq)$ is a partially order set.
+By some abuse of notation, we shall simply write $\xi=\eta$ to denote that the partitions $\xi$ and $\eta$ are equivalent.
+
+We can define a partial order relation among partitions of a measure space. Given two partitions $\xi,\eta$ of the measure space $(X,\B,\mu)$, we say that $\xi$ is \textbf{finer} than $\eta$, or that $\eta$ is \textbf{coarser} that $\xi$, and we write $\eta\leq\xi$, when there is a measurable subset $X''\subset X$ with $\mu(X'')=1$, contained in $\bigsqcup_{C\in\xi} C \cap \bigsqcup_{D\in\eta} D$ and such that
+\begin{displaymath}
+  \xi(x)\cap X''\subset \eta(x)\cap X'', \quad\forall x\in X''.
+\end{displaymath}
+
+\begin{exercise}
+  Show that two partitions $\xi$ and $\eta$ of the probability space $(X,\B,\mu)$ are equivalent if and only if $\xi\leq\eta$ and $\eta\leq\xi$.
+\end{exercise}
 
 \begin{exercise}\label{exer:inf-sup-well-defined-on-partitions}
   Show that the notions of \emph{infimum} and \emph{supremum} are well defined for countable subsets on the partially order set $(\mc{P}_{X},\leq)$. More precisely, show that given any countable family of partitions $\Xi\subset\mc{P}_{X}$, there exists two partitions $\inf\Xi,\sup\Xi\in\mc{P}_{X}$ such that
   \begin{displaymath}
     \eta\leq\inf\Xi\leq \xi\leq \sup\Xi\leq\eta', \quad\forall \xi\in\Xi,
   \end{displaymath}
-  and every $\eta,\eta'\in\mc{P}_{X}$ such that $\eta\leq \xi'\leq \eta'$, for every $\xi'\in\mc{P}_{X}$.
+  and every $\eta,\eta'\in\mc{P}_{X}$ such that $\eta\leq \xi'\leq \eta'$, for every $\xi'\in\mc{P}_{X}$. These partitions $\inf\Xi$ and $\sup\Xi$ are unique up to equivalence of partitions.
 \end{exercise}
 
 We can use the notions of infimum and supremum on $\mc{P}_{X}$ to define the operators $\wedge$ and $\vee$: given any countable (or finite) family $\Xi\subset\mc{P}_{X}$, we define
@@ -35,6 +74,7 @@ and
 \begin{equation}\label{eq:partitions-upper-limit-def}
   \bigvee_{\xi\in\Xi} \xi :=\inf\left\{\eta\in\mc{P}_{X} : \xi\leq\eta,\ \forall\xi\in\Xi\right\}.
 \end{equation}
+
 
 
 \subsection{Disintegration of measures}\label{sec:disintegrations-measures}
@@ -121,7 +161,13 @@ Given a probability space $(X,\B,\mu)$ we say that a partition $\xi\in\mc{P}_{X}
 \begin{displaymath}
   \xi=\bigvee_{n\geq 1}\xi_{n},
 \end{displaymath}
-where the equality among partitions is given in \S\ref{sec:partitions-measure-spaces} and the operator $\bigvee$ is given by~\eqref{eq:partitions-upper-limit-def}
+where the equality is understood in the sense of equivalence of partitions as defined in \S\ref{sec:partitions-measure-spaces} and the operator $\bigvee$ is given by~\eqref{eq:partitions-upper-limit-def}
+
+A partition $\xi$ of the probability space $(X,\B,\mu)$ is said to be \textbf{measurable} when there is a countable family of finite partitions $\{\xi_n\}_{n\in\N}\subset\mc{P}_{X}$ such that
+\begin{displaymath}
+  \xi=\bigvee_{n\in\N} \xi_n,
+\end{displaymath}
+
 
 \begin{exercise}
   \label{exer:measurable-partitions-characterization-measurable-maps}
