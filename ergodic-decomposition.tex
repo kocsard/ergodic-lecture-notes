@@ -30,7 +30,7 @@ Given a probability space $(X,\mathscr{B},\mu)$, a \emph{partition} of $X$ is a 
 \end{displaymath}
 Given any $x\in X'$, we shall write $\xi(x)$ to denote the unique element of $\xi$ containing $x$. The elements of $\xi$ are called \emph{atoms} of the partition. We can define the natural \emph{projection map} $\pi^{\xi}\colon X\to\xi$ by $\pi^{\xi}(x):=\xi(x)$ and notice that $\pi^{\xi}$ is well defined $\mu$-almost everywhere, \ie~it is just defined on the set $X'$.
 
-We can use the natural projection map $\pi^{\xi}$ to endow the set $\xi$ with a measure space structure. Indeed, we shall always assume the partition $\xi$ as the supporting set of the measure space $(\xi,\mathscr{B}_{\xi},\hat\mu^{\xi})$ where $\mathscr{B}_{\xi}:=\pi^{\xi}_{\star}\mathscr{B}$ and $\hat\mu^{\xi}:=\pi^{\xi}_{\star}\mu$ denote the push-forward $\sigma$-algebra of $\mathscr{B}$ and the measure $\mu$ by $\pi^{\xi}$, respectively.
+We can use the natural projection map $\pi^{\xi}$ to endow the set $\xi$ with a measure space structure. Indeed, we shall always assume the partition $\xi$ as the supporting set of the measure space $(\xi,\mathscr{B}_{\xi},\hat\mu_{\xi})$ where $\mathscr{B}_{\xi}:=\pi^{\xi}_{\star}\mathscr{B}$ and $\hat\mu_{\xi}:=\pi^{\xi}_{\star}\mu$ denote the push-forward $\sigma$-algebra of $\mathscr{B}$ and the measure $\mu$ by $\pi^{\xi}$, respectively.
 
 The elements of $\xi$ are called \textbf{atoms} of $\xi$.
 
@@ -82,18 +82,18 @@ and
 Given a probability space $(X,\B,\mu)$ and a partition $\xi\in\mc{P}_{X}$, a \textbf{disintegration} of $\mu$ with respect to $\xi$ is family $\{\mu_{C} : C\in\xi\}$ satisfying the following properties:
 \begin{enumerate}[(i)]
   \item $\mu_{C}$ is a probability measure on the measurable space $(X,\B)$, for every $C\in\xi$;
-  \item $\mu_{C}(C)=1$, for $\hat\mu^{\xi}$-almost every atom $C\in\xi$;
-  \item for every $E\in\B$, the map $\xi\ni C\mapsto \mu_{C}(E)\in[0,1]$ is $(\B^{\xi},\B_{\R})$-measurable;
+  \item $\mu_{C}(C)=1$, for $\hat\mu_{\xi}$-almost every atom $C\in\xi$;
+  \item for every $E\in\B$, the map $\xi\ni C\mapsto \mu_{C}(E)\in[0,1]$ is $(\B_{\xi},\B_{\R})$-measurable;
   \item it holds
         \begin{displaymath}
-          \mu(E)=\int_{\xi} \mu_{C}(E)\dd\hat\mu^{\xi}(C), \quad\forall E\in\B.
+          \mu(E)=\int_{\xi} \mu_{C}(E)\dd\hat\mu_{\xi}(C), \quad\forall E\in\B.
         \end{displaymath}
 \end{enumerate}
 
 Let us observe that one can pull back the partition and push forward the disintegration:
 
 \begin{exercise}\label{exer:push-forward-disint-pull-back-partitions}
-  Let $(X,\B,\mu)$ be a probability space, $\xi\in\mc{P}_{X}$ be a partion and $f\colon X\carr$ be a measure preserving map. Then, show that $f^{\star}\xi:=\{f^{-1}(C) : C\in\xi\}$ is a partition of $(X,\B,\mu)$. On the other hand, if $\{\mu_{D} : D\in f^{\star}\xi\}$ is a disintegration of $\mu$ with respect to the partition $f^{\star}\xi$, show that $\{\mu_{C}:=f_{\star}\mu_{f^{-1}(C)} :  C\in\xi\}$ is a disintegration of $\mu$ with respect to $\xi$.
+  Let $(X,\B,\mu)$ be a probability space, $\xi\in\mc{P}_{X}$ be a partition and $f\colon X\carr$ be a measure preserving map. Then, show that $f^{\star}\xi:=\{f^{-1}(C) : C\in\xi\}$ is a partition of $(X,\B,\mu)$. On the other hand, if $\{\mu_{D} : D\in f^{\star}\xi\}$ is a disintegration of $\mu$ with respect to the partition $f^{\star}\xi$, show that $\{\mu_{C}:=f_{\star}\mu_{f^{-1}(C)} :  C\in\xi\}$ is a disintegration of $\mu$ with respect to $\xi$.
 \end{exercise}
 
 
@@ -103,7 +103,7 @@ First we shall prove that every partition admits at most one disintegration:
 \begin{theorem}[Uniqueness of disintegrations]\label{thm:unique-disintegration}
   If $(X,\B,\mu)$ is a Borel space (see \S\ref{sec:measure-theory}), $\xi\in\mc{P}_{X}$ is a partition, and $\{\mu_{C} : C\in\xi\}$ and $\{\nu_{C} : C\in\xi\}$ are two disintegrations of $\mu$ with respect to $\xi$, then it holds
   \begin{displaymath}
-    \mu_{C}=\nu_{C}, \quad\text{for } \hat\mu^{\xi}\text{-a.e. } C\in\xi.
+    \mu_{C}=\nu_{C}, \quad\text{for } \hat\mu_{\xi}\text{-a.e. } C\in\xi.
   \end{displaymath}
 \end{theorem}
 
@@ -117,17 +117,17 @@ First we shall prove that every partition admits at most one disintegration:
   Then, since $\{\mu_{C} : C\in\xi\}$ is a disintegration of $\mu$ with respect to $\xi$, we have
   \begin{displaymath}
     \begin{split}
-      \mu\big(A\cap{\pi^{\xi}}^{-1}(\ms{M}_{A})\big) &= \int_{\xi} \mu_{C}\big(A\cap{\pi^{\xi}}^{-1}(\ms{M}_{A})\big)\dd\hat\mu^{\xi}(C)\\
-      &=\int_{\ms{M}_{A}} \mu_{C}(A)\dd\hat\mu^{\xi}(C).
+      \mu\big(A\cap{\pi^{\xi}}^{-1}(\ms{M}_{A})\big) &= \int_{\xi} \mu_{C}\big(A\cap{\pi^{\xi}}^{-1}(\ms{M}_{A})\big)\dd\hat\mu_{\xi}(C)\\
+      &=\int_{\ms{M}_{A}} \mu_{C}(A)\dd\hat\mu_{\xi}(C).
     \end{split}
   \end{displaymath}
 
   Analogously, one can show that
   \begin{displaymath}
-    \mu\big(A\cap{\pi^{\xi}}^{-1}(\ms{M}_{A})\big)=\int_{\ms{M}_{A}} \nu_{C}(A)\dd\hat\mu^{\xi}(C).
+    \mu\big(A\cap{\pi^{\xi}}^{-1}(\ms{M}_{A})\big)=\int_{\ms{M}_{A}} \nu_{C}(A)\dd\hat\mu_{\xi}(C).
   \end{displaymath}
 
-  Since $\mu_{C}(A)<\nu_{C}(A)$, for all $C\in\ms{M}_{A}$, we get $\hat\mu^{\xi}(\ms{M}_{A})=0$. Analogously, we can show that $\hat\mu^{\xi}(\ms{N}_{A})=0$ and hence, $\mu_{C}=\nu_{C}$, for $\hat\mu^{\xi}$-almost every $C\in\xi$.
+  Since $\mu_{C}(A)<\nu_{C}(A)$, for all $C\in\ms{M}_{A}$, we get $\hat\mu_{\xi}(\ms{M}_{A})=0$. Analogously, we can show that $\hat\mu_{\xi}(\ms{N}_{A})=0$ and hence, $\mu_{C}=\nu_{C}$, for $\hat\mu_{\xi}$-almost every $C\in\xi$.
 \end{proof}
 
 Theorem~\ref{thm:unique-disintegration} can be used to show that certain partitions do not admit any disintegration of the measure:
@@ -146,8 +146,8 @@ Now we can state the main result of this section:
 \begin{theorem}[Ergodic decomposition theorem]\label{thm:ergodic-decomposition}
   Let $(X,\B,\mu)$ be a Borel space and $f\colon X\carr$ be a measure preserving map. Then there exists a unique partition $\xi_{f}\in\mc{P}_{X}$, called the \textbf{ergodic partition of $f$}, such $\xi_{f}$ admits a disintegration $\{\mu_{C} : C\in\xi_{f}\}$ and the following conditions hold:
   \begin{enumerate}
-    \item $f^{\star}\xi_{f}=\xi_{f}$, \ie~$f^{-1}(C)=C$, for $\hat\mu^{\xi_{f}}$-almost every atom $C\in\xi_{f}$;
-    \item $\mu_{C}$ is an ergodic $f$-invariant measure, for $\hat\mu^{\xi_{f}}$-almost every atom $C\in\xi_{f}$.
+    \item $f^{\star}\xi_{f}=\xi_{f}$, \ie~$f^{-1}(C)=C$, for $\hat\mu_{\xi_{f}}$-almost every atom $C\in\xi_{f}$;
+    \item $\mu_{C}$ is an ergodic $f$-invariant measure, for $\hat\mu_{\xi_{f}}$-almost every atom $C\in\xi_{f}$.
   \end{enumerate}
 \end{theorem}
 
@@ -168,17 +168,6 @@ A partition $\xi$ of the probability space $(X,\B,\mu)$ is said to be \textbf{me
   \xi=\bigvee_{n\in\N} \xi_n,
 \end{displaymath}
 
-
-\begin{exercise}
-  \label{exer:measurable-partitions-characterization-measurable-maps}
-  Let $(X,\B,\mu)$ be a probability space, $M$ be separable metric space and $f\colon X\to M$ be a measurable map. Then the partition
-  \begin{displaymath}
-    \xi_{f}:=\left\{f^{-1}(y) : y \in M\right\}\in\mc{P}_{X}
-  \end{displaymath}
-  is a measurable partition.
-
-  Reciprocally, if $\xi\in\mc{P}_{X}$ is a partition, then $\xi$ is a measurable partition if and only if there exists a compact metric space $M$, a Borel probability measure $\nu$ on $M$ and a measure preserving map $f\colon (X,\B,\mu)\to (M,\B_{M},\nu)$ such that $\xi=\xi_{f}$.
-\end{exercise}
 
 Then we have the main result about measurable partitions:
 
@@ -205,7 +194,7 @@ We postpone the proof of Theorem~\ref{thm:rokhlin-disintegration}. Now we shall 
 
   Then, by Rokhlin theorem (Theorem~\ref{thm:rokhlin-disintegration}) we know that there is a disintegration of $\mu$ with respect to $\xi_{f}$ $\{\mu_{C} : C\in\xi_{f}\}$.
 
-  By the very same definition of functions $\tau_{A}$ we know that $f^{-1}(X_{0})=X_{0}$ and  $\tau_{A}(x)=\tau_{A}\circ f(x)$, for every $x\in X_{0}$. So, it clearly holds $f^{-1}(C)=C$, for every $C\in\xi_{f}$. Thus, by uniqueness of disintegration (Theorem~\ref{thm:unique-disintegration}), we conclude that $f_{\star}\mu_{C}=\mu_{C}$, for $\hat\mu^{\xi_{f}}$-almost every atom $C\in\xi_{f}$.
+  By the very same definition of functions $\tau_{A}$ we know that $f^{-1}(X_{0})=X_{0}$ and  $\tau_{A}(x)=\tau_{A}\circ f(x)$, for every $x\in X_{0}$. So, it clearly holds $f^{-1}(C)=C$, for every $C\in\xi_{f}$. Thus, by uniqueness of disintegration (Theorem~\ref{thm:unique-disintegration}), we conclude that $f_{\star}\mu_{C}=\mu_{C}$, for $\hat\mu_{\xi_{f}}$-almost every atom $C\in\xi_{f}$.
 
   So, it just remains to prove that the measure $\mu_{C}$ is ergodic for $f$, for every atom $C\in\xi_{f}$. To do that, let us fix an atom $C\in\xi_{f}$ and observe that to prove the ergodicity of $\mu_{C}$ is enough to show that $\tau_{E}(x)=\mu_{C}(E)$, for every $E\in\B$ and $\mu_{C}$-a.e. $x\in C$. Then, let us define the family
   \begin{displaymath}
@@ -228,42 +217,62 @@ We postpone the proof of Theorem~\ref{thm:rokhlin-disintegration}. Now we shall 
   \end{exercise}
 \end{proof}
 
-\begin{proof}[Proof of Theorem~\ref{thm:rokhlin-disintegration}]
-  This elegant proof of is due to Terence Tao and was presented in his blog.
+The proof of Theorem~\ref{thm:rokhlin-disintegration} we present here is based on a beautiful argument due to Terence Tao and presented in his blog:
 
-  By Exercise~\ref{exer:measurable-partitions-characterization-measurable-maps}, there exists a compact metric space $M$, a Borel probability measure $\nu$ on $M$ and a measure preserving map $\pi\colon (X,\B,\mu)\to (M,\B_{M},\nu)$ such that $\xi=\xi_{\pi}$. On the other hand, since we are assuming that $(X,\B,\mu)$ is a Borel space, there is no loss of generality in assuming that $X$ is a compact metric space and $\B$ is its Borel $\sigma$-algebra.
+\begin{proposition}
+  \label{prop:rhoklin-disintegration-Tao}
+  Let $(X,\B,\mu)$ be a Borel space and $(Y,\B_Y,\nu)$ be an arbitrary probability space. Let $\pi\colon (X,\B,\mu)\to (Y,\B_Y,\nu)$ a measure preserving map. Then, there is a a family of probability measures $\{\mu_y : y\in Y\}$ on $(X,\B)$ such that for every bounded measurable functions $\phi\colon X\to\R$ and $\psi\colon Y\to\R$ it holds
+  \begin{enumerate}[(i)]
+    \item $Y\ni y\mapsto \int_X\phi\dd\mu_y$ is a measurable map;
+    \item and
+          \begin{displaymath}
+            \int_X \phi\cdot (\psi\circ\pi)\dd\mu = \int_Y \psi(y)\left(\int_X\phi\dd\mu_y\right)\dd\nu(y).
+          \end{displaymath}
+\end{enumerate}
+\end{proposition}
 
-  Then, we consider the pull-back operator $\pi^*\colon L^2(M,\B_M,\nu)\to L^2(X,\B,\mu)$ given by $\pi^*\phi:=\phi\circ\pi$, for every $\phi\in L^2(M,\B_M,\nu)$. So, its (Hilbert) adjoint operator $\pi_*\colon L^2(X,\B,\mu)\to L^2(M,\B_M,\nu)$, by the Riesz representation theorem, is characterized by the following property:
+\begin{proof}[Proof of Proposition~\ref{prop:rhoklin-disintegration-Tao}]
+  Let us start considering the pull-back operator $\pi^*\colon L^2(Y,\nu)\to L^2(X,\mu)$ given by $\pi^*\psi:=\psi\circ\pi$. Since $\pi$ is a measure preserving map, the linear operator $\pi^*$ is an isometry.
+
+  Let us write $\pi_*\colon L^2(X,\mu)\to L^2(Y,\nu)$ for the adjoint operator of $\pi^*$. Observe that $\pi_*$ is characterized by the following property:
   \begin{equation}
-    \label{eq:pull-back-push-forward-adjoint-characterization}
-    \int_{M} \phi\cdot \pi_*\psi\dd\nu = \int_{X} \pi^*\phi\cdot \psi\dd\mu,
+    \label{eq:pi-adjoint-characterization}
+    \int_X \phi\cdot (\psi\circ\pi)\dd\mu = \int_Y \pi_*\phi\cdot \psi\dd\mu,
   \end{equation}
-  for every $\phi\in L^2(M,\B_M,\nu)$ and $\psi\in L^2(X,\B,\mu)$. Since $\mu$ and $\nu$ are probability measures, we know that $L^\infty(X,\B,\mu)\subset L^2(X,\B,\mu)$ and $L^\infty(M,\B_M,\nu)\subset L^2(M,\B_M,\nu)$. Moreover, as a consequence of~\eqref{eq:pull-back-push-forward-adjoint-characterization} and recalling that $\norm{\pi^*\phi}_{L^{\infty}(x,\B,\mu)}\leq \norm{\phi}_{L^\infty(M,\B_M,\nu)}$, for all $\phi\in L^\infty(M,\B_M,\nu)$, one easily get that
-  \begin{displaymath}
-    \norm{\pi_*\psi}_{L^\infty(M,\B_M,\nu)}\leq \norm{\psi}_{L^\infty(X,\B,\mu)},\quad\forall \psi\in L^\infty(X,\B,\mu).
-  \end{displaymath}
+  for every $\psi\in L^2(Y,\nu)$ and $\phi\in L^2(X,\mu)$. From~\eqref{eq:pi-adjoint-characterization} one can easily show that $\pi_*$ is a positive linear operator and that $\norm{\pi_*\phi}_{L^\infty(Y,\nu)}\leq \norm{\phi}_{L^\infty(X,\mu)}$, for every $\phi\in L^\infty(X,\mu)\subset L^2(X,\mu)$.
 
-  Then, since we are assuming that $X$ is a compact metric space, we know that the space of continuous functions $C^0(X)$ is contained and is dense in $L^\infty(X,\B,\mu)$. However, $L^\infty(X,\B,\mu)$ is a space of equivalence classes of functions, and not just functions. So, we need the following
+  Now, since we are supposing that $(X,\B,\mu)$ is a Borel space, there is no loss of generality in assuming that $X$ is a compact metric space and $\B$ is its Borel $\sigma$-algebra. So, $C^0(X)\subset L^\infty(X,\mu)$.
 
-  \begin{lemma}
-    \label{lem:choosing-pi-adjoint-images-of-continuous-functions}
-    We write $B(M,\B_M):=\{\phi\colon M\to\R : \phi \text{ is bounded and measurable}\}$. Given any $\phi\in B(M,\B_M)$, we shall temporally write $[\phi]\in L^\infty(M,\B_M,\nu)$ for the equivalence class of $\phi$ in $L^\infty(M,\B_M,\nu)$. Then, there is a linear operator $\tilde \pi_*\colon C^0(X)\to B(M,\B_M)$ and a set $M'\in\B_M$ with $\nu(M')=1$ such that $[\tilde \pi_*\psi]=\pi_*\psi\in L^\infty(M,\B_M,\nu)\subset L^2(M,\B_M,\nu)$, for every $\psi\in C^0(X)$, and
+  Then, we need the following
+  \begin{lemma} \label{lem:choosing-pi-adjoint-images-continuous-functions}
+    Following with the notation of Proposition~\ref{prop:rhoklin-disintegration-Tao}, let us write
     \begin{displaymath}
-      \abs{\tilde \pi_*\psi(y)}\leq \norm{\psi}_{C^0(X)},\quad\forall y\in M',\ \forall \psi\in C^0(X).
+      B(Y):=\{\psi\colon Y\to\R : \psi\text{ is measurable and bounded}\},
+    \end{displaymath}
+    and $[\psi]\in L^\infty(Y,\nu)$ for the equivalence class containing $\psi\in B(Y)$. Then, there is a linear operator $\tilde \pi_*\colon C^0(X)\to B(Y)$ and a set $Y'\in\B_Y$ with $\nu(Y')=1$ such that $[\tilde \pi_*\phi]=\pi_*\phi\in L^\infty(Y,\nu)\subset L^2(Y,\nu)$, for every $\phi\in C^0(X)$, and
+    \begin{displaymath}
+      \abs{\tilde \pi_*\phi(y)}\leq \norm{\phi}_{C^0(X)},\quad\forall y\in Y',\ \forall \phi\in C^0(X).
     \end{displaymath}
   \end{lemma}
 
   \begin{exercise}
-    Prove Lemma~\ref{lem:choosing-pi-adjoint-images-of-continuous-functions}.
+    Prove Lemma~\ref{lem:choosing-pi-adjoint-images-continuous-functions}.
   \end{exercise}
 
-  Then, for each $y\in M'$, we define the linear functional $\Lambda_{y}\colon C^0(X)\to\R$ given by $\Lambda_{y}(\psi):=\tilde \pi_*\psi(y)$, for every $\psi\in C^0(X)$. Observe that $\Lambda_y$ is a positive bounded linear functional on $C^0(X)$, satisfying $\norm{\Lambda_y}\leq 1$, for every $y\in M'$. So, by Riesz representation theorem, there exists a unique Borel probability measure $\mu_y$ on $X$ such that
+  Then, for each $y\in Y'$, we can define a linear functional $\Lambda_y\colon C^0(X)\to\R$ by
   \begin{displaymath}
-    \Lambda_y(\psi)=\tilde\pi_*\psi(y)=\int_X \psi\dd\mu_y,\quad\forall \psi\in C^0(X).
+    \Lambda_y(\phi):=\tilde \pi_*\phi(y),\quad\forall \phi\in C^0(X).
+  \end{displaymath}
+  One can easily show that $\Lambda_y$ is positive and bounded, with $\norm{\Lambda_y}\leq 1$. So, by Riesz representation theorem, there exists a unique probability measure $\mu_y$ on $(X,\B)$ such that
+  \begin{displaymath}
+    \Lambda_y(\phi)=\int_X \phi\dd\mu_y,\quad\forall \phi\in C^0(X).
   \end{displaymath}
 
+  Then, we have that conditions (i) and (ii) of Proposition~\ref{prop:rhoklin-disintegration-Tao} hold for every $\phi\in C^0(X)$ and every $\psi\in B(Y)$. By classical arguments of approximation of bounded measurable functions by continuous ones and the dominated convergence theorem, one can show that conditions (i) and (ii) of Proposition~\ref{prop:rhoklin-disintegration-Tao} also hold for every bounded measurable functions $\phi\colon X\to\R$ and $\psi\colon Y\to\R$.
+\end{proof}
 
 
+\begin{proof}[Proof of Theorem~\ref{thm:rokhlin-disintegration}]
 
 
 \end{proof}
